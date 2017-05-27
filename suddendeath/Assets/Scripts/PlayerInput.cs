@@ -5,6 +5,7 @@ public class PlayerInput : MonoBehaviour {
 
     public float MoveSpeed = 8.0f;
     public int playerNum = 1;
+    public bool UseForces = false;
 
     Rigidbody2D rb2d;
 
@@ -37,6 +38,15 @@ public class PlayerInput : MonoBehaviour {
         horizontal = Input.GetAxisRaw("Horizontal" + playerNum);
         vertical = Input.GetAxisRaw("Vertical" + playerNum);
 
-        rb2d.velocity = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
+        Vector2 moveDirection = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
+
+        if (UseForces)
+        {
+            rb2d.AddForce(moveDirection, ForceMode2D.Force);
+        } else
+        {
+            rb2d.velocity = moveDirection;
+        }
+        
     }
 }
