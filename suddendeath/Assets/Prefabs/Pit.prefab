@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 114509703334252820}
   m_Layer: 5
   m_Name: Pit
-  m_TagString: Untagged
+  m_TagString: Pit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
