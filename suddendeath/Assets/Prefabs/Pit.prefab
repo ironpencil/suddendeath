@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4250268144998024}
   - component: {fileID: 250808957387121512}
   - component: {fileID: 61909051360583350}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: PitAffector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4945419554781828}
   - component: {fileID: 212396803143115848}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   - component: {fileID: 4644817845319690}
   - component: {fileID: 61726199195641160}
   - component: {fileID: 114509703334252820}
-  m_Layer: 5
+  m_Layer: 20
   m_Name: Pit
   m_TagString: Pit
   m_Icon: {fileID: 0}
@@ -81,7 +81,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1299743909172460}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4945419554781828}
@@ -210,10 +210,10 @@ PointEffector2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012286112395130}
   m_Enabled: 1
-  m_UseColliderMask: 1
+  m_UseColliderMask: 0
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 1048576
   m_ForceMagnitude: -200
   m_ForceVariation: 0
   m_DistanceScale: 0.25
