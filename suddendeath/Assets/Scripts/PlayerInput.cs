@@ -3,15 +3,14 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 
-    public BaseMovement movementController;
-    public FacingHandler facingHandler;
-    public WeaponHandler weaponHandler;
+    public float MoveSpeed = 8.0f;
+    public int playerNum = 1;
 
-    public bool canMoveWhileAttacking = false;
+    Rigidbody2D rb2d;
 
 	// Use this for initialization
 	void Start () {
-	
+        rb2d = GetComponent<Rigidbody2D>();    
 	}
 	
 	// Update is called once per frame
@@ -27,47 +26,17 @@ public class PlayerInput : MonoBehaviour {
 
     private void HandleAttack()
     {
-        if (Input.GetButtonDown("Attack"))
-        {
-            weaponHandler.Attack(facingHandler.facing);
-        }
+        
     }
 
     void HandleMovement()
     {
-
         float horizontal = 0.0f;
         float vertical = 0.0f;
 
-        if (canMoveWhileAttacking || !weaponHandler.IsAttacking())
-        {
-            horizontal = Input.GetAxis("Horizontal");
-            vertical = Input.GetAxis("Vertical");
-        }
+        horizontal = Input.GetAxisRaw("Horizontal" + playerNum);
+        vertical = Input.GetAxisRaw("Vertical" + playerNum);
 
-        float horizontalMovement = 0.0f;
-        float verticalMovement = 0.0f;
-
-        if (horizontal > 0.0f)
-        {
-            horizontalMovement = 1.0f;
-        }
-        else if (horizontal < 0.0f)
-        {
-            horizontalMovement = -1.0f;
-        }
-
-        if (vertical > 0.0f)
-        {
-            verticalMovement = 1.0f;
-        }
-        else if (vertical < 0.0f)
-        {
-            verticalMovement = -1.0f;
-        }
-
-        movementController.movementDirection = new Vector2(horizontalMovement, verticalMovement);
-
-        facingHandler.UpdateFacing();
+        rb2d.velocity = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
     }
 }
