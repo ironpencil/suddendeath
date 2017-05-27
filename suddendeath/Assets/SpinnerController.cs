@@ -6,6 +6,8 @@ public class SpinnerController : MonoBehaviour {
     public float MoveSpeed = 8.0f;
     public float SpinSpeed = 8.0f;
     public float MaxAngularVelocity = 4.0f;
+    public float SpinDirection = 1;
+    private Collider2D lastCollider;
 
     Rigidbody2D rb2d;
 
@@ -16,7 +18,7 @@ public class SpinnerController : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
         HandleMovement();
     }
 
@@ -24,9 +26,23 @@ public class SpinnerController : MonoBehaviour {
     {
         Vector2 direction = rb2d.velocity.normalized;
         rb2d.velocity = direction * MoveSpeed;
-        if (rb2d.angularVelocity < MaxAngularVelocity)
-        {
-            rb2d.AddTorque(SpinSpeed);
+
+        rb2d.angularVelocity = 1200 * SpinDirection;
+        //rb2d.AddTorque(SpinSpeed * SpinDirection);
+        //rb2d.rotation += SpinSpeed * SpinDirection;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        SpinDirection = -SpinDirection;
+        //rb2d.angularVelocity *= -1;
+
+        /*
+        if (lastCollider != collision.collider) {
+            rb2d.rotation = -rb2d.rotation;
+            SpinDirection = -SpinDirection;
+            lastCollider = collision.collider;
         }
+        */
     }
 }
