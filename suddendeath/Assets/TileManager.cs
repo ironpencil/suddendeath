@@ -22,7 +22,7 @@ public class TileManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         tiles = new List<CollapsingFloor>();
-
+        
         for (int x = 0; x < arenaSize.x; x++)
         {
             int tileX = (int)arenaUpperLeft.x + x;
