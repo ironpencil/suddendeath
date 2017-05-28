@@ -18,6 +18,6 @@ public class ShieldScript : MonoBehaviour {
         //transform.localPosition = resetPos;
         //transform.eulerAngles = Vector3.zero;
         rb2d.position = (Vector2)transform.parent.position + offset;
-        rb2d.rotation = 0;
+        //rb2d.rotation = 0;
 	}
 }

@@ -6,7 +6,10 @@ public class PlayerInput : MonoBehaviour {
     public float MoveSpeed = 8.0f;
     public int playerNum = 1;
     public bool UseForces = false;
+    
     public GameObject hand;
+    
+    public bool mouseInput = false;
 
     Rigidbody2D rb2d;
 
@@ -50,24 +53,29 @@ public class PlayerInput : MonoBehaviour {
             rb2d.velocity = moveDirection;
         }
 
+        Vector2 rinput;
+        if (mouseInput)
+        {
+            rinput = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            rinput.Normalize();
+        }
+        else {
+            // We are going to read the input every frame
+            rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + playerNum), Input.GetAxisRaw("RVertical" + playerNum));
 
-        // We are going to read the input every frame
-        Vector2 rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + playerNum), Input.GetAxisRaw("RVertical" + playerNum));
-
+        }
         Debug.Log("RHorizontal" + playerNum + ": " + rinput.x);
         Debug.Log("RVertical" + playerNum + ": " + rinput.y);
 
 
-        // Only do work if meaningful
-        if (rinput.sqrMagnitude < 0.1f)
-        {
-            return;
-        }
+        //shield.position = (Vector2)transform.position + (rinput * shieldDistance);
 
+        
         // Apply the transform to the object  
         var angle = Mathf.Atan2(rinput.y, rinput.x) * Mathf.Rad2Deg;
         //hand.transform.Rotate(new Vector3(0, 0, angle));
-        //hand.transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         hand.transform.eulerAngles = new Vector3(0, 0, angle);
+        //shield.rotation = angle;
+        //shield.transform.eulerAngles = new Vector3(0, 0, angle);
     }
 }
