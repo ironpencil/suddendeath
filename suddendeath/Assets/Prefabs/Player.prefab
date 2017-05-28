@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 114885060986920588}
   - component: {fileID: 114204692481180118}
   - component: {fileID: 114702674047104018}
+  - component: {fileID: 114051317806068088}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -85,7 +86,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4492030347823530}
   - component: {fileID: 212968604669082660}
-  - component: {fileID: 114897871055150746}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -255,6 +255,17 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.35
+--- !u!114 &114051317806068088
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051186068919054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dc4ab2cebcb2144e8f0619d0d85eb7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114204692481180118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -296,27 +307,6 @@ MonoBehaviour:
   MoveSpeed: 500
   playerNum: 1
   UseForces: 1
---- !u!114 &114897871055150746
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1566067145964614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ca9aab337b5e97841bdb84c53dbd24f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trailMaterial: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  lifeTime: 4
-  changeTime: 0
-  widthStart: 0.4
-  widthEnd: 0.4
-  vertexDistanceMin: 0.1
-  renderDirection: {x: 0, y: 0, z: -1}
-  colliderIsTrigger: 1
-  colliderEnabled: 1
-  pausing: 0
 --- !u!212 &212968604669082660
 SpriteRenderer:
   m_ObjectHideFlags: 1

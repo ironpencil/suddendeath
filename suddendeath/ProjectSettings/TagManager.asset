@@ -29,7 +29,7 @@ TagManager:
   - Hazards
   - 
   - 
-  - 
+  - Projectiles
   - 
   - 
   - NC Hazard
@@ -39,6 +39,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Floor
+    uniqueID: 560340477
+    locked: 0
   - name: Default
     uniqueID: 0
     locked: 0

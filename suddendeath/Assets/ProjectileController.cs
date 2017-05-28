@@ -23,4 +23,14 @@ public class ProjectileController : MonoBehaviour {
         Vector2 direction = rb2d.velocity.normalized;
         rb2d.velocity = direction * MoveSpeed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+        if (pc != null)
+        {
+            pc.Kill();
+            Destroy(gameObject);
+        }
+    }
 }

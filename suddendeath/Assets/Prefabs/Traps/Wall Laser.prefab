@@ -36,8 +36,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1328865512593642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.8, y: -3.91, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 14.896802, y: -7.260543, z: 0}
   m_LocalScale: {x: 3, y: 4, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,12 +102,14 @@ MonoBehaviour:
   MoveSpeed: 5
   IsVertical: 1
   IsCharging: 0
-  shotFrequency: 10
-  chargeTime: 10
+  shotFrequency: 1
+  chargeTime: 1
   IdleSprite: {fileID: 21300000, guid: 9fdb14aa7a331534ba3d91886f07e8fd, type: 3}
   ChargingSprite: {fileID: 21300000, guid: 43ae1dbb539198345bdf8b667a34b339, type: 3}
   timeLeft: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 1284001981335374, guid: fba890b6efcc1d64283a9c83d6c0d48e,
+    type: 2}
+  facing: {x: -1, y: 0}
 --- !u!212 &212955873832841908
 SpriteRenderer:
   m_ObjectHideFlags: 1

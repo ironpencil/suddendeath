@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58780463642369646}
   - component: {fileID: 114887527680363598}
   - component: {fileID: 96005607658120548}
-  m_Layer: 20
+  m_Layer: 23
   m_Name: Wall Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.125
+  m_Radius: 0.085
 --- !u!96 &96005607658120548
 TrailRenderer:
   serializedVersion: 2
@@ -112,7 +112,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.2
+  m_Time: 0.1
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.25
@@ -174,9 +174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d84ee63094a02448a4fa030946b853b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 10
+  MoveSpeed: 20
   FireDirection: {x: 0, y: 0}
-  tailPrefab: {fileID: 1284001981335374, guid: 27fb16154286fad49985707887a2aaa9, type: 2}
 --- !u!212 &212786022137801748
 SpriteRenderer:
   m_ObjectHideFlags: 1

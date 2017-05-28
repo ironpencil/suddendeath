@@ -30,5 +30,10 @@ public class SpinnerController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SpinDirection = -SpinDirection;
+        PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+        if (pc != null)
+        {
+            pc.Kill();
+        }
     }
 }
