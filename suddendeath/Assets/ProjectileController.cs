@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallProjectileController : MonoBehaviour {
+public class ProjectileController : MonoBehaviour {
     public float MoveSpeed = 10;
     public Vector2 FireDirection;
-    public GameObject tailPrefab;
     Rigidbody2D rb2d;
 
     // Use this for initialization
@@ -23,6 +22,5 @@ public class WallProjectileController : MonoBehaviour {
     {
         Vector2 direction = rb2d.velocity.normalized;
         rb2d.velocity = direction * MoveSpeed;
-        //Instantiate(tailPrefab, transform.position, transform.rotation);
     }
 }

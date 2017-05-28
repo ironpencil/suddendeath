@@ -75,7 +75,7 @@ public class WallLaserBehavior : MonoBehaviour {
     private void FireWeapon()
     {
         GameObject laser = Instantiate(projectilePrefab, transform.position, transform.rotation);
-        WallProjectileController laserCon = laser.GetComponent<WallProjectileController>();
+        ProjectileController laserCon = laser.GetComponent<ProjectileController>();
         laserCon.FireDirection = facing;
     }
 }
