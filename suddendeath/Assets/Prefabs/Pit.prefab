@@ -150,7 +150,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.8}
+  m_Size: {x: 0.5, y: 0.5}
   m_EdgeRadius: 0
 --- !u!114 &114509703334252820
 MonoBehaviour:
@@ -216,7 +216,7 @@ PointEffector2D:
     m_Bits: 1048576
   m_ForceMagnitude: -200
   m_ForceVariation: 0
-  m_DistanceScale: 0.25
+  m_DistanceScale: 0.1
   m_ForceSource: 1
   m_ForceTarget: 0
   m_ForceMode: 1
