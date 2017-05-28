@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114887527680363598}
   - component: {fileID: 96005607658120548}
   m_Layer: 23
-  m_Name: Wall Projectile
+  m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,7 +62,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 4f88803fd228f7f44961d92785d5603c, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
 --- !u!58 &58780463642369646
 CircleCollider2D:
