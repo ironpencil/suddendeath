@@ -10,12 +10,12 @@ public class BoundsChecker : MonoBehaviour {
 
     List<Collider2D> pitColliders;
 
-    SpriteRenderer playerSprite;
+    PlayerController playerController;
 
 	// Use this for initialization
 	void Start () {
         pitColliders = new List<Collider2D>();
-        playerSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        playerController = gameObject.GetComponent<PlayerController>();
 	}
 	
 	// Update is called once per frame
@@ -36,11 +36,8 @@ public class BoundsChecker : MonoBehaviour {
         
         if (inPit)
         {
-            playerSprite.color = Color.red;
-        } else
-        {
-            playerSprite.color = Color.white;
-        }
+            playerController.Kill();
+        } 
     }
 
     void OnTriggerEnter2D(Collider2D other)
