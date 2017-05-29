@@ -11,6 +11,8 @@ public class TileManager : MonoBehaviour {
 
     List<CollapsingFloor> tiles;
 
+    public bool isCollapsing = false;
+
     public float collapseTime = 1.0f;
     float lastCollapse = 0.0f;
 
@@ -21,28 +23,14 @@ public class TileManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        tiles = new List<CollapsingFloor>();
-        
-        for (int x = 0; x < arenaSize.x; x++)
-        {
-            int tileX = (int)arenaUpperLeft.x + x;
-            for (int y = 0; y < arenaSize.y; y++)
-            {
-                int tileY = (int)arenaUpperLeft.y - y;
-
-                GameObject newTile = GameObject.Instantiate(tilePrefab, transform);
-                newTile.transform.position = new Vector2(tileX, tileY);
-                tiles.Add(newTile.GetComponent<CollapsingFloor>());
-            }
-        }
-
-        lastCollapse = Time.time;
+        Reset();
+        StartCollapsing();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (tiles.Count > 0 && Time.time - lastCollapse > collapseTime)
+        if (isCollapsing && tiles.Count > 0 && Time.time - lastCollapse > collapseTime)
         {
             int tileIndex = Random.Range(0, tiles.Count);
             CollapsingFloor tile = tiles[tileIndex];
@@ -61,4 +49,35 @@ public class TileManager : MonoBehaviour {
         }
 		
 	}
+
+    public void StartCollapsing()
+    {
+        isCollapsing = true;
+        lastCollapse = Time.time;
+    }
+
+    public void Reset()
+    {
+        isCollapsing = false;
+        //clear any children we may have from a previous execution
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        tiles = new List<CollapsingFloor>();
+
+        for (int x = 0; x < arenaSize.x; x++)
+        {
+            int tileX = (int)arenaUpperLeft.x + x;
+            for (int y = 0; y < arenaSize.y; y++)
+            {
+                int tileY = (int)arenaUpperLeft.y - y;
+
+                GameObject newTile = GameObject.Instantiate(tilePrefab, transform);
+                newTile.transform.position = new Vector2(tileX, tileY);
+                tiles.Add(newTile.GetComponent<CollapsingFloor>());
+            }
+        }
+    }
 }
