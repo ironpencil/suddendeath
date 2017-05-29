@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
     public GameObject playerPrefab;
     public GameObject spinnerPrefab;
     public GameObject laserPrefab;
+    public GameObject bombSpawnerPrefab;
 
     public TileManager tileManager;
 
@@ -25,17 +26,21 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        tileManager.gameObject.SetActive(false);
-        players = new Dictionary<int, PlayerController>();
-        spinners = new List<GameObject>();
         StartRound();
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Init()
+    {
+        players = new Dictionary<int, PlayerController>();
+        spinners = new List<GameObject>();
+        lasers = new List<GameObject>();
+    }
+
+    // Update is called once per frame
+    void Update () {
         if (isRoundActive)
         {
-            List<PlayerController> livingPlayers = players.Values.Where(p => p != null).ToList();
+            List<PlayerController> livingPlayers = players.Values.ToList();
 
             if (livingPlayers.Count > 1)
             {
@@ -63,6 +68,7 @@ public class GameManager : MonoBehaviour {
 
     public void StartRound()
     {
+        Init();
         tileManager.StartCollapsing();
 
         for (int i = 0; i < numPlayers; i++)
@@ -77,8 +83,68 @@ public class GameManager : MonoBehaviour {
         spinner.transform.position = Vector2.zero;
         spinners.Add(spinner);
 
+        GameObject bombSpawner = GameObject.Instantiate(bombSpawnerPrefab, dynamicsParent);
+        bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
+
+        CreateWallLaser();
+        
         isRoundActive = true;
         isRoundReady = false;
+    }
+
+    void CreateWallLaser()
+    {
+        // generate Wall Laser
+        // N = 1, E = 2, S = 3, W = 4
+        int wall = Random.Range(0, 4);
+        //wall = 4;
+
+        Vector2 laserpos = new Vector2();
+        Vector2 facing = new Vector2();
+        float laserrotation = 0.0f;
+        bool IsVertical = false;
+
+        switch (wall)
+        {
+            case 0:
+                laserpos.x = 0.0f;
+                laserpos.y = 8f;
+                laserrotation = 90.0f;
+                facing.x = 0.0f;
+                facing.y = -1.0f;
+                break;
+            case 1:
+                laserpos.x = 15f;
+                laserpos.y = 0.0f;
+                laserrotation = 0.0f;
+                facing.x = -1.0f;
+                facing.y = 0.0f;
+                IsVertical = true;
+                break;
+            case 2:
+                laserpos.x = 0.0f;
+                laserpos.y = -8f;
+                laserrotation = -90.0f;
+                facing.x = 0.0f;
+                facing.y = 1.0f;
+                break;
+            case 3:
+                laserpos.x = -15f;
+                laserpos.y = 0.0f;
+                laserrotation = 180.0f;
+                facing.x = 1.0f;
+                facing.y = 0.0f;
+                IsVertical = true;
+                break;
+        }
+
+        GameObject wallLaser = GameObject.Instantiate(laserPrefab, dynamicsParent);
+        wallLaser.transform.position = laserpos;
+        wallLaser.transform.eulerAngles = new Vector3(0, 0, laserrotation);
+        WallLaserBehavior wlb = wallLaser.GetComponent<WallLaserBehavior>();
+        wlb.facing = facing;
+        wlb.IsVertical = IsVertical;
+        lasers.Add(wallLaser);
     }
 
     IEnumerator EndRound()
@@ -96,14 +162,9 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        foreach (GameObject spinner in spinners)
+        foreach (Transform trans in dynamicsParent)
         {
-            Destroy(spinner);
-        }
-
-        foreach (GameObject laser in lasers)
-        {
-            Destroy(laser);
+            Destroy(trans.gameObject);
         }
 
         tileManager.Reset();

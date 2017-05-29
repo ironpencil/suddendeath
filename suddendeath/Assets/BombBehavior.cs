@@ -25,7 +25,10 @@ public class BombBehavior : MonoBehaviour {
         } else
         {
             Vector3 pos = gameObject.transform.position;
-            GameObject explosion = Instantiate(ExplosionPrefab, new Vector3(pos.x, pos.y - sr.size.y, pos.z), gameObject.transform.rotation);
+            Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
+            GameObject explosion = Instantiate(ExplosionPrefab, DynamicsParent);
+            explosion.transform.position = new Vector2(pos.x, pos.y - sr.size.y);
+
             Destroy(shadow);
             Destroy(gameObject);
         }

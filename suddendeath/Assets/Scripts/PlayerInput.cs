@@ -146,9 +146,12 @@ public class PlayerInput : MonoBehaviour {
                 rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + PlayerNum), Input.GetAxisRaw("RVertical" + PlayerNum));
             }
 
-            // Apply the transform to the object  
-            var angle = Mathf.Atan2(rinput.y, rinput.x) * Mathf.Rad2Deg;
-            hand.transform.eulerAngles = new Vector3(0, 0, angle);
+            if (rinput.magnitude > 0)
+            {
+                // Apply the transform to the object  
+                var angle = Mathf.Atan2(rinput.y, rinput.x) * Mathf.Rad2Deg;
+                hand.transform.eulerAngles = new Vector3(0, 0, angle);
+            }
         }
     }
 }

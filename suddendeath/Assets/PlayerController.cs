@@ -15,7 +15,9 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		if (isDead)
         {
+            int playerNum = gameObject.GetComponent<PlayerInput>().PlayerNum;
             Destroy(gameObject);
+            Globals.Instance.GameManager.players.Remove(playerNum - 1); //todo: clean this up            
         }
 	}
 

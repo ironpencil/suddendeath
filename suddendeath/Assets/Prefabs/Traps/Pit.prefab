@@ -210,15 +210,15 @@ PointEffector2D:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012286112395130}
   m_Enabled: 1
-  m_UseColliderMask: 0
+  m_UseColliderMask: 1
   m_ColliderMask:
     serializedVersion: 2
-    m_Bits: 1048576
-  m_ForceMagnitude: -200
+    m_Bits: 131072
+  m_ForceMagnitude: -1000
   m_ForceVariation: 0
   m_DistanceScale: 0.1
   m_ForceSource: 1
   m_ForceTarget: 0
-  m_ForceMode: 1
+  m_ForceMode: 2
   m_Drag: 1000000
   m_AngularDrag: 0
