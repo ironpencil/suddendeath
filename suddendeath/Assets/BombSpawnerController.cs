@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BombSpawnerController : MonoBehaviour {
     public float frequency = 5;
-    public float startHeight = 10;
+    public float heightOffset = 20;
     public GameObject BombPrefab;
     public GameObject ShadowPrefab;
     public Vector2 UpperLeftBound;
@@ -28,10 +28,21 @@ public class BombSpawnerController : MonoBehaviour {
 
     void DropBomb()
     {
-        float x = Random.Range(UpperLeftBound.x, LowerRightBound.x);
-        float y = Random.Range(UpperLeftBound.y, LowerRightBound.y);
-        GameObject bombShadow = Instantiate(ShadowPrefab, new Vector3(x, y, 0.0f), transform.rotation);
-        GameObject bomb = Instantiate(BombPrefab, new Vector3(x, startHeight, 0.0f), new Quaternion(0.0f, 0.0f, 1.0f, 0.0f));
+        //float x = Random.Range(UpperLeftBound.x, LowerRightBound.x);
+        //float y = Random.Range(UpperLeftBound.y, LowerRightBound.y);
+        int targetPlayerNum = Random.Range(0, Globals.Instance.GameManager.players.Values.Count);
+        Debug.Log("Targeting Player: " + targetPlayerNum);
+        PlayerController pc = Globals.Instance.GameManager.players[targetPlayerNum];
+
+        Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
+
+        GameObject bombShadow = Instantiate(ShadowPrefab, DynamicsParent);
+        bombShadow.transform.position = new Vector2(pc.transform.position.x, pc.transform.position.y);
+
+        GameObject bomb = Instantiate(BombPrefab, DynamicsParent);
+        bomb.transform.position = new Vector2(bombShadow.transform.position.x, bombShadow.transform.position.y + heightOffset);
+        // TODO Use the euler angles
+        bomb.transform.rotation = new Quaternion(0.0f, 0.0f, 1.0f, 0.0f);
         bomb.GetComponent<BombBehavior>().shadow = bombShadow;
     }
 }

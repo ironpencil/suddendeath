@@ -18,6 +18,8 @@ public class Globals : Singleton<Globals>
 
     public float screenShakeFactor = 1.0f;
 
+    public GameManager GameManager;
+
     public override void Start()
     {
         base.Start();
