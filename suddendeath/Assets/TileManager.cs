@@ -15,7 +15,7 @@ public class TileManager : MonoBehaviour {
 
     public float collapseTime = 1.0f;
     float lastCollapse = 0.0f;
-
+    float actualCollapseTime;
     public int timeGroupSize = 16;
     public float timeGroupAdjust = 0.5f;
 
@@ -30,7 +30,7 @@ public class TileManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (isCollapsing && tiles.Count > 0 && Time.time - lastCollapse > collapseTime)
+        if (isCollapsing && tiles.Count > 0 && Time.time - lastCollapse > actualCollapseTime)
         {
             int tileIndex = Random.Range(0, tiles.Count);
             CollapsingFloor tile = tiles[tileIndex];
@@ -40,7 +40,7 @@ public class TileManager : MonoBehaviour {
 
             if (tilesCollapsedInGroup >= timeGroupSize)
             {
-                collapseTime += timeGroupAdjust;
+                actualCollapseTime += timeGroupAdjust;
                 tilesCollapsedInGroup = 0;
             }
 
@@ -59,6 +59,7 @@ public class TileManager : MonoBehaviour {
     public void Reset()
     {
         isCollapsing = false;
+        actualCollapseTime = collapseTime;
         //clear any children we may have from a previous execution
         foreach (Transform child in transform)
         {
