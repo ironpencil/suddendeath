@@ -16,7 +16,7 @@ public class PlayerInput : MonoBehaviour {
     public Sprite DashingSprite;
     public bool IsDashing = false;
     public bool LockDashDirection = true;
-    private float DashRechardTimeLeft = 0.0f;
+    private float DashRechargeTimeLeft = 0.0f;
     private float DashTimeLeft = 0.0f;
     private float LastHorizontal = 0.0f;
     private float LastVertical = 0.0f;
@@ -54,11 +54,11 @@ public class PlayerInput : MonoBehaviour {
     {
         // TODO Move the character quickly one square, ignoring hazards and other characters
         // Recharges over time
-        DashRechardTimeLeft -= Time.deltaTime;
+        DashRechargeTimeLeft -= Time.deltaTime;
 
         if (Input.GetButton("Dash" + PlayerNum))
         {
-            if (DashRechardTimeLeft <= 0)
+            if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
                 BeginDash();
             } else
@@ -85,7 +85,7 @@ public class PlayerInput : MonoBehaviour {
     {
         IsDashing = false;
         DashTimeLeft = 0.0f;
-        DashRechardTimeLeft = DashRechargeTime;
+        DashRechargeTimeLeft = DashRechargeTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = PlayerSprite;
         CurrentSpeed = MoveSpeed;

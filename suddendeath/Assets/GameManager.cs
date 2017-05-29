@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
             else if (livingPlayers.Count == 1)
             {
                 //stop, this player won
-                int winningPlayer = livingPlayers[0].GetComponent<PlayerInput>().playerNum;
+                int winningPlayer = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
                 Debug.Log("Player " + winningPlayer + " Wins!");
                 StartCoroutine(EndRound());
             }
@@ -70,7 +70,7 @@ public class GameManager : MonoBehaviour {
             GameObject player = GameObject.Instantiate(playerPrefab, dynamicsParent);
             player.transform.position = playerSpawnPoints[i].position;
             players[i] = player.GetComponent<PlayerController>();
-            players[i].GetComponent<PlayerInput>().playerNum = i + 1; //todo: clean this up
+            players[i].GetComponent<PlayerInput>().PlayerNum = i + 1; //todo: clean this up
         }
 
         GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
