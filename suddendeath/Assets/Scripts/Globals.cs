@@ -6,10 +6,13 @@ using System.Collections.Generic;
 
 public class Globals : Singleton<Globals>
 {    
+
     public bool paused = false;
     public bool acceptPlayerGameInput = true;
 
     public bool playIntro = true;
+    public bool deletePlayerPrefs = false;
+
     public IntroPanel firstPanel;
 
     public ScreenTransition screenTransition;
@@ -20,8 +23,15 @@ public class Globals : Singleton<Globals>
 
     public GameManager GameManager;
 
+    //[MenuItem("Edit/Reset Playerprefs")]
+    //public static void DeletePlayerPrefs() { PlayerPrefs.DeleteAll(); }
+
     public override void Start()
     {
+        if (deletePlayerPrefs)
+        {
+            PlayerPrefs.DeleteAll();
+        }
         base.Start();
 
         if (this == null) { return; }
