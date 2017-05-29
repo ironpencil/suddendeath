@@ -367,10 +367,12 @@ MonoBehaviour:
   paused: 0
   acceptPlayerGameInput: 1
   playIntro: 0
+  deletePlayerPrefs: 0
   firstPanel: {fileID: 608655846}
   screenTransition: {fileID: 683861667}
   gameStartSound: {fileID: 0}
   screenShakeFactor: 1
+  GameManager: {fileID: 0}
   isQuitting: 0
 --- !u!4 &271390536
 Transform:
@@ -1822,6 +1824,7 @@ MonoBehaviour:
   tilePrefab: {fileID: 1391781535762864, guid: 86ea58ff4af15874cbec28d8d14163f4, type: 2}
   arenaSize: {x: 31, y: 17}
   arenaUpperLeft: {x: -15, y: 8}
+  isCollapsing: 0
   collapseTime: 0.1
   timeGroupSize: 16
   timeGroupAdjust: 0.1
@@ -2074,8 +2077,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal1
-  m_VerticalAxis: Vertical1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10

@@ -317,10 +317,12 @@ MonoBehaviour:
   paused: 0
   acceptPlayerGameInput: 1
   playIntro: 0
+  deletePlayerPrefs: 0
   firstPanel: {fileID: 608655846}
   screenTransition: {fileID: 683861667}
   gameStartSound: {fileID: 0}
   screenShakeFactor: 1
+  GameManager: {fileID: 0}
   isQuitting: 0
 --- !u!4 &271390536
 Transform:
@@ -359,6 +361,7 @@ MonoBehaviour:
     type: 2}
   laserPrefab: {fileID: 1328865512593642, guid: 00efe13f61036474aa2ac52a854be41c,
     type: 2}
+  bombSpawnerPrefab: {fileID: 0}
   tileManager: {fileID: 1912545816}
 --- !u!4 &334534839 stripped
 Transform:
@@ -1790,8 +1793,8 @@ MonoBehaviour:
   m_Script: {fileID: 1077351063, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal1
-  m_VerticalAxis: Vertical1
+  m_HorizontalAxis: Horizontal
+  m_VerticalAxis: Vertical
   m_SubmitButton: Submit
   m_CancelButton: Cancel
   m_InputActionsPerSecond: 10

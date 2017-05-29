@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using XboxCtrlrInput;
 
 public class PlayerInput : MonoBehaviour {
 
@@ -26,12 +27,24 @@ public class PlayerInput : MonoBehaviour {
     
     public bool mouseInput = false;
 
+    XboxController xboxController;
+
     Rigidbody2D rb2d;
 
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         CurrentSpeed = MoveSpeed;
+
+        switch (PlayerNum)
+        {
+            case 1: xboxController = XboxController.First;
+                break;
+            case 2: xboxController = XboxController.Second;
+                break;
+            default:
+                break;
+        }
     }
 	
 	// Update is called once per frame
@@ -56,7 +69,8 @@ public class PlayerInput : MonoBehaviour {
         // Recharges over time
         DashRechargeTimeLeft -= Time.deltaTime;
 
-        if (Input.GetButton("Dash" + PlayerNum))
+        //if (Input.GetButton("Dash" + PlayerNum))
+        if (XCI.GetButton(XboxButton.A, xboxController))
         {
             if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
@@ -112,8 +126,10 @@ public class PlayerInput : MonoBehaviour {
             vertical = LastVertical;
         } else
         {
-            horizontal = Input.GetAxisRaw("Horizontal" + PlayerNum);
-            vertical = Input.GetAxisRaw("Vertical" + PlayerNum);
+            horizontal = XCI.GetAxisRaw(XboxAxis.LeftStickX, xboxController);
+            //horizontal = Input.GetAxisRaw("Horizontal" + PlayerNum);
+            vertical = XCI.GetAxisRaw(XboxAxis.LeftStickY, xboxController);
+            //vertical = Input.GetAxisRaw("Vertical" + PlayerNum);
             LastHorizontal = horizontal;
             LastVertical = vertical;
         }
@@ -143,7 +159,8 @@ public class PlayerInput : MonoBehaviour {
             else
             {
                 // We are going to read the input every frame
-                rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + PlayerNum), Input.GetAxisRaw("RVertical" + PlayerNum));
+                //rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + PlayerNum), Input.GetAxisRaw("RVertical" + PlayerNum));
+                rinput = new Vector2(XCI.GetAxisRaw(XboxAxis.RightStickX, xboxController), XCI.GetAxisRaw(XboxAxis.RightStickY, xboxController));
             }
 
             if (rinput.magnitude > 0)
