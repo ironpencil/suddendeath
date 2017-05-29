@@ -3,11 +3,26 @@ using System.Collections;
 
 public class PlayerInput : MonoBehaviour {
 
+    private float CurrentSpeed;
     public float MoveSpeed = 8.0f;
-    public int playerNum = 1;
+    public int PlayerNum = 1;
     public bool UseForces = false;
-    
+    public Sprite PlayerSprite;
+
+    //Dashing vars
+    public float DashRechargeTime = 5.0f;
+    public float DashTime = 1.0f;
+    public float DashSpeed = 1.0f;
+    public Sprite DashingSprite;
+    public bool IsDashing = false;
+    public bool LockDashDirection = true;
+    private float DashRechardTimeLeft = 0.0f;
+    private float DashTimeLeft = 0.0f;
+    private float LastHorizontal = 0.0f;
+    private float LastVertical = 0.0f;
+
     public GameObject hand;
+    public GameObject sprite;
     
     public bool mouseInput = false;
 
@@ -16,17 +31,18 @@ public class PlayerInput : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-	}
+        CurrentSpeed = MoveSpeed;
+    }
 	
 	// Update is called once per frame
 	void Update () {
-
         if (Globals.Instance.acceptPlayerGameInput)
         {
+            HandleDash();
             HandleMovement();
+            HandleShieldMovement();
             HandleAttack();
         }
-	
 	}
 
     private void HandleAttack()
@@ -34,48 +50,105 @@ public class PlayerInput : MonoBehaviour {
         
     }
 
+    void HandleDash()
+    {
+        // TODO Move the character quickly one square, ignoring hazards and other characters
+        // Recharges over time
+        DashRechardTimeLeft -= Time.deltaTime;
+
+        if (Input.GetButton("Dash" + PlayerNum))
+        {
+            if (DashRechardTimeLeft <= 0)
+            {
+                BeginDash();
+            } else
+            {
+                Debug.Log("Can't dash, let player know here");
+            }
+        } else if (IsDashing)
+        {
+            EndDash();
+        }
+    }
+
+    void BeginDash()
+    {
+        IsDashing = true;
+        DashTimeLeft = DashTime;
+        SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
+        sr.sprite = DashingSprite;
+        CurrentSpeed = DashSpeed;
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+    }
+
+    void EndDash()
+    {
+        IsDashing = false;
+        DashTimeLeft = 0.0f;
+        DashRechardTimeLeft = DashRechargeTime;
+        SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
+        sr.sprite = PlayerSprite;
+        CurrentSpeed = MoveSpeed;
+        gameObject.GetComponent<CircleCollider2D>().enabled = true;
+    }
+
     void HandleMovement()
     {
+        if (IsDashing)
+        {
+            DashTimeLeft -= Time.deltaTime;
+            if (DashTimeLeft <= 0)
+            {
+                EndDash();
+            }
+        }
+
         float horizontal = 0.0f;
         float vertical = 0.0f;
 
+        if (LockDashDirection && IsDashing)
+        {
+            horizontal = LastHorizontal;
+            vertical = LastVertical;
+        } else
+        {
+            horizontal = Input.GetAxisRaw("Horizontal" + PlayerNum);
+            vertical = Input.GetAxisRaw("Vertical" + PlayerNum);
+            LastHorizontal = horizontal;
+            LastVertical = vertical;
+        }
 
-        horizontal = Input.GetAxisRaw("Horizontal" + playerNum);
-        vertical = Input.GetAxisRaw("Vertical" + playerNum);
-
-        Vector2 moveDirection = new Vector2(horizontal * MoveSpeed, vertical * MoveSpeed);
+        Vector2 moveDirection = new Vector2(horizontal * CurrentSpeed, vertical * CurrentSpeed);
 
         if (UseForces)
         {
             rb2d.AddForce(moveDirection, ForceMode2D.Force);
-        } else
+        }
+        else
         {
             rb2d.velocity = moveDirection;
         }
+    }
 
-        Vector2 rinput;
-        if (mouseInput)
+    void HandleShieldMovement()
+    {
+        if (!IsDashing)
         {
-            rinput = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            rinput.Normalize();
+            Vector2 rinput;
+            if (mouseInput)
+            {
+                rinput = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                rinput.Normalize();
+            }
+            else
+            {
+                // We are going to read the input every frame
+                rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + PlayerNum), Input.GetAxisRaw("RVertical" + PlayerNum));
+            }
+
+            // Apply the transform to the object  
+            var angle = Mathf.Atan2(rinput.y, rinput.x) * Mathf.Rad2Deg;
+            hand.transform.eulerAngles = new Vector3(0, 0, angle);
         }
-        else {
-            // We are going to read the input every frame
-            rinput = new Vector2(Input.GetAxisRaw("RHorizontal" + playerNum), Input.GetAxisRaw("RVertical" + playerNum));
-
-        }
-        Debug.Log("RHorizontal" + playerNum + ": " + rinput.x);
-        Debug.Log("RVertical" + playerNum + ": " + rinput.y);
-
-
-        //shield.position = (Vector2)transform.position + (rinput * shieldDistance);
-
-        
-        // Apply the transform to the object  
-        var angle = Mathf.Atan2(rinput.y, rinput.x) * Mathf.Rad2Deg;
-        //hand.transform.Rotate(new Vector3(0, 0, angle));
-        hand.transform.eulerAngles = new Vector3(0, 0, angle);
-        //shield.rotation = angle;
-        //shield.transform.eulerAngles = new Vector3(0, 0, angle);
     }
 }

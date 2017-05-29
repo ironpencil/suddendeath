@@ -55,7 +55,6 @@ public class WallLaserBehavior : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collider)
     {
         MoveSpeed = -MoveSpeed;
-        //ToggleCharging();
     }
 
     private void ToggleCharging()

@@ -429,9 +429,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5000
-  playerNum: 1
+  PlayerNum: 1
   UseForces: 1
+  PlayerSprite: {fileID: 21300000, guid: ff062c25c33ec214a85d34f9c7628837, type: 3}
+  DashRechargeTime: 5
+  DashTime: 0.15
+  DashSpeed: 10000
+  DashingSprite: {fileID: 21300000, guid: 33ec3c615ac49c24e928afc1416edcad, type: 3}
+  IsDashing: 0
+  LockDashDirection: 1
   hand: {fileID: 1966428574582082}
+  sprite: {fileID: 1566067145964614}
   mouseInput: 0
 --- !u!212 &212531188143872840
 SpriteRenderer:
