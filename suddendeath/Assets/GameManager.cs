@@ -26,6 +26,11 @@ public class GameManager : MonoBehaviour {
 
     public TileManager tileManager;
 
+    public float collapsingFloorDifficulty = 1.0f;
+    public float spinnerDifficulty = 1.0f;
+    public float laserDifficulty = 1.0f;
+    public float bombDifficulty = 1.0f;
+
     bool isRoundActive = false;
     bool isRoundReady = false;
 
@@ -107,17 +112,29 @@ public class GameManager : MonoBehaviour {
             players[playerNum].GetComponent<PlayerInput>().PlayerNum = playerNum; //todo: clean this up
         }
 
-        GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-        spinner.transform.position = Vector2.zero;
-        spinners.Add(spinner);
+        if (spinnerDifficulty > 0)
+        {
+            GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
+            spinner.transform.position = Vector2.zero;
+            spinners.Add(spinner);
+        }
 
-        GameObject bombSpawner = GameObject.Instantiate(bombSpawnerPrefab, dynamicsParent);
-        bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
+        if (bombDifficulty > 0)
+        {
+            GameObject bombSpawner = GameObject.Instantiate(bombSpawnerPrefab, dynamicsParent);
+            bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
+        }
 
-        CreateWallLaser();
+        if (laserDifficulty > 0)
+        {
+            CreateWallLaser();
+        }
 
-        tileManager.gameObject.SetActive(true);
-        tileManager.StartCollapsing();
+        if (collapsingFloorDifficulty > 0)
+        {
+            tileManager.gameObject.SetActive(true);
+            tileManager.StartCollapsing();
+        }
 
         isRoundActive = true;
         isRoundReady = false;

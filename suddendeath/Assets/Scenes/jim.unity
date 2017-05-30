@@ -576,6 +576,10 @@ MonoBehaviour:
     type: 2}
   playerSetupUI: {fileID: 1533842925}
   tileManager: {fileID: 1912545816}
+  collapsingFloorDifficulty: 1
+  spinnerDifficulty: 1
+  laserDifficulty: 1
+  bombDifficulty: 1
 --- !u!4 &334534839 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4109826096066312, guid: 949d8075da692b54d995b878961ac9d7,
