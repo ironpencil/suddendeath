@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87ed56078bf03a04e8357b84b14e3591, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FallTime: 2
+  FallTime: 3
   ExplosionPrefab: {fileID: 1949254329295552, guid: 15cf61fa3a6a4474b8323ea3bbe3c7fc,
     type: 2}
   shadow: {fileID: 0}
@@ -95,10 +95,16 @@ MonoBehaviour:
       outSlope: 0
       tangentMode: 0
     - serializedVersion: 2
+      time: 0.6823879
+      value: 0.2864516
+      inSlope: 1.1816621
+      outSlope: 1.1816621
+      tangentMode: 0
+    - serializedVersion: 2
       time: 1
       value: 1
-      inSlope: 2
-      outSlope: 2
+      inSlope: 4.4000015
+      outSlope: 4.4000015
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2

@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58780463642369646}
   - component: {fileID: 114887527680363598}
   - component: {fileID: 96005607658120548}
-  m_Layer: 23
+  m_Layer: 20
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,6 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MoveSpeed: 20
   FireDirection: {x: 0, y: 0}
+  MaxWallBounceCount: 3
 --- !u!212 &212786022137801748
 SpriteRenderer:
   m_ObjectHideFlags: 1
