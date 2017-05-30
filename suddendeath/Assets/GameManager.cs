@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
     public Dictionary<int, PlayerController> players;
     public List<GameObject> spinners;
     public List<GameObject> lasers;
+    public List<GameObject> wallBlades;
 
     List<int> joinedPlayers = new List<int>();
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour {
     public GameObject spinnerPrefab;
     public GameObject laserPrefab;
     public GameObject bombSpawnerPrefab;
+    public GameObject wallBladePrefab;
 
     public GameObject playerSetupUI;
 
@@ -30,6 +32,7 @@ public class GameManager : MonoBehaviour {
     public float spinnerDifficulty = 1.0f;
     public float laserDifficulty = 1.0f;
     public float bombDifficulty = 1.0f;
+    public float wallBladeDifficulty = 1.0f;
 
     bool isRoundActive = false;
     bool isRoundReady = false;
@@ -49,6 +52,7 @@ public class GameManager : MonoBehaviour {
         players = new Dictionary<int, PlayerController>();
         spinners = new List<GameObject>();
         lasers = new List<GameObject>();
+        wallBlades = new List<GameObject>();
         numPlayers = joinedPlayers.Count;
     }
 
@@ -134,6 +138,13 @@ public class GameManager : MonoBehaviour {
         {
             tileManager.gameObject.SetActive(true);
             tileManager.StartCollapsing();
+        }
+
+        if (wallBladeDifficulty > 0)
+        {
+            GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
+            wallBlade.transform.position = Vector2.zero;
+            wallBlades.Add(wallBlade);
         }
 
         isRoundActive = true;
