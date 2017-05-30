@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,7 +10,9 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> spinners;
     public List<GameObject> lasers;
 
-    public int numPlayers = 2;
+    List<int> joinedPlayers = new List<int>();
+
+    private int numPlayers = 0;
 
     public List<Transform> playerSpawnPoints;
 
@@ -19,6 +22,8 @@ public class GameManager : MonoBehaviour {
     public GameObject laserPrefab;
     public GameObject bombSpawnerPrefab;
 
+    public GameObject playerSetupUI;
+
     public TileManager tileManager;
 
     bool isRoundActive = false;
@@ -26,14 +31,20 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        StartRound();
+        SetupGame();
 	}
+
+    private void SetupGame()
+    {
+        playerSetupUI.SetActive(true);
+    }
 
     void Init()
     {
         players = new Dictionary<int, PlayerController>();
         spinners = new List<GameObject>();
         lasers = new List<GameObject>();
+        numPlayers = joinedPlayers.Count;
     }
 
     // Update is called once per frame
@@ -48,14 +59,18 @@ public class GameManager : MonoBehaviour {
             }
             else if (livingPlayers.Count == 1)
             {
-                //stop, this player won
-                int winningPlayer = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
-                Debug.Log("Player " + winningPlayer + " Wins!");
-                StartCoroutine(EndRound());
+                if (numPlayers > 1)
+                {
+                    //stop, this player won
+                    int winningPlayer = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
+                    Debug.Log("Player " + winningPlayer + " Wins!");
+                    StartCoroutine(EndRound());
+                }
             }
             else
             {
                 //stop, everyone dead??
+                StartCoroutine(EndRound());
             }
         } else
         {
@@ -66,17 +81,30 @@ public class GameManager : MonoBehaviour {
         }
 	}
 
+    public void AddPlayer(int playerNum)
+    {
+        if (!joinedPlayers.Contains(playerNum))
+        {
+            joinedPlayers.Add(playerNum);
+        }
+    }
+
+    public void RemovePlayer(int playerNum)
+    {
+        joinedPlayers.Remove(playerNum);
+    }
+
     public void StartRound()
     {
         Init();
-        tileManager.StartCollapsing();
-
-        for (int i = 0; i < numPlayers; i++)
+        playerSetupUI.SetActive(false);
+        
+        foreach (int playerNum in joinedPlayers)
         {
             GameObject player = GameObject.Instantiate(playerPrefab, dynamicsParent);
-            player.transform.position = playerSpawnPoints[i].position;
-            players[i] = player.GetComponent<PlayerController>();
-            players[i].GetComponent<PlayerInput>().PlayerNum = i + 1; //todo: clean this up
+            player.transform.position = playerSpawnPoints[playerNum-1].position;
+            players[playerNum] = player.GetComponent<PlayerController>();
+            players[playerNum].GetComponent<PlayerInput>().PlayerNum = playerNum; //todo: clean this up
         }
 
         GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
@@ -87,7 +115,10 @@ public class GameManager : MonoBehaviour {
         bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
 
         CreateWallLaser();
-        
+
+        tileManager.gameObject.SetActive(true);
+        tileManager.StartCollapsing();
+
         isRoundActive = true;
         isRoundReady = false;
     }
@@ -96,7 +127,7 @@ public class GameManager : MonoBehaviour {
     {
         // generate Wall Laser
         // N = 1, E = 2, S = 3, W = 4
-        int wall = Random.Range(0, 4);
+        int wall = UnityEngine.Random.Range(0, 4);
         //wall = 4;
 
         Vector2 laserpos = new Vector2();

@@ -36,15 +36,7 @@ public class PlayerInput : MonoBehaviour {
         rb2d = GetComponent<Rigidbody2D>();
         CurrentSpeed = MoveSpeed;
 
-        switch (PlayerNum)
-        {
-            case 1: xboxController = XboxController.First;
-                break;
-            case 2: xboxController = XboxController.Second;
-                break;
-            default:
-                break;
-        }
+        xboxController = (XboxController)PlayerNum;
     }
 	
 	// Update is called once per frame

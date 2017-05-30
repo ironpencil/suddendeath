@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BombSpawnerController : MonoBehaviour {
@@ -30,7 +31,9 @@ public class BombSpawnerController : MonoBehaviour {
     {
         //float x = Random.Range(UpperLeftBound.x, LowerRightBound.x);
         //float y = Random.Range(UpperLeftBound.y, LowerRightBound.y);
-        int targetPlayerNum = Random.Range(0, Globals.Instance.GameManager.players.Values.Count);
+        List<int> livingPlayerNums = Globals.Instance.GameManager.players.Keys.ToList();
+
+        int targetPlayerNum = livingPlayerNums[Random.Range(0, livingPlayerNums.Count)];
         Debug.Log("Targeting Player: " + targetPlayerNum);
         PlayerController pc = Globals.Instance.GameManager.players[targetPlayerNum];
 
