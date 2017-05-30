@@ -9,7 +9,9 @@ public class WallBladeBehavior : MonoBehaviour {
     public float WallOffset = 2.0f;
     public float TriggerRange = 0.5f;
     public Vector2 Direction = Vector2.zero;
-    public GameObject currentWall = null;
+    private WallSide currentWall = WallSide.None;
+    private enum WallSide { North, South, East, West, None };
+
     Rigidbody2D rb2d;
 
     // Use this for initialization
@@ -21,7 +23,7 @@ public class WallBladeBehavior : MonoBehaviour {
 	void Update () {
         // Move along the wall
         // Check for a player
-		if (currentWall != null)
+		if (currentWall != WallSide.None)
         {
             gameObject.transform.position += (Vector3)Direction * WallSpeed;
             foreach (PlayerController pc in Globals.Instance.gameObject.GetComponent<GameManager>().players.Values)
@@ -46,9 +48,8 @@ public class WallBladeBehavior : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        if (currentWall == null)
+        if (currentWall != WallSide.None)
         {
-            
             rb2d.velocity = rb2d.velocity.normalized * MoveSpeed;
         }
     }
@@ -57,16 +58,20 @@ public class WallBladeBehavior : MonoBehaviour {
     {
         if (collision.collider.gameObject.GetComponent<WallBehavior>() != null)
         {
-            currentWall = collision.collider.gameObject;
-            LockOntoWall(collision.collider.gameObject);
+            LockOntoWall(collision.collider.gameObject.transform);
+        }
+        PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
+        if (pc != null)
+        {
+            pc.Kill();
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.GetComponent<WallBehavior>() != null && collider.gameObject != currentWall)
+        if (collider.gameObject.GetComponent<WallBehavior>() != null && currentWall != GetWallSide(collider.transform))
         {
-            LockOntoWall(collider.gameObject);
+            LockOntoWall(collider.gameObject.transform);
         }
     }
 
@@ -77,85 +82,72 @@ public class WallBladeBehavior : MonoBehaviour {
         gameObject.GetComponent<CircleCollider2D>().isTrigger = false;
 
         // On a wide wall
-        if (currentWall.transform.localScale.x > currentWall.transform.localScale.y)
+        switch (currentWall)
         {
-            if (currentWall.transform.position.y > 0)
-            {
+            case WallSide.North:
                 gameObject.transform.position += new Vector3(0, -1, 0);
                 Direction = new Vector2(0, -1);
-            } else
-            {
+                break;
+            case WallSide.South:
                 gameObject.transform.position += new Vector3(0, 1, 0);
                 Direction = new Vector2(0, 1);
-            }
-        }
-        // Tall Wall
-        else
-        {
-            if (currentWall.transform.position.x > 0)
-            {
+                break;
+            case WallSide.East:
                 gameObject.transform.position += new Vector3(-1, 0, 0);
                 Direction = new Vector2(-1, 0);
-            }
-            else
-            {
+                break;
+            case WallSide.West:
                 gameObject.transform.position += new Vector3(1, 0, 0);
                 Direction = new Vector2(1, 0);
-            }
+                break;
         }
-        
-        currentWall = null;
+
+        currentWall = WallSide.None;
         rb2d.velocity = Direction * MoveSpeed;
     }
 
-    private void LockOntoWall(GameObject targetWall)
+    private WallSide GetWallSide(Transform wall)
     {
+        WallSide wallSide = WallSide.None;
+
+        if (wall.localScale.x > wall.localScale.y)
+            if (wall.position.y > 0)
+                wallSide = WallSide.North;
+            else
+                wallSide = WallSide.South;
+        else
+            if (wall.position.x > 0)
+                    wallSide = WallSide.East;
+                else
+                    wallSide = WallSide.West;
+
+        return wallSide;
+    }
+
+    private void LockOntoWall(Transform targetWall)
+    {
+        WallSide targetWallSide = GetWallSide(targetWall);
+        
         // Begin ignoring physics
         rb2d.isKinematic = true;
         rb2d.velocity = Vector2.zero;
         gameObject.GetComponent<CircleCollider2D>().isTrigger = true;
-        
-        float currentPos = 0.0f;
-        float targetPos = 0.0f;
-        bool wideWall = true;
 
-        // Collided with a Wide wall
-        if (targetWall.transform.localScale.x > targetWall.transform.localScale.y)
+        float dir = -1.0f;
+        if (currentWall == WallSide.North || currentWall == WallSide.West)
         {
-            currentPos = currentWall.transform.position.x;
-            targetPos = targetWall.transform.position.x;
+            dir = 1.0f;
         }
-        // Tall Wall
-        else
-        {
-            wideWall = false;
-            currentPos = currentWall.transform.position.y;
-            targetPos = targetWall.transform.position.y;
-        }
-
-        // We know we're on a Wide Wall, so we must have run into a tall wall
-        // If we're on the low end of the wall, go up, otherwise, go down
-        int dir = Random.Range(-1, 1);
-        if (currentWall != null)
-        {
-            dir = 1;
-            if (currentPos > targetPos)
-            {
-                dir = -1;
-            }
-            // We're not on a wall already so pick any random direction
-        }
-
-        if (wideWall)
+        if (targetWallSide == WallSide.North || targetWallSide == WallSide.South)
         {
             Direction = new Vector2(dir, 0);
-            gameObject.transform.position = new Vector2(gameObject.transform.position.x, targetWall.transform.position.y);
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, targetWall.position.y);
         } else
         {
             Direction = new Vector2(0, dir);
-            gameObject.transform.position = new Vector2(targetWall.transform.position.x, gameObject.transform.position.y);
+            gameObject.transform.position = new Vector2(targetWall.position.x, gameObject.transform.position.y);
         }
 
-        currentWall = targetWall;
+        currentWall = targetWallSide;
     }
 }

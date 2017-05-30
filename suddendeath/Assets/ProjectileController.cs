@@ -5,6 +5,8 @@ using UnityEngine;
 public class ProjectileController : MonoBehaviour {
     public float MoveSpeed = 10;
     public Vector2 FireDirection;
+    public int MaxWallBounceCount = 4;
+    private int CurrentWallBounceCount = 0;
     Rigidbody2D rb2d;
 
     // Use this for initialization
@@ -31,6 +33,13 @@ public class ProjectileController : MonoBehaviour {
         {
             pc.Kill();
             Destroy(gameObject);
+        } else if (collision.gameObject.GetComponent<WallBehavior>() != null)
+        {
+            CurrentWallBounceCount++;
+            if (CurrentWallBounceCount >= MaxWallBounceCount)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
