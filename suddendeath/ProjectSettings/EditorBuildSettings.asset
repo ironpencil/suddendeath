@@ -5,9 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/XboxCtrlrInputExample/XCI_Test_Room.unity
-    guid: aa67a0137edfcd549af89436a6bcb339
   - enabled: 1
-    path: Assets/Scenes/sean.unity
-    guid: deda51c906d97d243a94562525ca8b7f
+    path: Assets/Scenes/jim.unity
+    guid: 2a0ac80973896e0438aa553d74a12291
