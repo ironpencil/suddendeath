@@ -560,6 +560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spinners: []
   lasers: []
+  wallBlades: []
   playerSpawnPoints:
   - {fileID: 566198129}
   - {fileID: 982626771}
@@ -574,12 +575,15 @@ MonoBehaviour:
     type: 2}
   bombSpawnerPrefab: {fileID: 1900047065005970, guid: aef55cd280e76a740aca35b0ac727475,
     type: 2}
+  wallBladePrefab: {fileID: 1400226560632800, guid: e1d3b84b5fdebed4685a8c165b54df95,
+    type: 2}
   playerSetupUI: {fileID: 1533842925}
   tileManager: {fileID: 1912545816}
   collapsingFloorDifficulty: 1
   spinnerDifficulty: 1
   laserDifficulty: 1
   bombDifficulty: 1
+  wallBladeDifficulty: 1
 --- !u!4 &334534839 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4109826096066312, guid: 949d8075da692b54d995b878961ac9d7,
@@ -2105,7 +2109,6 @@ GameObject:
   - component: {fileID: 1391457610}
   - component: {fileID: 1391457611}
   - component: {fileID: 1391457613}
-  - component: {fileID: 1391457612}
   m_Layer: 5
   m_Name: PlayerSelectors
   m_TagString: Untagged
@@ -2158,39 +2161,6 @@ MonoBehaviour:
   m_Spacing: {x: 100, y: 100}
   m_Constraint: 1
   m_ConstraintCount: 2
---- !u!114 &1391457612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1391457609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: Press A to join. Press Start to begin.
 --- !u!222 &1391457613
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2385,6 +2355,8 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1520548308}
+  - component: {fileID: 1520548310}
+  - component: {fileID: 1520548309}
   m_Layer: 5
   m_Name: Instructions
   m_TagString: Untagged
@@ -2405,11 +2377,50 @@ RectTransform:
   m_Father: {fileID: 1533842926}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1520548309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520548307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 30
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Press A to join. Press Start to begin.
+--- !u!222 &1520548310
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1520548307}
 --- !u!1 &1533842925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,27 +2834,27 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_AnchorMin.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_AnchorMin.y
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_AnchorMax.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_AnchorMax.y
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_Pivot.x
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22406864, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_Pivot.y
-      value: .5
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 22432932, guid: ca4dc6ccc96023746a462dba3303a046, type: 2}
       propertyPath: m_SizeDelta.y

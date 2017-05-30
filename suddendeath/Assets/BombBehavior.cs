@@ -3,30 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BombBehavior : MonoBehaviour {
-    public float MoveSpeed;
+    public float FallTime = 2.0f;
     public GameObject ExplosionPrefab;
     public GameObject shadow;
-    
+    public AnimationCurve easing;
+
+    Vector2 startingPos;
+    Vector2 targetPos;
+    float elapsedTime = 0.0f;
+
 	// Use this for initialization
 	void Start () {
-
+        startingPos = transform.position;
+        targetPos = shadow.transform.position;
     }
 
     // Update is called once per frame
     void Update() {
-        SpriteRenderer sr = gameObject.GetComponent<SpriteRenderer>();
-        
+
+        elapsedTime += Time.deltaTime;
         // Once we get to the shadow, blow up
-        if (shadow.transform.position.y <= transform.position.y - sr.size.y)
+        if (targetPos.y < transform.position.y)
         {
-            Vector3 moveDirection = new Vector2(0, -MoveSpeed * Time.deltaTime);
-            transform.position += moveDirection;
+            float easedTime = easing.Evaluate(elapsedTime / FallTime);
+            transform.position = Vector2.Lerp(startingPos, targetPos, easedTime);
         } else
         {
-            Vector3 pos = gameObject.transform.position;
             Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
             GameObject explosion = Instantiate(ExplosionPrefab, DynamicsParent);
-            explosion.transform.position = new Vector2(pos.x, pos.y - sr.size.y);
+            explosion.transform.position = targetPos;
 
             Destroy(shadow);
             Destroy(gameObject);

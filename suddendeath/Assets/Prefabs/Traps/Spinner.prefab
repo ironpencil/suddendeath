@@ -19,12 +19,27 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4700832967826576}
-  - component: {fileID: 212271780906526386}
   - component: {fileID: 50826313828385418}
   - component: {fileID: 58913111566800544}
   - component: {fileID: 114141140611659820}
   m_Layer: 20
   m_Name: Spinner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1982087308665902
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4982087308665902}
+  - component: {fileID: 212550780965139944}
+  m_Layer: 20
+  m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,10 +52,24 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238128772900036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.88, y: -6.71, z: 0}
-  m_LocalScale: {x: 4, y: 4, z: 1}
-  m_Children: []
+  m_LocalPosition: {x: -7.3798294, y: -2.4455156, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4982087308665902}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4982087308665902
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1982087308665902}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4700832967826576}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &50826313828385418
@@ -77,7 +106,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.32
+  m_Radius: 1
 --- !u!114 &114141140611659820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,12 +121,12 @@ MonoBehaviour:
   MoveSpeed: 8
   SpinSpeed: 8
   SpinDirection: 1
---- !u!212 &212271780906526386
+--- !u!212 &212550780965139944
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1238128772900036}
+  m_GameObject: {fileID: 1982087308665902}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0

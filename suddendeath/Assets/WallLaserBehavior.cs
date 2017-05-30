@@ -11,7 +11,7 @@ public class WallLaserBehavior : MonoBehaviour {
     public Sprite IdleSprite;
     public Sprite ChargingSprite;
     Rigidbody2D rb2d;
-    SpriteRenderer spriteRend;
+    public SpriteRenderer sprite;
     public float timeLeft;
     public GameObject projectilePrefab;
     public Vector2 facing;
@@ -19,7 +19,6 @@ public class WallLaserBehavior : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-        spriteRend = GetComponent<SpriteRenderer>();
         timeLeft = shotFrequency;
     }
 	
@@ -62,12 +61,12 @@ public class WallLaserBehavior : MonoBehaviour {
         if (IsCharging)
         {
             IsCharging = false;
-            spriteRend.sprite = IdleSprite;
+            sprite.sprite = IdleSprite;
         }
         else
         {
             IsCharging = true;
-            spriteRend.sprite = ChargingSprite;
+            sprite.sprite = ChargingSprite;
         }
     }
 
