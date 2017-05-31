@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
     List<int> joinedPlayers = new List<int>();
 
     private int numPlayers = 0;
+    public Dictionary<int, PlayerStats> playerStats;
+    public int lastRoundWinner = 0;
+    public float roundStartTime = 0.0f;
 
     public List<Transform> playerSpawnPoints;
 
@@ -25,6 +28,7 @@ public class GameManager : MonoBehaviour {
     public GameObject wallBladePrefab;
 
     public GameObject playerSetupUI;
+    public GameObject scoreScreenUI;
 
     public TileManager tileManager;
 
@@ -35,7 +39,7 @@ public class GameManager : MonoBehaviour {
     public float wallBladeDifficulty = 1.0f;
 
     bool isRoundActive = false;
-    bool isRoundReady = false;
+    public bool isRoundReady = false;
 
     // Use this for initialization
     void Start () {
@@ -44,7 +48,13 @@ public class GameManager : MonoBehaviour {
 
     private void SetupGame()
     {
+        playerStats = new Dictionary<int, PlayerStats>();
         playerSetupUI.SetActive(true);
+    }
+
+    private void DisplayScore()
+    {
+        scoreScreenUI.SetActive(true);
     }
 
     void Init()
@@ -71,8 +81,8 @@ public class GameManager : MonoBehaviour {
                 if (numPlayers > 1)
                 {
                     //stop, this player won
-                    int winningPlayer = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
-                    Debug.Log("Player " + winningPlayer + " Wins!");
+                    lastRoundWinner = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
+                    Debug.Log("Player " + lastRoundWinner + " Wins!");
                     StartCoroutine(EndRound());
                 }
             }
@@ -96,6 +106,10 @@ public class GameManager : MonoBehaviour {
         {
             joinedPlayers.Add(playerNum);
         }
+        if (!playerStats.Keys.Contains(playerNum))
+        {
+            playerStats.Add(playerNum, new PlayerStats());
+        }
     }
 
     public void RemovePlayer(int playerNum)
@@ -107,7 +121,9 @@ public class GameManager : MonoBehaviour {
     {
         Init();
         playerSetupUI.SetActive(false);
-        
+        scoreScreenUI.SetActive(false);
+        roundStartTime = Time.time;
+
         foreach (int playerNum in joinedPlayers)
         {
             GameObject player = GameObject.Instantiate(playerPrefab, dynamicsParent);
@@ -211,12 +227,15 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
+        playerStats[lastRoundWinner].wins++;
+
         yield return new WaitForSecondsRealtime(3.0f);
 
         foreach (PlayerController player in players.Values)
         {
             if (player != null)
             {
+                playerStats[player.GetComponent<PlayerInput>().PlayerNum].survivalTime += Time.time - roundStartTime;
                 Destroy(player.gameObject);
             }
         }
@@ -227,9 +246,7 @@ public class GameManager : MonoBehaviour {
         }
 
         tileManager.Reset();
-
         Time.timeScale = 1.0f;
-
-        isRoundReady = true;
+        DisplayScore();
     }
 }
