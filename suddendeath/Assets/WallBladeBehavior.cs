@@ -8,6 +8,8 @@ public class WallBladeBehavior : MonoBehaviour {
     public float SpinSpeed = 8.0f;
     public float WallOffset = 2.0f;
     public float TriggerRange = 0.5f;
+    public SliderJoint2D northSliderPrefab;
+    public SliderJoint2D southSliderPrefab;
     public Vector2 Direction = Vector2.zero;
     private WallSide currentWall = WallSide.None;
     private enum WallSide { North, South, East, West, None };
@@ -21,6 +23,8 @@ public class WallBladeBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+        /*
         // Move along the wall
         // Check for a player
 		if (currentWall != WallSide.None)
@@ -32,9 +36,6 @@ public class WallBladeBehavior : MonoBehaviour {
                 float wbx = gameObject.transform.position.x;
                 float pcy = pc.transform.position.y;
                 float wby = gameObject.transform.position.y;
-                
-                //Debug.Log("pcx (" + pcx + ") tween: " + (wbx - TriggerRange) + " and " + (wbx + TriggerRange));
-                //Debug.Log("pcy (" + pcy + ") tween: " + (wby - TriggerRange) + " and " + (wby + TriggerRange));
 
                 if ((wbx + TriggerRange >= pcx && wbx - TriggerRange <= pcx)
                     || (wby + TriggerRange >= pcy && wby - TriggerRange <= pcy))
@@ -44,17 +45,20 @@ public class WallBladeBehavior : MonoBehaviour {
             }
             // Move that direction
         }
+        */
 	}
 
     private void FixedUpdate()
     {
+        /*
         if (currentWall != WallSide.None)
         {
             rb2d.velocity = rb2d.velocity.normalized * MoveSpeed;
         }
+        */
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2DBackup(Collision2D collision)
     {
         if (collision.collider.gameObject.GetComponent<WallBehavior>() != null)
         {
@@ -68,6 +72,29 @@ public class WallBladeBehavior : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collider)
+    {
+        EdgeCollider2D ec = collider.GetComponent<EdgeCollider2D>();
+        if (ec != null)
+        {
+            // Get the closest point
+            Vector2 closestPoint = Vector2.zero;
+            float closestDistance = 0.0f;
+            int pointIdx = -1;
+            for (int i = 0; i < ec.points.Length; i++)
+            {
+                Vector2 point = ec.points[i];
+                float distance = Vector2.Distance(gameObject.transform.position, point);
+                if (closestPoint == Vector2.zero ||
+                    distance < closestDistance) {
+                    closestPoint = point;
+                    closestDistance = distance;
+                    pointIdx = i;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerEnter2DBackup(Collider2D collider)
     {
         if (collider.gameObject.GetComponent<WallBehavior>() != null && currentWall != GetWallSide(collider.transform))
         {

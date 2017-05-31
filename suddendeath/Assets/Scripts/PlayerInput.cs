@@ -48,30 +48,43 @@ public class PlayerInput : MonoBehaviour {
             HandleShieldMovement();
             HandleAttack();
         }
-	}
+        HandlePause();
+    }
 
     private void HandleAttack()
     {
-        
+        if (XCI.GetButtonDown(XboxButton.B))
+        {
+            Debug.Log("B button pressed");
+        }
+    }
+
+    private void HandlePause()
+    {
+        if (XCI.GetButtonDown(XboxButton.Start, xboxController))
+        {
+            Debug.Log("Start pressed");
+            Globals.Instance.TogglePause();
+        }
     }
 
     void HandleDash()
     {
-        // TODO Move the character quickly one square, ignoring hazards and other characters
-        // Recharges over time
         DashRechargeTimeLeft -= Time.deltaTime;
 
-        //if (Input.GetButton("Dash" + PlayerNum))
         if (XCI.GetButton(XboxButton.A, xboxController))
         {
             if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
                 BeginDash();
-            } else
-            {
-                Debug.Log("Can't dash, let player know here");
             }
-        } else if (IsDashing)
+            else
+            {
+                // TODO Alert the player that they can't dash yet
+                //Debug.Log("Can't dash, let player know here");
+            }
+        }
+        else if (IsDashing)
         {
             EndDash();
         }
@@ -116,12 +129,11 @@ public class PlayerInput : MonoBehaviour {
         {
             horizontal = LastHorizontal;
             vertical = LastVertical;
-        } else
+        }
+        else
         {
             horizontal = XCI.GetAxisRaw(XboxAxis.LeftStickX, xboxController);
-            //horizontal = Input.GetAxisRaw("Horizontal" + PlayerNum);
             vertical = XCI.GetAxisRaw(XboxAxis.LeftStickY, xboxController);
-            //vertical = Input.GetAxisRaw("Vertical" + PlayerNum);
             LastHorizontal = horizontal;
             LastVertical = vertical;
         }
