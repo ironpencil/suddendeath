@@ -12,10 +12,6 @@ public class ScoreScreenBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (XCI.GetButtonDown(XboxButton.A))
-        {
-            Debug.Log("A button pressed");
-            Globals.Instance.gameObject.GetComponent<GameManager>().isRoundReady = true;
-        }
+        
     }
 }

@@ -91,24 +91,6 @@ public class WallBladeBehavior : MonoBehaviour {
                     pointIdx = i;
                 }
             }
-
-            // Get the next closest point attached to this point
-            int idxA = -1;
-            int idxB = -1;
-
-            if (pointIdx == ec.points.Length - 1) {
-                idxA = 0;
-            } else
-            {
-                idxA = pointIdx - 1;
-            }
-
-            if (pointIdx == 0) {
-                idxB = ec.points.Length - 1;
-            } else
-            {
-                idxB = pointIdx + 1;
-            }
         }
     }
 

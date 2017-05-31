@@ -34,7 +34,6 @@ public class BombSpawnerController : MonoBehaviour {
         List<int> livingPlayerNums = Globals.Instance.GameManager.players.Keys.ToList();
 
         int targetPlayerNum = livingPlayerNums[Random.Range(0, livingPlayerNums.Count)];
-        Debug.Log("Targeting Player: " + targetPlayerNum);
         Globals.Instance.GameManager.playerStats[targetPlayerNum].bombTargets++;
         PlayerController pc = Globals.Instance.GameManager.players[targetPlayerNum];
 

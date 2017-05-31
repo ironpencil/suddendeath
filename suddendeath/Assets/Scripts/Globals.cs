@@ -5,8 +5,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class Globals : Singleton<Globals>
-{    
-
+{
+    public GameObject pauseScreenUI;
     public bool paused = false;
     public bool acceptPlayerGameInput = true;
 
@@ -105,11 +105,13 @@ public class Globals : Singleton<Globals>
         {
             Time.timeScale = 0.0f;
             acceptPlayerGameInput = false;
+            pauseScreenUI.SetActive(true);
         }
         else
         {
             Time.timeScale = 1.0f;
             acceptPlayerGameInput = true;
+            pauseScreenUI.SetActive(false);
         }
     }
 

@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour {
 
     public GameObject playerSetupUI;
     public GameObject scoreScreenUI;
-
+    
     public TileManager tileManager;
 
     public float collapsingFloorDifficulty = 1.0f;
@@ -38,8 +38,9 @@ public class GameManager : MonoBehaviour {
     public float bombDifficulty = 1.0f;
     public float wallBladeDifficulty = 1.0f;
 
-    bool isRoundActive = false;
+    public bool isRoundActive = false;
     public bool isRoundReady = false;
+    public bool isRoundPaused = false;
 
     // Use this for initialization
     void Start () {
@@ -55,15 +56,6 @@ public class GameManager : MonoBehaviour {
     private void DisplayScore()
     {
         scoreScreenUI.SetActive(true);
-    }
-
-    void Init()
-    {
-        players = new Dictionary<int, PlayerController>();
-        spinners = new List<GameObject>();
-        lasers = new List<GameObject>();
-        wallBlades = new List<GameObject>();
-        numPlayers = joinedPlayers.Count;
     }
 
     // Update is called once per frame
@@ -119,7 +111,12 @@ public class GameManager : MonoBehaviour {
 
     public void StartRound()
     {
-        Init();
+        players = new Dictionary<int, PlayerController>();
+        spinners = new List<GameObject>();
+        lasers = new List<GameObject>();
+        wallBlades = new List<GameObject>();
+        numPlayers = joinedPlayers.Count;
+
         playerSetupUI.SetActive(false);
         scoreScreenUI.SetActive(false);
         roundStartTime = Time.time;
@@ -227,6 +224,10 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
+        Debug.Log("lastRoundWinner: " + lastRoundWinner);
+        foreach (int ps in playerStats.Keys) {
+            Debug.Log("Player Num: " + ps);
+        }
         playerStats[lastRoundWinner].wins++;
 
         yield return new WaitForSecondsRealtime(3.0f);
