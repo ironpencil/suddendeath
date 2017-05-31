@@ -721,9 +721,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cf7fd959f48064ea08e5f095b40ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  displayFrameRate: 1
   spinners: []
   lasers: []
   wallBlades: []
+  mines: []
   lastRoundWinner: 0
   roundStartTime: 0
   playerSpawnPoints:
@@ -742,17 +744,18 @@ MonoBehaviour:
     type: 2}
   wallBladePrefab: {fileID: 1400226560632800, guid: e1d3b84b5fdebed4685a8c165b54df95,
     type: 2}
+  minePrefab: {fileID: 1319833556920904, guid: 8e00f1a0a6c0cd340a3f6f4865b0c68b, type: 2}
   playerSetupUI: {fileID: 1533842925}
   scoreScreenUI: {fileID: 1176841550}
   tileManager: {fileID: 1912545816}
-  collapsingFloorDifficulty: 1
-  spinnerDifficulty: 1
-  laserDifficulty: 1
+  collapsingFloorDifficulty: 0
+  spinnerDifficulty: 0
+  laserDifficulty: 0
   bombDifficulty: 1
-  wallBladeDifficulty: 1
+  wallBladeDifficulty: 0
+  mineDifficulty: 1
   isRoundActive: 0
   isRoundReady: 0
-  isRoundPaused: 0
 --- !u!4 &334534839 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4109826096066312, guid: 949d8075da692b54d995b878961ac9d7,

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> spinners;
     public List<GameObject> lasers;
     public List<GameObject> wallBlades;
+    public List<GameObject> mines;
 
     List<int> joinedPlayers = new List<int>();
 
@@ -28,6 +29,7 @@ public class GameManager : MonoBehaviour {
     public GameObject laserPrefab;
     public GameObject bombSpawnerPrefab;
     public GameObject wallBladePrefab;
+    public GameObject minePrefab;
 
     public GameObject playerSetupUI;
     public GameObject scoreScreenUI;
@@ -39,10 +41,10 @@ public class GameManager : MonoBehaviour {
     public float laserDifficulty = 1.0f;
     public float bombDifficulty = 1.0f;
     public float wallBladeDifficulty = 1.0f;
+    public float mineDifficulty = 1.0f;
 
     public bool isRoundActive = false;
     public bool isRoundReady = false;
-    public bool isRoundPaused = false;
 
     // Use this for initialization
     void Start () {
@@ -181,6 +183,13 @@ public class GameManager : MonoBehaviour {
             GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
             wallBlade.transform.position = Vector2.zero;
             wallBlades.Add(wallBlade);
+        }
+
+        if (mineDifficulty > 0)
+        {
+            GameObject mine = GameObject.Instantiate(minePrefab, dynamicsParent);
+            mine.transform.position = new Vector2(UnityEngine.Random.Range(-3, 4), UnityEngine.Random.Range(-3, 4));
+            mines.Add(mine);
         }
 
         isRoundActive = true;
