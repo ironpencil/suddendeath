@@ -224,13 +224,9 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
-        Debug.Log("lastRoundWinner: " + lastRoundWinner);
-        foreach (int ps in playerStats.Keys) {
-            Debug.Log("Player Num: " + ps);
-        }
         playerStats[lastRoundWinner].wins++;
 
-        yield return new WaitForSecondsRealtime(3.0f);
+        yield return new WaitForSecondsRealtime(2.0f);
 
         foreach (PlayerController player in players.Values)
         {
