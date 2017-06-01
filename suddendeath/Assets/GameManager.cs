@@ -3,19 +3,20 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     float deltaTime = 0.0f;
     public bool displayFrameRate = false;
 
-    public Dictionary<int, PlayerController> players;
+    public Dictionary<int, PlayerController> livingPlayers;
     public List<GameObject> spinners;
     public List<GameObject> lasers;
     public List<GameObject> wallBlades;
     public List<GameObject> mines;
     public List<Kill> kills;
 
-    List<int> joinedPlayers = new List<int>();
+    public List<int> joinedPlayers = new List<int>();
 
     private int numPlayers = 0;
     public Dictionary<int, PlayerStats> playerStats;
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour {
     public GameObject minePrefab;
 
     public GameObject playerSetupUI;
-    public GameObject scoreScreenUI;
+    public ScoreScreenBehavior scoreScreenUI;
     
     public TileManager tileManager;
 
@@ -58,16 +59,7 @@ public class GameManager : MonoBehaviour {
         kills = new List<Kill>();
         playerSetupUI.SetActive(true);
     }
-
-    private void DisplayScore()
-    {
-        foreach (Kill kill in kills)
-        {
-            Debug.Log("Player" + kill.killerPlayerNum + " killed Player" + kill.victimPlayerNum + " with " + kill.weapon);
-        }
-        scoreScreenUI.SetActive(true);
-    }
-
+    
     void OnGUI()
     {
         if (displayFrameRate)
@@ -93,18 +85,18 @@ public class GameManager : MonoBehaviour {
 
         if (isRoundActive)
         {
-            List<PlayerController> livingPlayers = players.Values.ToList();
+            List<PlayerController> livingPlayersList = livingPlayers.Values.ToList();
 
-            if (livingPlayers.Count > 1)
+            if (livingPlayersList.Count > 1)
             {
                 //keep playing
             }
-            else if (livingPlayers.Count == 1)
+            else if (livingPlayersList.Count == 1)
             {
                 if (numPlayers > 1)
                 {
                     //stop, this player won
-                    lastRoundWinner = livingPlayers[0].GetComponent<PlayerInput>().PlayerNum;
+                    lastRoundWinner = livingPlayersList[0].GetComponent<PlayerInput>().PlayerNum;
                     Debug.Log("Player " + lastRoundWinner + " Wins!");
                     StartCoroutine(EndRound());
                 }
@@ -130,7 +122,10 @@ public class GameManager : MonoBehaviour {
         }
         if (!playerStats.Keys.Contains(playerNum))
         {
-            playerStats.Add(playerNum, new PlayerStats());
+            Debug.Log("Adding Player Num: " + playerNum);
+            PlayerStats ps = new PlayerStats();
+            ps.playerNum = playerNum;
+            playerStats.Add(playerNum, ps);
         }
     }
 
@@ -141,22 +136,22 @@ public class GameManager : MonoBehaviour {
 
     public void StartRound()
     {
-        players = new Dictionary<int, PlayerController>();
+        livingPlayers = new Dictionary<int, PlayerController>();
         spinners = new List<GameObject>();
         lasers = new List<GameObject>();
         wallBlades = new List<GameObject>();
         numPlayers = joinedPlayers.Count;
 
         playerSetupUI.SetActive(false);
-        scoreScreenUI.SetActive(false);
+        scoreScreenUI.gameObject.SetActive(false);
         roundStartTime = Time.time;
 
         foreach (int playerNum in joinedPlayers)
         {
             GameObject player = GameObject.Instantiate(playerPrefab, dynamicsParent);
             player.transform.position = playerSpawnPoints[playerNum-1].position;
-            players[playerNum] = player.GetComponent<PlayerController>();
-            players[playerNum].GetComponent<PlayerInput>().PlayerNum = playerNum; //todo: clean this up
+            livingPlayers[playerNum] = player.GetComponent<PlayerController>();
+            livingPlayers[playerNum].GetComponent<PlayerInput>().PlayerNum = playerNum; //todo: clean this up
         }
 
         if (spinnerDifficulty > 0)
@@ -282,7 +277,7 @@ public class GameManager : MonoBehaviour {
         
         yield return new WaitForSecondsRealtime(2.0f);
 
-        foreach (PlayerController player in players.Values)
+        foreach (PlayerController player in livingPlayers.Values)
         {
             if (player != null)
             {
@@ -298,6 +293,6 @@ public class GameManager : MonoBehaviour {
 
         tileManager.Reset();
         Time.timeScale = 1.0f;
-        DisplayScore();
+        scoreScreenUI.Display();
     }
 }

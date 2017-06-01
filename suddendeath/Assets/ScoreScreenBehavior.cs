@@ -1,12 +1,78 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using XboxCtrlrInput;
 
 public class ScoreScreenBehavior : MonoBehaviour {
+    public Text player1Text;
+    public Text player2Text;
+    public Text player3Text;
+    public Text player4Text;
+    public Text playerWinsText;
+
+    
+
+    public void Display()
+    {
+        GameManager gm = Globals.Instance.GameManager;
+
+        player1Text.gameObject.SetActive(false);
+        player2Text.gameObject.SetActive(false);
+        player3Text.gameObject.SetActive(false);
+        player4Text.gameObject.SetActive(false);
+
+        //Debug.Log("Player Stats: " + gm.playerStats);
+
+        foreach (PlayerStats ps in gm.playerStats.Values)
+        {
+            Debug.Log(ps.playerNum);
+
+            switch (ps.playerNum)
+            {
+                case 1:
+                    player1Text.text = GetScoreText(ps);
+                    player1Text.gameObject.SetActive(true);
+                    break;
+                case 2:
+                    player2Text.text = GetScoreText(ps);
+                    player2Text.gameObject.SetActive(true);
+                    break;
+                case 3:
+                    player3Text.text = GetScoreText(ps);
+                    player3Text.gameObject.SetActive(true);
+                    break;
+                case 4:
+                    player4Text.text = GetScoreText(ps);
+                    player4Text.gameObject.SetActive(true);
+                    break;
+            }
+        }
+
+        if (gm.lastRoundWinner == 0)
+        {
+            playerWinsText.text = "Draw!";
+        }
+        else
+        {
+            playerWinsText.text = "Player " + gm.lastRoundWinner + " Wins the Round!";
+        }
+        
+        gameObject.SetActive(true);
+    }
+
+    string GetScoreText(PlayerStats ps)
+    {
+        return "Player " + ps.playerNum +
+                "\nWins: " + ps.wins +
+                "\nSurvival Time: " + Math.Round(ps.survivalTime, 1) + " seconds" +
+                "\nBomb Targets: " + ps.bombTargets;
+    }
+
     // Use this for initialization
     void Start () {
-		
+  
 	}
 
     // Update is called once per frame

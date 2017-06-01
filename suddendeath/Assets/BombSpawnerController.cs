@@ -31,11 +31,11 @@ public class BombSpawnerController : MonoBehaviour {
     {
         //float x = Random.Range(UpperLeftBound.x, LowerRightBound.x);
         //float y = Random.Range(UpperLeftBound.y, LowerRightBound.y);
-        List<int> livingPlayerNums = Globals.Instance.GameManager.players.Keys.ToList();
+        List<int> livingPlayerNums = Globals.Instance.GameManager.livingPlayers.Keys.ToList();
 
         int targetPlayerNum = livingPlayerNums[Random.Range(0, livingPlayerNums.Count)];
         Globals.Instance.GameManager.playerStats[targetPlayerNum].bombTargets++;
-        PlayerController pc = Globals.Instance.GameManager.players[targetPlayerNum];
+        PlayerController pc = Globals.Instance.GameManager.livingPlayers[targetPlayerNum];
 
         Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
 

@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour {
             int playerNum = gameObject.GetComponent<PlayerInput>().PlayerNum;
             Globals.Instance.GameManager.playerStats[playerNum].survivalTime += Time.time - Globals.Instance.GameManager.roundStartTime;
             Destroy(gameObject);
-            Globals.Instance.GameManager.players.Remove(playerNum);          
+            Globals.Instance.GameManager.livingPlayers.Remove(playerNum);          
         }
 	}
 
