@@ -111,7 +111,6 @@ public class GameManager : MonoBehaviour {
             }
             else
             {
-                //stop, everyone dead??
                 StartCoroutine(EndRound());
             }
         } else
@@ -272,8 +271,15 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
-        playerStats[lastRoundWinner].wins++;
-
+        if (lastRoundWinner != 0)
+        {
+            Debug.Log("Last Round Winner: " + lastRoundWinner);
+            playerStats[lastRoundWinner].wins++;
+        } else
+        {
+            Debug.Log("Last Round Ended in a Tie ");
+        }
+        
         yield return new WaitForSecondsRealtime(2.0f);
 
         foreach (PlayerController player in players.Values)

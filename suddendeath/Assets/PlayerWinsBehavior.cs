@@ -12,6 +12,12 @@ public class PlayerWinsBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        gameObject.GetComponent<Text>().text = "Player " + gm.lastRoundWinner + " Wins the Round!";
+        if (gm.lastRoundWinner == 0)
+        {
+            gameObject.GetComponent<Text>().text = "Draw!";
+        } else
+        {
+            gameObject.GetComponent<Text>().text = "Player " + gm.lastRoundWinner + " Wins the Round!";
+        }
     }
 }

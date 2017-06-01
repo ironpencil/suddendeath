@@ -72,7 +72,7 @@ public class PlayerInput : MonoBehaviour {
     {
         DashRechargeTimeLeft -= Time.deltaTime;
 
-        if (XCI.GetButton(XboxButton.A, xboxController))
+        if (XCI.GetButtonDown(XboxButton.A, xboxController))
         {
             if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
@@ -84,7 +84,7 @@ public class PlayerInput : MonoBehaviour {
                 //Debug.Log("Can't dash, let player know here");
             }
         }
-        else if (IsDashing)
+        else if (IsDashing && !XCI.GetButton(XboxButton.A, xboxController))
         {
             EndDash();
         }
