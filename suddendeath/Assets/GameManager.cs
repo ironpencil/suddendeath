@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> lasers;
     public List<GameObject> wallBlades;
     public List<GameObject> mines;
+    public List<Kill> kills;
 
     List<int> joinedPlayers = new List<int>();
 
@@ -54,11 +55,16 @@ public class GameManager : MonoBehaviour {
     private void SetupGame()
     {
         playerStats = new Dictionary<int, PlayerStats>();
+        kills = new List<Kill>();
         playerSetupUI.SetActive(true);
     }
 
     private void DisplayScore()
     {
+        foreach (Kill kill in kills)
+        {
+            Debug.Log("Player" + kill.killerPlayerNum + " killed Player" + kill.victimPlayerNum + " with " + kill.weapon);
+        }
         scoreScreenUI.SetActive(true);
     }
 
@@ -249,6 +255,16 @@ public class GameManager : MonoBehaviour {
         wlb.facing = facing;
         wlb.IsVertical = IsVertical;
         lasers.Add(wallLaser);
+    }
+
+    public void AddKill(int killer, int victim, Kill.Weapon weapon)
+    {
+        Debug.Log("Player" + killer + " killed Player" + victim + " with " + weapon);
+        Kill kill = new Kill(killer, victim, weapon);
+
+        playerStats[killer].kills.Add(kill);
+        playerStats[victim].deaths.Add(kill);
+        kills.Add(kill);
     }
 
     IEnumerator EndRound()

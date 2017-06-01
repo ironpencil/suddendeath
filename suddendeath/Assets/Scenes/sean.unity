@@ -748,9 +748,9 @@ MonoBehaviour:
   playerSetupUI: {fileID: 1533842925}
   scoreScreenUI: {fileID: 1176841550}
   tileManager: {fileID: 1912545816}
-  collapsingFloorDifficulty: 0
-  spinnerDifficulty: 0
-  laserDifficulty: 0
+  collapsingFloorDifficulty: 1
+  spinnerDifficulty: 1
+  laserDifficulty: 1
   bombDifficulty: 1
   wallBladeDifficulty: 0
   mineDifficulty: 1

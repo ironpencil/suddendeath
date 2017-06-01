@@ -47,5 +47,6 @@ public class BombSpawnerController : MonoBehaviour {
         // TODO Use the euler angles
         bomb.transform.rotation = new Quaternion(0.0f, 0.0f, 1.0f, 0.0f);
         bomb.GetComponent<BombBehavior>().shadow = bombShadow;
+        bomb.GetComponent<BombBehavior>().targetPlayerNum = targetPlayerNum;
     }
 }

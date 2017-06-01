@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BombBehavior : MonoBehaviour {
+public class BombBehavior : MonoBehaviour, Explosive {
     public float FallTime = 2.0f;
     public GameObject ExplosionPrefab;
     public GameObject shadow;
     public AnimationCurve easing;
+    public int targetPlayerNum;
 
     Vector2 startingPos;
     Vector2 targetPos;
@@ -32,9 +33,27 @@ public class BombBehavior : MonoBehaviour {
             Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
             GameObject explosion = Instantiate(ExplosionPrefab, DynamicsParent);
             explosion.transform.position = targetPos;
+            explosion.gameObject.GetComponent<ExplosionBehavior>().explosives.Add(this);
 
             Destroy(shadow);
-            Destroy(gameObject);
+            //Don't destroy bomb until explosion complete
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
         }
+    }
+
+    public void KilledPlayer(int playerNum)
+    {
+        Globals.Instance.GetComponent<GameManager>().AddKill(targetPlayerNum, playerNum, Kill.Weapon.Bomb);
+    }
+
+    public void StartExploding()
+    {
+        // Do nothing
+    }
+
+    public void EndExploding()
+    {
+        Destroy(gameObject);
     }
 }

@@ -32,7 +32,7 @@ public class PlayerScoreBehavior : MonoBehaviour {
 
         if (refreshPlayerStats)
         {
-            //Debug.Log("PlayerScoreBehavior update called");
+            // TODO fix this, can't assume only player 1 and 2... coudl be 3 and 4 for instance
             if (gm.playerStats.Count >= playerNum)
             {
                 PlayerStats ps = gm.playerStats[playerNum];
