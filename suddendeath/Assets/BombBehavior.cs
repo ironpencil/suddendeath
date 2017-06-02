@@ -29,7 +29,7 @@ public class BombBehavior : MonoBehaviour, Explosive {
             transform.position = Vector2.Lerp(startingPos, targetPos, easedTime);
         } else
         {
-            Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
+            Transform DynamicsParent = Globals.Instance.GameManager.dynamicsParent;
             GameObject explosion = Instantiate(ExplosionPrefab, DynamicsParent);
             explosion.transform.position = targetPos;
             explosion.gameObject.GetComponent<ExplosionBehavior>().explosives.Add(this);
@@ -43,7 +43,7 @@ public class BombBehavior : MonoBehaviour, Explosive {
 
     public void KilledPlayer(int playerNum)
     {
-        Globals.Instance.GetComponent<GameManager>().AddKill(targetPlayerNum, playerNum, Kill.Weapon.Bomb);
+        Globals.Instance.GameManager.AddKill(targetPlayerNum, playerNum, Kill.Weapon.Bomb);
     }
 
     public void StartExploding()

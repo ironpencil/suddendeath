@@ -290,7 +290,10 @@ public class GameManager : MonoBehaviour {
         playerStats[victim].deaths.Add(kill);
         kills.Add(kill);
 
-        livingPlayers[killer].NotifyOfKill();
+        if (killer != victim)
+        {
+            livingPlayers[killer].NotifyOfKill();
+        }
     }
 
     IEnumerator EndRound()
