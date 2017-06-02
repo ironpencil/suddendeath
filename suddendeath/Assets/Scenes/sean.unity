@@ -796,7 +796,7 @@ MonoBehaviour:
   hudFps: {fileID: 407401344}
   joinedPlayers: 
   currentRound: 0
-  RoundsToWin: 1
+  RoundsToWin: 15
   lastRoundWinner: 0
   roundStartTime: 0
   playerSpawnPoints:
@@ -823,9 +823,9 @@ MonoBehaviour:
   collapsingFloorDifficulty: 0
   spinnerDifficulty: 0
   laserDifficulty: 0
-  bombDifficulty: 0
+  bombDifficulty: 1
   wallBladeDifficulty: 0
-  mineDifficulty: 1
+  mineDifficulty: 0
   isRoundActive: 0
   isRoundReady: 0
 --- !u!4 &334534839 stripped

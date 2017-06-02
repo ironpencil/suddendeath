@@ -62,6 +62,16 @@ public class GameManager : MonoBehaviour {
 
     public void SetupGame()
     {
+        int i = 1;
+        foreach (Text text in hudScores)
+        {
+            text.text = "Player " + i++ + ": " + 0;
+            text.gameObject.SetActive(false);
+        }
+        hudRound.gameObject.SetActive(false);
+        hudTime.gameObject.SetActive(false);
+        currentRound = 0;
+        lastRoundWinner = 0;
         joinedPlayers = new List<int>();
         playerStats = new Dictionary<int, PlayerStats>();
         kills = new List<Kill>();
