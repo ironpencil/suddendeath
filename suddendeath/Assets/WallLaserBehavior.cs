@@ -15,7 +15,7 @@ public class WallLaserBehavior : MonoBehaviour {
     public float timeLeft;
     public GameObject projectilePrefab;
     public Vector2 facing;
-
+    
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();

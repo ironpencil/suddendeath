@@ -11,7 +11,7 @@ public class VictoryScreenBehavior : MonoBehaviour {
     {
         GameManager gm = Globals.Instance.GetComponent<GameManager>();
         PlayerStats winner = gm.GetWinner();
-        VictoryMessage.text = "Player" + winner.playerNum + " Wins!";
+        VictoryMessage.text = "Player " + winner.playerNum + " Wins!";
         gameObject.SetActive(true);
     }
 

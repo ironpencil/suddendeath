@@ -63,10 +63,9 @@ public class ScoreScreenBehavior : MonoBehaviour {
 
     string GetScoreText(PlayerStats ps)
     {
-        return "Player " + ps.playerNum +
-                "\nWins: " + ps.wins +
-                "\nSurvival Time: " + Math.Round(ps.survivalTime, 1) + " seconds" +
-                "\nBomb Targets: " + ps.bombTargets;
+        return "Wins: " + ps.wins +
+                "\nTime Alive: " + Math.Round(ps.survivalTime, 1) + " seconds" +
+                "\nKills: " + ps.GetOtherKillCount();
     }
 
     // Use this for initialization

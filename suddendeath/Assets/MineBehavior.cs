@@ -78,12 +78,6 @@ public class MineBehavior : MonoBehaviour, Explosive {
             }
         } else if (bodyCollisionKillsPlayer)
         {
-            /*
-            int killer = GetLastCollider(pi.PlayerNum);
-            pi.gameObject.GetComponent<PlayerController>().Kill();
-            if (killer == -1) killer = pi.PlayerNum;
-            Globals.Instance.GetComponent<GameManager>().AddKill(killer, pi.PlayerNum, Kill.Weapon.Mine);
-            */
             Explode();
         }
 

@@ -15,11 +15,16 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> wallBlades;
     public List<GameObject> mines;
     public List<Kill> kills;
+    public List<Text> hudScores;
+    public Text hudRound;
+    public Text hudTime;
+    public Text hudFps;
 
     public List<int> joinedPlayers;
 
     private int numPlayers = 0;
 
+    public int currentRound = 0;
     public int RoundsToWin = 10;
     public Dictionary<int, PlayerStats> playerStats;
     public int lastRoundWinner = 0;
@@ -63,23 +68,23 @@ public class GameManager : MonoBehaviour {
         playerSetupUI.GetComponent<PlayerSetupBehavior>().Display();
     }
     
-    void OnGUI()
+    void UpdateHud()
     {
         if (displayFrameRate)
         {
-            int w = Screen.width, h = Screen.height;
-
-            GUIStyle style = new GUIStyle();
-
-            Rect rect = new Rect(0, 0, w, h * 2 / 100);
-            style.alignment = TextAnchor.UpperLeft;
-            style.fontSize = h * 2 / 100;
-            style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
             float msec = deltaTime * 1000.0f;
             float fps = 1.0f / deltaTime;
-            string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-            GUI.Label(rect, text, style);
+            hudFps.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         }
+
+        TimeSpan t = TimeSpan.FromSeconds(Time.time - roundStartTime);
+
+        string time = string.Format("{0:D2}:{1:D2}:{2:D3}",
+                        t.Minutes,
+                        t.Seconds,
+                        t.Milliseconds);
+
+        hudTime.text = time;
     }
 
     // Update is called once per frame
@@ -92,7 +97,7 @@ public class GameManager : MonoBehaviour {
 
             if (livingPlayersList.Count > 1)
             {
-                //keep playing
+                UpdateHud();
             }
             else if (livingPlayersList.Count == 1)
             {
@@ -121,6 +126,7 @@ public class GameManager : MonoBehaviour {
         if (!joinedPlayers.Contains(playerNum))
         {
             joinedPlayers.Add(playerNum);
+            hudScores[playerNum - 1].gameObject.SetActive(true);
         }
         if (!playerStats.Keys.Contains(playerNum))
         {
@@ -137,6 +143,12 @@ public class GameManager : MonoBehaviour {
 
     public void StartRound()
     {
+        hudTime.gameObject.SetActive(true);
+
+        currentRound++;
+        hudRound.text = "Round " + currentRound.ToString();
+        hudRound.gameObject.SetActive(true);
+
         livingPlayers = new Dictionary<int, PlayerController>();
         spinners = new List<GameObject>();
         lasers = new List<GameObject>();
@@ -275,8 +287,9 @@ public class GameManager : MonoBehaviour {
         if (lastRoundWinner != 0)
         {
             playerStats[lastRoundWinner].wins++;
+            hudScores[lastRoundWinner - 1].text = "Player " + lastRoundWinner + ":  " + playerStats[lastRoundWinner].wins;
         }
-        
+
         yield return new WaitForSecondsRealtime(2.0f);
 
         foreach (PlayerController player in livingPlayers.Values)
