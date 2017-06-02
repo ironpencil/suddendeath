@@ -52,8 +52,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SetupGame();
-	}
+        
+    }
 
     public void SetupGame()
     {

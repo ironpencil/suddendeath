@@ -104,6 +104,7 @@ public class Globals : Singleton<Globals>
         Globals.Instance.acceptPlayerGameInput = true;
 
         //TODO: do screen transition in
+        GameManager.SetupGame();
     }
 
     public void Pause(bool pause)
