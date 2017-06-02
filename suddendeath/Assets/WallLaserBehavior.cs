@@ -15,11 +15,14 @@ public class WallLaserBehavior : MonoBehaviour {
     public float timeLeft;
     public GameObject projectilePrefab;
     public Vector2 facing;
+    public Vector2 maxSpawn;
+    public Vector2 minSpawn;
     
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         timeLeft = shotFrequency;
+        if (Random.value > 0.5f) MoveSpeed = -MoveSpeed;
     }
 	
 	// Update is called once per frame

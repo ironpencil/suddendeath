@@ -48,6 +48,9 @@ public class GameManager : MonoBehaviour {
     public float collapsingFloorDifficulty = 1.0f;
     public float spinnerDifficulty = 1.0f;
     public float laserDifficulty = 1.0f;
+    public Vector2 minWallLaserSpawn;
+    public Vector2 maxWallLaserSpawn;
+    
     public float bombDifficulty = 1.0f;
     public float wallBladeDifficulty = 1.0f;
     public float mineDifficulty = 1.0f;
@@ -227,9 +230,8 @@ public class GameManager : MonoBehaviour {
     void CreateWallLaser()
     {
         // generate Wall Laser
-        // N = 1, E = 2, S = 3, W = 4
+        // N = 0, E = 1, S = 2, W = 3
         int wall = UnityEngine.Random.Range(0, 4);
-        //wall = 4;
 
         Vector2 laserpos = new Vector2();
         Vector2 facing = new Vector2();
@@ -239,7 +241,7 @@ public class GameManager : MonoBehaviour {
         switch (wall)
         {
             case 0:
-                laserpos.x = 0.0f;
+                laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
                 laserpos.y = 8f;
                 laserrotation = 90.0f;
                 facing.x = 0.0f;
@@ -247,14 +249,14 @@ public class GameManager : MonoBehaviour {
                 break;
             case 1:
                 laserpos.x = 15f;
-                laserpos.y = 0.0f;
+                laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 0.0f;
                 facing.x = -1.0f;
                 facing.y = 0.0f;
                 IsVertical = true;
                 break;
             case 2:
-                laserpos.x = 0.0f;
+                laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
                 laserpos.y = -8f;
                 laserrotation = -90.0f;
                 facing.x = 0.0f;
@@ -262,7 +264,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case 3:
                 laserpos.x = -15f;
-                laserpos.y = 0.0f;
+                laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 180.0f;
                 facing.x = 1.0f;
                 facing.y = 0.0f;
@@ -276,6 +278,7 @@ public class GameManager : MonoBehaviour {
         WallLaserBehavior wlb = wallLaser.GetComponent<WallLaserBehavior>();
         wlb.facing = facing;
         wlb.IsVertical = IsVertical;
+
         lasers.Add(wallLaser);
     }
 

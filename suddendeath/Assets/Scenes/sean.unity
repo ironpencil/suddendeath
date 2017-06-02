@@ -796,7 +796,7 @@ MonoBehaviour:
   hudFps: {fileID: 407401344}
   joinedPlayers: 
   currentRound: 0
-  RoundsToWin: 15
+  RoundsToWin: 3
   lastRoundWinner: 0
   roundStartTime: 0
   playerSpawnPoints:
@@ -822,8 +822,10 @@ MonoBehaviour:
   tileManager: {fileID: 1912545816}
   collapsingFloorDifficulty: 0
   spinnerDifficulty: 0
-  laserDifficulty: 0
-  bombDifficulty: 1
+  laserDifficulty: 3
+  minWallLaserSpawn: {x: -16, y: -9}
+  maxWallLaserSpawn: {x: 16, y: 9}
+  bombDifficulty: 0
   wallBladeDifficulty: 0
   mineDifficulty: 0
   isRoundActive: 0
