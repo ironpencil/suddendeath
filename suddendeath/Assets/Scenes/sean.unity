@@ -749,12 +749,12 @@ MonoBehaviour:
   playerSetupUI: {fileID: 1533842925}
   scoreScreenUI: {fileID: 1176841552}
   tileManager: {fileID: 1912545816}
-  collapsingFloorDifficulty: 1
+  collapsingFloorDifficulty: 0
   spinnerDifficulty: 1
-  laserDifficulty: 1
-  bombDifficulty: 1
+  laserDifficulty: 0
+  bombDifficulty: 0
   wallBladeDifficulty: 0
-  mineDifficulty: 1
+  mineDifficulty: 0
   isRoundActive: 0
   isRoundReady: 0
 --- !u!4 &334534839 stripped

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+    public bool invincible = false;
     bool isDead = false;
     public int gamesWon = 0;
 
@@ -23,8 +24,9 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-    public void Kill()
+    public bool Kill()
     {
-        isDead = true;
+        if (!invincible) isDead = true;
+        return isDead;
     }
 }
