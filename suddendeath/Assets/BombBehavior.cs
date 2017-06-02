@@ -24,7 +24,7 @@ public class BombBehavior : MonoBehaviour, Explosive {
 
         elapsedTime += Time.deltaTime;
         // Once we get to the shadow, blow up
-        if (targetPos.y < transform.position.y)
+        if (elapsedTime < FallTime)
         {
             float easedTime = easing.Evaluate(elapsedTime / FallTime);
             transform.position = Vector2.Lerp(startingPos, targetPos, easedTime);
