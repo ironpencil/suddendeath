@@ -131,8 +131,8 @@ MonoBehaviour:
   MoveSpeed: 5
   IsVertical: 1
   IsCharging: 0
-  shotFrequency: 1
-  chargeTime: 1
+  shotFrequency: 0.9
+  chargeTime: 0.1
   IdleSprite: {fileID: 21300000, guid: 9fdb14aa7a331534ba3d91886f07e8fd, type: 3}
   ChargingSprite: {fileID: 21300000, guid: 43ae1dbb539198345bdf8b667a34b339, type: 3}
   sprite: {fileID: 212531279502347024}

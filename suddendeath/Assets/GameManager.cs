@@ -16,9 +16,11 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> mines;
     public List<Kill> kills;
 
-    public List<int> joinedPlayers = new List<int>();
+    public List<int> joinedPlayers;
 
     private int numPlayers = 0;
+
+    public int RoundsToWin = 10;
     public Dictionary<int, PlayerStats> playerStats;
     public int lastRoundWinner = 0;
     public float roundStartTime = 0.0f;
@@ -31,7 +33,7 @@ public class GameManager : MonoBehaviour {
     public GameObject laserPrefab;
     public GameObject bombSpawnerPrefab;
     public GameObject wallBladePrefab;
-    public GameObject minePrefab;
+    public GameObject mineSpawnerPrefab;
 
     public GameObject playerSetupUI;
     public ScoreScreenBehavior scoreScreenUI;
@@ -53,11 +55,12 @@ public class GameManager : MonoBehaviour {
         SetupGame();
 	}
 
-    private void SetupGame()
+    public void SetupGame()
     {
+        joinedPlayers = new List<int>();
         playerStats = new Dictionary<int, PlayerStats>();
         kills = new List<Kill>();
-        playerSetupUI.SetActive(true);
+        playerSetupUI.GetComponent<PlayerSetupBehavior>().Display();
     }
     
     void OnGUI()
@@ -97,7 +100,6 @@ public class GameManager : MonoBehaviour {
                 {
                     //stop, this player won
                     lastRoundWinner = livingPlayersList[0].GetComponent<PlayerInput>().PlayerNum;
-                    Debug.Log("Player " + lastRoundWinner + " Wins!");
                     StartCoroutine(EndRound());
                 }
             }
@@ -122,7 +124,6 @@ public class GameManager : MonoBehaviour {
         }
         if (!playerStats.Keys.Contains(playerNum))
         {
-            Debug.Log("Adding Player Num: " + playerNum);
             PlayerStats ps = new PlayerStats();
             ps.playerNum = playerNum;
             playerStats.Add(playerNum, ps);
@@ -156,9 +157,12 @@ public class GameManager : MonoBehaviour {
 
         if (spinnerDifficulty > 0)
         {
-            GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-            spinner.transform.position = Vector2.zero;
-            spinners.Add(spinner);
+            for (int i = 0; i < spinnerDifficulty; i++)
+            {
+                GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
+                spinner.transform.position = Vector2.zero;
+                spinners.Add(spinner);
+            }
         }
 
         if (bombDifficulty > 0)
@@ -167,9 +171,18 @@ public class GameManager : MonoBehaviour {
             bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
         }
 
+        if (mineDifficulty > 0)
+        {
+            GameObject mineSpawner = GameObject.Instantiate(mineSpawnerPrefab, dynamicsParent);
+            mineSpawner.transform.position = new Vector2(0.0f, 0.0f);
+        }
+
         if (laserDifficulty > 0)
         {
-            CreateWallLaser();
+            for (int i = 0; i < laserDifficulty; i++)
+            {
+                CreateWallLaser();
+            }
         }
 
         if (collapsingFloorDifficulty > 0)
@@ -183,13 +196,6 @@ public class GameManager : MonoBehaviour {
             GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
             wallBlade.transform.position = Vector2.zero;
             wallBlades.Add(wallBlade);
-        }
-
-        if (mineDifficulty > 0)
-        {
-            GameObject mine = GameObject.Instantiate(minePrefab, dynamicsParent);
-            mine.transform.position = new Vector2(UnityEngine.Random.Range(-3, 4), UnityEngine.Random.Range(-3, 4));
-            mines.Add(mine);
         }
 
         isRoundActive = true;
@@ -253,7 +259,6 @@ public class GameManager : MonoBehaviour {
 
     public void AddKill(int killer, int victim, Kill.Weapon weapon)
     {
-        Debug.Log("Player" + killer + " killed Player" + victim + " with " + weapon);
         Kill kill = new Kill(killer, victim, weapon);
 
         playerStats[killer].kills.Add(kill);
@@ -266,13 +271,10 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
+        // Last round ended in tie
         if (lastRoundWinner != 0)
         {
-            Debug.Log("Last Round Winner: " + lastRoundWinner);
             playerStats[lastRoundWinner].wins++;
-        } else
-        {
-            Debug.Log("Last Round Ended in a Tie ");
         }
         
         yield return new WaitForSecondsRealtime(2.0f);
@@ -293,6 +295,22 @@ public class GameManager : MonoBehaviour {
 
         tileManager.Reset();
         Time.timeScale = 1.0f;
+
         scoreScreenUI.Display();
+    }
+
+    public PlayerStats GetWinner()
+    {
+        PlayerStats winner = null;
+
+        foreach (PlayerStats ps in playerStats.Values)
+        {
+            if (ps.wins >= RoundsToWin)
+            {
+                winner = ps;
+            }
+        }
+
+        return winner;
     }
 }

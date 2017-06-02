@@ -115,6 +115,10 @@ MonoBehaviour:
   ExplosionPrefab: {fileID: 1119816873204034, guid: 9e47260de082cb240a2a2fceba9199cc,
     type: 2}
   onlyArmByPlayer: 1
+  bodyCollisionKillsPlayer: 1
+  MineSpawnerBehavior: {fileID: 0}
+  IsMineDestroyedOnExplosion: 1
+  StartsArmed: 0
 --- !u!212 &212804604442955598
 SpriteRenderer:
   m_ObjectHideFlags: 1

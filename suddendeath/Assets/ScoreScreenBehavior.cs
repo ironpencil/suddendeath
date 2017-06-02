@@ -11,12 +11,13 @@ public class ScoreScreenBehavior : MonoBehaviour {
     public Text player3Text;
     public Text player4Text;
     public Text playerWinsText;
+    public VictoryScreenBehavior victoryScreenUI;
+    GameManager gm;
 
-    
 
     public void Display()
     {
-        GameManager gm = Globals.Instance.GameManager;
+        gm = Globals.Instance.GameManager;
 
         player1Text.gameObject.SetActive(false);
         player2Text.gameObject.SetActive(false);
@@ -27,8 +28,6 @@ public class ScoreScreenBehavior : MonoBehaviour {
 
         foreach (PlayerStats ps in gm.playerStats.Values)
         {
-            Debug.Log(ps.playerNum);
-
             switch (ps.playerNum)
             {
                 case 1:
@@ -78,6 +77,20 @@ public class ScoreScreenBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        
+        for (int i = 1; i <= 4; i++)
+        {
+            if (XCI.GetButtonDown(XboxButton.A, (XboxController)i))
+            {
+                if (gm.GetWinner() != null)
+                {
+                    gameObject.SetActive(false);
+                    victoryScreenUI.Display();
+                }
+                else
+                {
+                    gm.StartRound();
+                }
+            }
+        }
     }
 }

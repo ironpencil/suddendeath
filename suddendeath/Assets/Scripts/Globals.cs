@@ -54,16 +54,11 @@ public class Globals : Singleton<Globals>
 
         //float angle1 = Vector2.Angle(Vector2.right, (point2 - point1));
         //float angle2 = Vector2.Angle(Vector2.right, (point1 - point2));
-        Vector2 v1 = point2 - point1;
-        Vector2 v2 = point1 - point2;
+        //Vector2 v1 = point2 - point1;
+        //Vector2 v2 = point1 - point2;
 
-        float angle1 = Mathf.Atan2(v1.y, v1.x) * Mathf.Rad2Deg;
-        float angle2 = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
-
-        Debug.Log("Angle1=" + angle1);
-        Debug.Log("Angle2=" + angle2);
-
-
+        //float angle1 = Mathf.Atan2(v1.y, v1.x) * Mathf.Rad2Deg;
+        //float angle2 = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
     }
 
     public void IntroFinished()

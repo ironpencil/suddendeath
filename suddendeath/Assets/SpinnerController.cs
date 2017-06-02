@@ -24,7 +24,6 @@ public class SpinnerController : MonoBehaviour {
 
         foreach (Rigidbody2D rb in pushes.Keys)
         {
-            Debug.Log("Push Force: " + pushes[rb] * PushForce);
             rb.AddForce(pushes[rb], ForceMode2D.Impulse);
         }
 
@@ -41,14 +40,12 @@ public class SpinnerController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         SpinDirection = -SpinDirection;
-        Debug.Log("Collider name? " + collision.collider.transform.name);
         PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
         if (pc != null)
         {
             pc.Kill();
         } else if (collision.collider.transform.name.Equals("Shield"))
         {
-            Debug.Log("Push player!");
             // Cache push direction so it happens in the next frame, that way
             // forces are applied to the spinner naturally
             // TODO Add li'l ass smacker cheevo for hitting him from behind
