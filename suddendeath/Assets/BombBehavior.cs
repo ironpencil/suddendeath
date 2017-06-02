@@ -21,7 +21,6 @@ public class BombBehavior : MonoBehaviour, Explosive {
 
     // Update is called once per frame
     void Update() {
-
         elapsedTime += Time.deltaTime;
         // Once we get to the shadow, blow up
         if (targetPos.y < transform.position.y)

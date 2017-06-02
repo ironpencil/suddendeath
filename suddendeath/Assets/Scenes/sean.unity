@@ -637,7 +637,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 1:   23'
+  m_Text: 'Player 1:  0'
 --- !u!222 &210494807
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -795,6 +795,7 @@ MonoBehaviour:
   hudTime: {fileID: 925037289}
   hudFps: {fileID: 407401344}
   joinedPlayers: 
+  currentRound: 0
   RoundsToWin: 1
   lastRoundWinner: 0
   roundStartTime: 0
@@ -820,8 +821,8 @@ MonoBehaviour:
   scoreScreenUI: {fileID: 1176841552}
   tileManager: {fileID: 1912545816}
   collapsingFloorDifficulty: 0
-  spinnerDifficulty: 1
-  laserDifficulty: 1
+  spinnerDifficulty: 0
+  laserDifficulty: 0
   bombDifficulty: 0
   wallBladeDifficulty: 0
   mineDifficulty: 1
@@ -1012,7 +1013,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0, y: -150}
+  m_AnchoredPosition: {x: 0, y: -149.99997}
   m_SizeDelta: {x: 0, y: 600}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &399218114
@@ -1460,7 +1461,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 262, y: -428}
+  m_AnchoredPosition: {x: 262, y: -428.00003}
   m_SizeDelta: {x: 400, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &544199637
@@ -3150,7 +3151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 511.99997, y: -69.73999}
+  m_AnchoredPosition: {x: 512, y: -69.73999}
   m_SizeDelta: {x: 900, y: 111.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1237766653
@@ -3423,7 +3424,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 4: 44'
+  m_Text: 'Player 4: 0'
 --- !u!222 &1290706063
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3497,7 +3498,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 3: 44'
+  m_Text: 'Player 3: 0'
 --- !u!222 &1320917317
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4540,7 +4541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 511.99997, y: -510.64032}
+  m_AnchoredPosition: {x: 512, y: -510.64038}
   m_SizeDelta: {x: 900, y: 111.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848949591
@@ -4719,7 +4720,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 762, y: -428}
+  m_AnchoredPosition: {x: 762, y: -428.00003}
   m_SizeDelta: {x: 400, y: 180}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1939401932
@@ -5108,7 +5109,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Player 2:   3'
+  m_Text: 'Player 2:  0'
 --- !u!222 &2021067423
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -276,6 +276,8 @@ public class GameManager : MonoBehaviour {
         playerStats[killer].kills.Add(kill);
         playerStats[victim].deaths.Add(kill);
         kills.Add(kill);
+
+        livingPlayers[killer].NotifyOfKill();
     }
 
     IEnumerator EndRound()
