@@ -113,11 +113,14 @@ public class PlayerInput : MonoBehaviour {
         CurrentSpeed = DashSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
+<<<<<<< HEAD
         dashSound.PlayEffect();
+=======
         DashTrail.GetComponent<ParticleSystem>().Play();
         float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg + 90;
         Vector3 rotation = new Vector3(0, 0, angle);
         DashTrail.transform.eulerAngles = rotation;
+>>>>>>> b2d487cb5bf2ce57e7fcc8b915972ca0013afee0
     }
 
     void EndDash()
