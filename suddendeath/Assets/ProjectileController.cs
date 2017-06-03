@@ -34,7 +34,10 @@ public class ProjectileController : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
     {
         
-        GameObject particle = Instantiate(collisionParticle, transform.position, Quaternion.identity);
+        GameObject particle = Instantiate(collisionParticle);
+        Vector3 particlePos = transform.position;
+        particlePos.z = -1;
+        particle.transform.position = particlePos;
         float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg - 45;
         Vector3 rotation = new Vector3(0, 0, angle);
         particle.transform.eulerAngles = rotation;

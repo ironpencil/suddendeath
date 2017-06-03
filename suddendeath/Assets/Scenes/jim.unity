@@ -822,14 +822,14 @@ MonoBehaviour:
   playerSetupUI: {fileID: 1533842925}
   scoreScreenUI: {fileID: 1176841552}
   tileManager: {fileID: 1912545816}
-  collapsingFloorDifficulty: 1
-  spinnerDifficulty: 1
-  laserDifficulty: 1
+  collapsingFloorDifficulty: 0
+  spinnerDifficulty: 0
+  laserDifficulty: 0
   minWallLaserSpawn: {x: -14.5, y: -7.5}
   maxWallLaserSpawn: {x: 14.5, y: 7.5}
-  bombDifficulty: 1
+  bombDifficulty: 0
   wallBladeDifficulty: 0
-  mineDifficulty: 1
+  mineDifficulty: 0
   isRoundActive: 0
   isRoundReady: 0
   player1Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
@@ -1699,7 +1699,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 564722772}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5, y: 5, z: 0}
+  m_LocalPosition: {x: 7.17, y: 7.07, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 533461371}

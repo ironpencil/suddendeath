@@ -384,3 +384,5 @@ MonoBehaviour:
   MoveSpeed: 20
   FireDirection: {x: 0, y: 0}
   MaxWallBounceCount: 3
+  collisionParticle: {fileID: 1371330884197024, guid: e0321851b10f3624e834682bb53c4810,
+    type: 2}
