@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4700832967826576}
   - component: {fileID: 50826313828385418}
-  - component: {fileID: 58913111566800544}
   - component: {fileID: 114141140611659820}
+  - component: {fileID: 58596434292122780}
   m_Layer: 20
   m_Name: Spinner
   m_TagString: Untagged
@@ -52,7 +52,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1238128772900036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -7.3798294, y: -2.4455156, z: 0}
+  m_LocalPosition: {x: -3.3876476, y: -3.1247652, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4982087308665902}
@@ -92,7 +92,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &58913111566800544
+--- !u!58 &58596434292122780
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 16
-  SpinSpeed: 8
+  SpinSpeed: 500
   PushForce: 3500
   SpinDirection: 1
   minPushPercent: 0.25

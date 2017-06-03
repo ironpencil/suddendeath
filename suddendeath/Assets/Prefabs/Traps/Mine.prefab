@@ -37,7 +37,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1319833556920904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.29, y: 5.03, z: 0}
+  m_LocalPosition: {x: -2.5634575, y: -2.390655, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -119,6 +119,7 @@ MonoBehaviour:
   MineSpawnerBehavior: {fileID: 0}
   IsMineDestroyedOnExplosion: 1
   StartsArmed: 0
+  MaxLifetime: 10
 --- !u!212 &212804604442955598
 SpriteRenderer:
   m_ObjectHideFlags: 1

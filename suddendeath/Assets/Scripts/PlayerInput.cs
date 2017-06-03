@@ -24,6 +24,7 @@ public class PlayerInput : MonoBehaviour {
 
     public GameObject hand;
     public GameObject sprite;
+    public GameObject shield;
     
     public bool mouseInput = false;
 
@@ -72,10 +73,17 @@ public class PlayerInput : MonoBehaviour {
     {
         DashRechargeTimeLeft -= Time.deltaTime;
 
-        if (XCI.GetButtonDown(XboxButton.A, xboxController))
+//        Debug.Log("A? " + XCI.GetButtonDown(XboxButton.A, xboxController));
+  //      Debug.Log("B? " + XCI.GetButtonDown(XboxButton.B, xboxController));
+    //    Debug.Log("RB? " + XCI.GetButtonDown(XboxButton.RightBumper, xboxController));
+
+        if (XCI.GetButtonDown(XboxButton.A, xboxController) 
+            || XCI.GetButtonDown(XboxButton.RightBumper, xboxController)
+            || XCI.GetButtonDown(XboxButton.B, xboxController))
         {
             if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
+                
                 BeginDash();
             }
             else
@@ -84,7 +92,10 @@ public class PlayerInput : MonoBehaviour {
                 //Debug.Log("Can't dash, let player know here");
             }
         }
-        else if (IsDashing && !XCI.GetButton(XboxButton.A, xboxController))
+        else if (IsDashing 
+            && !XCI.GetButton(XboxButton.A, xboxController)
+            && !XCI.GetButton(XboxButton.B, xboxController)
+            && !XCI.GetButton(XboxButton.RightBumper, xboxController))
         {
             EndDash();
         }
@@ -97,7 +108,7 @@ public class PlayerInput : MonoBehaviour {
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = DashingSprite;
         CurrentSpeed = DashSpeed;
-        gameObject.GetComponent<CircleCollider2D>().enabled = false;
+        gameObject.layer = LayerMask.NameToLayer("Dashing Player");
     }
 
     void EndDash()
@@ -108,7 +119,7 @@ public class PlayerInput : MonoBehaviour {
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = PlayerSprite;
         CurrentSpeed = MoveSpeed;
-        gameObject.GetComponent<CircleCollider2D>().enabled = true;
+        gameObject.layer = LayerMask.NameToLayer("Player");
     }
 
     void HandleMovement()
@@ -149,8 +160,8 @@ public class PlayerInput : MonoBehaviour {
             rb2d.velocity = moveDirection;
         }
 
-        float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;
+        if (sprite != null) sprite.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
     }
 
     void HandleShieldMovement()

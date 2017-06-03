@@ -16,8 +16,10 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public MineSpawnerBehavior MineSpawnerBehavior;
     public bool IsMineDestroyedOnExplosion = false;
     public bool StartsArmed = false;
+    public float MaxLifetime = 0.0f;
 
     private float elapsedTime;
+    private float elapsedArmedTime;
     private float nextColorSwitch;
     private bool IsColor1 = true;
     private bool isArmed = false;
@@ -32,14 +34,19 @@ public class MineBehavior : MonoBehaviour, Explosive {
 	
 	// Update is called once per frame
 	void Update () {
-		if (isArmed)
+
+        elapsedTime += Time.deltaTime;
+
+        if (MaxLifetime > 0 && elapsedTime > MaxLifetime) isArmed = true;
+
+        if (isArmed)
         {
             // Increase time spent blinking
-            elapsedTime += Time.deltaTime;
+            elapsedArmedTime += Time.deltaTime;
             
-            if (elapsedTime > nextColorSwitch)
+            if (elapsedArmedTime > nextColorSwitch)
             {
-                nextColorSwitch = elapsedTime + (startFrequency - (blinkFrequency.Evaluate(elapsedTime / armedTime) * startFrequency));
+                nextColorSwitch = elapsedArmedTime + (startFrequency - (blinkFrequency.Evaluate(elapsedArmedTime / armedTime) * startFrequency));
                 IsColor1 = !IsColor1;
             }
 
@@ -51,7 +58,7 @@ public class MineBehavior : MonoBehaviour, Explosive {
                 gameObject.GetComponent<SpriteRenderer>().color = armedColor2;
             }
 
-            if (elapsedTime > armedTime)
+            if (elapsedArmedTime > armedTime)
             {
                 Explode();
             }
@@ -104,7 +111,7 @@ public class MineBehavior : MonoBehaviour, Explosive {
         eb.explosives.Add(this);
         isArmed = false;
         nextColorSwitch = 0.0f;
-        elapsedTime = 0.0f;
+        elapsedArmedTime = 0.0f;
 
         // Remove the mine from visibility for now
         // Destroy gameObject when explosion finishes
