@@ -232,6 +232,7 @@ public class GameManager : MonoBehaviour {
         // generate Wall Laser
         // N = 0, E = 1, S = 2, W = 3
         int wall = UnityEngine.Random.Range(0, 4);
+        wall = 3;
 
         Vector2 laserpos = new Vector2();
         Vector2 facing = new Vector2();
