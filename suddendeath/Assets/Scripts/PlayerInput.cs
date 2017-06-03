@@ -108,6 +108,7 @@ public class PlayerInput : MonoBehaviour {
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = DashingSprite;
         CurrentSpeed = DashSpeed;
+        gameObject.GetComponent<BoundsChecker>().enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
     }
 
@@ -119,6 +120,7 @@ public class PlayerInput : MonoBehaviour {
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = PlayerSprite;
         CurrentSpeed = MoveSpeed;
+        gameObject.GetComponent<BoundsChecker>().enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
     }
 

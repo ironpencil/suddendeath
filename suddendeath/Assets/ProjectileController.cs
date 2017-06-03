@@ -7,8 +7,10 @@ public class ProjectileController : MonoBehaviour {
     public float MoveSpeed = 10;
     public Vector2 FireDirection;
     public int MaxWallBounceCount = 4;
+    public GameObject collisionParticle;
     private int CurrentWallBounceCount = 0;
     private List<int> colliders;
+    
     Rigidbody2D rb2d;
 
     // Use this for initialization
@@ -31,6 +33,12 @@ public class ProjectileController : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+        GameObject particle = Instantiate(collisionParticle, transform.position, Quaternion.identity);
+        float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg - 45;
+        Vector3 rotation = new Vector3(0, 0, angle);
+        particle.transform.eulerAngles = rotation;
+
         PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
         if (pc != null)
         {
@@ -41,7 +49,7 @@ public class ProjectileController : MonoBehaviour {
         } else if (collision.gameObject.GetComponent<WallBehavior>() != null)
         {
             CurrentWallBounceCount++;
-            if (CurrentWallBounceCount >= MaxWallBounceCount)
+            if (CurrentWallBounceCount > MaxWallBounceCount)
             {
                 Destroy(gameObject);
             }
