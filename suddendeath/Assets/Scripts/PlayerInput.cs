@@ -17,11 +17,12 @@ public class PlayerInput : MonoBehaviour {
     public Sprite DashingSprite;
     public bool IsDashing = false;
     public bool LockDashDirection = true;
+    public GameObject DashTrail;
     private float DashRechargeTimeLeft = 0.0f;
     private float DashTimeLeft = 0.0f;
     private float LastHorizontal = 0.0f;
     private float LastVertical = 0.0f;
-
+    
     public GameObject hand;
     public GameObject sprite;
     public GameObject shield;
@@ -36,7 +37,7 @@ public class PlayerInput : MonoBehaviour {
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         CurrentSpeed = MoveSpeed;
-
+        DashTrail.GetComponent<ParticleSystem>().Stop(false);
         xboxController = (XboxController)PlayerNum;
     }
 	
@@ -110,6 +111,10 @@ public class PlayerInput : MonoBehaviour {
         CurrentSpeed = DashSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
+        DashTrail.GetComponent<ParticleSystem>().Play();
+        float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg + 90;
+        Vector3 rotation = new Vector3(0, 0, angle);
+        DashTrail.transform.eulerAngles = rotation;
     }
 
     void EndDash()
@@ -122,6 +127,7 @@ public class PlayerInput : MonoBehaviour {
         CurrentSpeed = MoveSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
+        DashTrail.GetComponent<ParticleSystem>().Stop(false);
     }
 
     void HandleMovement()
