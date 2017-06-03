@@ -46,8 +46,7 @@ public class BombSpawnerController : MonoBehaviour {
 
             GameObject bomb = Instantiate(BombPrefab, DynamicsParent);
             bomb.transform.position = new Vector2(bombShadow.transform.position.x, bombShadow.transform.position.y + heightOffset);
-            // TODO Use the euler angles
-            bomb.transform.rotation = new Quaternion(0.0f, 0.0f, 1.0f, 0.0f);
+
             bomb.GetComponent<BombBehavior>().shadow = bombShadow;
             bomb.GetComponent<BombBehavior>().targetPlayerNum = targetPlayerNum;
         }
