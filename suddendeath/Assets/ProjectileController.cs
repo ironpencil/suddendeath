@@ -36,7 +36,7 @@ public class ProjectileController : MonoBehaviour {
         {
             int playerNum = pc.gameObject.GetComponent<PlayerInput>().PlayerNum;
             Globals.Instance.GameManager.AddKill(GetLastCollider(playerNum), playerNum, Kill.Weapon.Laser);
-            pc.Kill();
+            pc.Kill(PlayerController.KillType.Dissolve);
             Destroy(gameObject);
         } else if (collision.gameObject.GetComponent<WallBehavior>() != null)
         {

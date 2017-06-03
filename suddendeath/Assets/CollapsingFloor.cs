@@ -13,6 +13,8 @@ public class CollapsingFloor : MonoBehaviour {
     SpriteRenderer floorSprite;
     public Sprite floorImage;
 
+    public SoundEffectHandler collapseSound;
+
     bool doDestroy = false;
 
 	// Use this for initialization
@@ -45,6 +47,11 @@ public class CollapsingFloor : MonoBehaviour {
         float startTime = Time.time;
         float elapsed = 0.0f;
         float duration = collapseDuration;
+
+        if (collapseSound != null)
+        {
+            collapseSound.PlayEffect();
+        }
 
         GameObject pit = GameObject.Instantiate(pitPrefab, transform);
         pit.transform.parent = transform.parent;

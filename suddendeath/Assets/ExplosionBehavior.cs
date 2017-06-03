@@ -43,7 +43,7 @@ public class ExplosionBehavior : MonoBehaviour {
             {
                 ex.KilledPlayer(pc.gameObject.GetComponent<PlayerInput>().PlayerNum);
             }
-            pc.Kill();
+            pc.Kill(PlayerController.KillType.Explode);
         }
     }
 }

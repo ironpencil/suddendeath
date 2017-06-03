@@ -18,18 +18,24 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public bool StartsArmed = false;
     public float MaxLifetime = 0.0f;
 
+    public SoundEffectHandler beepSound;
+    public AudioSource slideSource;
+    public float slideMaxVolume = 1.0f;
+
     private float elapsedTime;
     private float elapsedArmedTime;
     private float nextColorSwitch;
     private bool IsColor1 = true;
     private bool isArmed = false;
     private List<int> colliders;
+    private Rigidbody2D rb2d;
 
 	// Use this for initialization
 	void Start () {
         gameObject.GetComponent<SpriteRenderer>().color = unarmedColor;
         colliders = new List<int>();
         isArmed = StartsArmed;
+        rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
@@ -46,8 +52,11 @@ public class MineBehavior : MonoBehaviour, Explosive {
             
             if (elapsedArmedTime > nextColorSwitch)
             {
+                //e + (.5 - (easing * .5))
+
                 nextColorSwitch = elapsedArmedTime + (startFrequency - (blinkFrequency.Evaluate(elapsedArmedTime / armedTime) * startFrequency));
                 IsColor1 = !IsColor1;
+                if (!IsColor1) { beepSound.PlayEffect(); }
             }
 
             if (IsColor1)
@@ -66,6 +75,11 @@ public class MineBehavior : MonoBehaviour, Explosive {
         {
             gameObject.GetComponent<SpriteRenderer>().color = unarmedColor;
         }
+    }
+
+    void FixedUpdate()
+    {
+        slideSource.volume = slideMaxVolume * Mathf.Min((rb2d.velocity.sqrMagnitude / 128), 1.0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

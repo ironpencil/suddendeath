@@ -38,7 +38,10 @@ public class SpinnerController : MonoBehaviour {
 
         foreach (Rigidbody2D rb in pushes.Keys)
         {
-            rb.AddForce(pushes[rb], ForceMode2D.Impulse);
+            if (rb != null)
+            {
+                rb.AddForce(pushes[rb], ForceMode2D.Impulse);
+            }
         }
 
         pushes.Clear();
@@ -64,7 +67,7 @@ public class SpinnerController : MonoBehaviour {
             {
                 Globals.Instance.GameManager.AddKill(lastCollider.playerNum, victimPlayerNum, Kill.Weapon.Spinner);
             }
-            pc.Kill();
+            pc.Kill(PlayerController.KillType.Dissolve);
         } else if (collision.collider.transform.name.Equals("Shield"))
         {
             // Cache push direction so it happens in the next frame, that way

@@ -25,6 +25,8 @@ public class PlayerInput : MonoBehaviour {
     public GameObject hand;
     public GameObject sprite;
     public GameObject shield;
+
+    public SoundEffectHandler dashSound;
     
     public bool mouseInput = false;
 
@@ -109,6 +111,7 @@ public class PlayerInput : MonoBehaviour {
         sr.sprite = DashingSprite;
         CurrentSpeed = DashSpeed;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
+        dashSound.PlayEffect();
     }
 
     void EndDash()

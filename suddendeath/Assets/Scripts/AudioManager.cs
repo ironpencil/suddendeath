@@ -27,15 +27,15 @@ public class AudioManager : Singleton<AudioManager>
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Raise Volume"))
-        {
-            SetVolume(AudioListener.volume + volumeIncrement);
-        }
+        //if (Input.GetButtonDown("Raise Volume"))
+        //{
+        //    SetVolume(AudioListener.volume + volumeIncrement);
+        //}
 
-        if (Input.GetButtonDown("Lower Volume"))
-        {
-            SetVolume(AudioListener.volume - volumeIncrement);
-        }
+        //if (Input.GetButtonDown("Lower Volume"))
+        //{
+        //    SetVolume(AudioListener.volume - volumeIncrement);
+        //}
     }
 
     public void SetVolume(float volume)

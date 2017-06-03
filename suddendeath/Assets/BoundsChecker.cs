@@ -36,7 +36,7 @@ public class BoundsChecker : MonoBehaviour {
         
         if (inPit)
         {
-            playerController.Kill();
+            playerController.Kill(PlayerController.KillType.Fall);
         } 
     }
 

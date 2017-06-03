@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4072359676958864}
   - component: {fileID: 58547611130296414}
   - component: {fileID: 114060169152393672}
+  - component: {fileID: 114558255985501076}
   m_Layer: 20
   m_Name: Explosion
   m_TagString: Untagged
@@ -98,6 +99,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifetime: 1
+--- !u!114 &114558255985501076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1949254329295552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  clips:
+  - {fileID: 8300000, guid: 05236f5dd9127384f829573d77289d4d, type: 3}
+  - {fileID: 8300000, guid: 3121a40b513471c4b84146dfdf32f036, type: 3}
+  - {fileID: 8300000, guid: 3747b11bc83aa074f9c38121a5b42af8, type: 3}
+  - {fileID: 8300000, guid: e63b05d1e63893343a99d8f8bad3318f, type: 3}
+  playRandom: 1
+  volume: 1
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 1
 --- !u!212 &212960390453549964
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -9,6 +9,18 @@ public class PlayerController : MonoBehaviour {
     public int gamesWon = 0;
     public NotifyController killNotify;
 
+    public SoundEffectHandler dissolveSound;
+    public SoundEffectHandler explodeSound;
+    public SoundEffectHandler fallSound;
+
+    public enum KillType
+    {
+        None,
+        Dissolve,
+        Explode,
+        Fall
+    }
+
 	// Use this for initialization
 	void Start () {
 		
@@ -30,9 +42,29 @@ public class PlayerController : MonoBehaviour {
         killNotify.Notify();
     }
 
-    public bool Kill()
+    public bool Kill(KillType killType)
     {
-        if (!invincible) isDead = true;
+        if (!invincible)
+        {
+            isDead = true;
+
+            switch (killType)
+            {
+                case KillType.None:
+                    break;
+                case KillType.Dissolve:
+                    dissolveSound.PlayEffect();
+                    break;
+                case KillType.Explode:
+                    explodeSound.PlayEffect();
+                    break;
+                case KillType.Fall:
+                    fallSound.PlayEffect();
+                    break;
+                default:
+                    break;
+            }
+        }
         return isDead;
     }
 }

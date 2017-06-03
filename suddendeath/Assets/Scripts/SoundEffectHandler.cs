@@ -14,6 +14,11 @@ public class SoundEffectHandler : MonoBehaviour
     public float volumeMin = 0.9f;
     public float volumeMax = 1.0f;
 
+    public float pitch = 1.0f;
+    public bool variablePitch = false;
+    public float pitchMin = 0.8f;
+    public float pitchMax = 1.2f;
+
     public float playDelay = 0.0f;
     public bool variableDelay = false;
     public float playDelayMin = 0.0f;
@@ -51,6 +56,7 @@ public class SoundEffectHandler : MonoBehaviour
     private void PlayClip(AudioClip clip)
     {
         float clipVolume;
+        float clipPitch;
         float clipDelay;
 
         if (variableVolume)
@@ -61,6 +67,15 @@ public class SoundEffectHandler : MonoBehaviour
         {
             clipVolume = volume;
         }
+
+        if (variablePitch)
+        {
+            clipPitch = Random.Range(pitchMin, pitchMax);
+        } else
+        {
+            clipPitch = pitch;
+        }
+        clipPitch = 1;
 
         if (variableDelay)
         {
@@ -73,21 +88,22 @@ public class SoundEffectHandler : MonoBehaviour
 
         if (clipDelay > 0.0f)
         {
-            StartCoroutine(WaitThenPlay(clip, clipVolume, clipDelay));
+            StartCoroutine(WaitThenPlay(clip, clipVolume, clipPitch, clipDelay));
         }
         else
         {
-            Play(clip, clipVolume);
+            Play(clip, clipVolume, clipPitch);
         }
     }
 
-    private void Play(AudioClip clip, float clipVolume)
+    private void Play(AudioClip clip, float clipVolume, float clipPitch)
     {
         AudioSource source;
 
         if (playOneShot)
         {
             source = AudioManager.Instance.sfxSource;
+            source.pitch = clipPitch;
             source.PlayOneShot(clip, clipVolume);
         }
         else
@@ -95,14 +111,15 @@ public class SoundEffectHandler : MonoBehaviour
             source = AudioManager.Instance.sharedSFXSource;
             source.clip = clip;
             source.volume = clipVolume;
+            source.pitch = clipPitch;
+            source.loop = true;
             source.Play();
         }
-
     }
 
 
 
-    private IEnumerator WaitThenPlay(AudioClip clip, float clipVolume, float clipDelay)
+    private IEnumerator WaitThenPlay(AudioClip clip, float clipVolume, float clipPitch, float clipDelay)
     {
         if (ignoreTimeScale)
         {
@@ -118,6 +135,7 @@ public class SoundEffectHandler : MonoBehaviour
             yield return new WaitForSeconds(clipDelay);
         }
 
-        Play(clip, clipVolume);
+        Play(clip, clipVolume, clipPitch);
     }
+
 }

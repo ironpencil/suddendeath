@@ -24,6 +24,10 @@ GameObject:
   - component: {fileID: 114885060986920588}
   - component: {fileID: 114204692481180118}
   - component: {fileID: 114702674047104018}
+  - component: {fileID: 114405564387988636}
+  - component: {fileID: 114246923449088148}
+  - component: {fileID: 114151464931833732}
+  - component: {fileID: 114503837391988726}
   m_Layer: 17
   m_Name: Player
   m_TagString: Untagged
@@ -72,6 +76,9 @@ GameObject:
   - component: {fileID: 50813031026177646}
   - component: {fileID: 61040571921748274}
   - component: {fileID: 233966428574582082}
+  - component: {fileID: 114204780747130298}
+  - component: {fileID: 114568684299002712}
+  - component: {fileID: 114184232175968600}
   m_Layer: 18
   m_Name: Shield
   m_TagString: Untagged
@@ -421,6 +428,66 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.125, y: 0.875}
   m_EdgeRadius: 0
+--- !u!114 &114151464931833732
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051186068919054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Explode
+  clips:
+  - {fileID: 8300000, guid: e8012b307849d7345b8dc84a253f3cd3, type: 3}
+  playRandom: 0
+  volume: 1.2
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114184232175968600
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479963223348032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  clips:
+  - {fileID: 8300000, guid: b92e7fc8004ddd14c829011508a7f8a6, type: 3}
+  playRandom: 0
+  volume: 1
+  variableVolume: 1
+  volumeMin: 0.8
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114204692481180118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -437,6 +504,127 @@ MonoBehaviour:
   - {fileID: 4470281512990572}
   - {fileID: 4854658411294178}
   - {fileID: 4182879737012224}
+--- !u!114 &114204780747130298
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479963223348032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d61dbe07f4f144fb319006b88d90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEffects:
+  - {fileID: 114568684299002712}
+  isTriggerCollider: 0
+  destroyAfterActivation: 0
+  destroyDelay: 0
+  onlyActivateOnce: 0
+  alreadyActivated: 0
+--- !u!114 &114246923449088148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051186068919054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Dissolve
+  clips:
+  - {fileID: 8300000, guid: 588c64458196a634f99afdc13208044d, type: 3}
+  playRandom: 0
+  volume: 0.8
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114405564387988636
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051186068919054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Dash
+  clips:
+  - {fileID: 8300000, guid: e05250a2bda9bd04783854c5468641ba, type: 3}
+  playRandom: 0
+  volume: 0.6
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114503837391988726
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1051186068919054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Fall
+  clips:
+  - {fileID: 8300000, guid: 8f1202efc00c3f843abe1f207d9f29c0, type: 3}
+  playRandom: 0
+  volume: 1.5
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114568684299002712
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479963223348032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da5e45bf21074e44ab890f5b126a24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  soundEffect: {fileID: 114184232175968600}
 --- !u!114 &114702674047104018
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -451,6 +639,9 @@ MonoBehaviour:
   invincible: 0
   gamesWon: 0
   killNotify: {fileID: 114961914713926404}
+  dissolveSound: {fileID: 114246923449088148}
+  explodeSound: {fileID: 114151464931833732}
+  fallSound: {fileID: 114503837391988726}
 --- !u!114 &114885060986920588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -475,6 +666,7 @@ MonoBehaviour:
   hand: {fileID: 1966428574582082}
   sprite: {fileID: 1566067145964614}
   shield: {fileID: 1865107377731130}
+  dashSound: {fileID: 114405564387988636}
   mouseInput: 0
 --- !u!114 &114961914713926404
 MonoBehaviour:

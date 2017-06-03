@@ -67,7 +67,7 @@ public class WallBladeBehavior : MonoBehaviour {
         PlayerController pc = collision.gameObject.GetComponent<PlayerController>();
         if (pc != null)
         {
-            pc.Kill();
+            pc.Kill(PlayerController.KillType.None);
         }
     }
 

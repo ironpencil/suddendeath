@@ -39,6 +39,9 @@ GameObject:
   - component: {fileID: 58780463642369646}
   - component: {fileID: 114887527680363598}
   - component: {fileID: 96225970159500008}
+  - component: {fileID: 114451864224855576}
+  - component: {fileID: 114885478698532876}
+  - component: {fileID: 114502341049576330}
   m_Layer: 22
   m_Name: Laser
   m_TagString: Untagged
@@ -306,6 +309,67 @@ TrailRenderer:
     textureMode: 0
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
+--- !u!114 &114451864224855576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762763980108584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d61dbe07f4f144fb319006b88d90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEffects:
+  - {fileID: 114885478698532876}
+  isTriggerCollider: 0
+  destroyAfterActivation: 0
+  destroyDelay: 0
+  onlyActivateOnce: 0
+  alreadyActivated: 0
+--- !u!114 &114502341049576330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762763980108584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  clips:
+  - {fileID: 8300000, guid: 22e370666c440594885b1428a71170cc, type: 3}
+  playRandom: 0
+  volume: 0.5
+  variableVolume: 1
+  volumeMin: 0.2
+  volumeMax: 0.3
+  pitch: 1
+  variablePitch: 1
+  pitchMin: 0.9
+  pitchMax: 1.1
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114885478698532876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762763980108584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da5e45bf21074e44ab890f5b126a24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  soundEffect: {fileID: 114502341049576330}
 --- !u!114 &114887527680363598
 MonoBehaviour:
   m_ObjectHideFlags: 1

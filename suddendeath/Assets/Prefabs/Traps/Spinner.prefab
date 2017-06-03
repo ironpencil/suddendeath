@@ -22,8 +22,11 @@ GameObject:
   - component: {fileID: 50826313828385418}
   - component: {fileID: 58186783134693980}
   - component: {fileID: 114141140611659820}
-  - component: {fileID: 82406595103463432}
   - component: {fileID: 58596434292122780}
+  - component: {fileID: 114361510945876556}
+  - component: {fileID: 114262421190289972}
+  - component: {fileID: 114037455073375684}
+  - component: {fileID: 82535439073620896}
   m_Layer: 20
   m_Name: Spinner
   m_TagString: Untagged
@@ -124,7 +127,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
---- !u!82 &82406595103463432
+--- !u!82 &82535439073620896
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -135,7 +138,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 20de81b62b8c8de4babac91878bbddf7, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -143,8 +146,8 @@ AudioSource:
   SpatializePostEffects: 0
   Priority: 128
   DopplerLevel: 1
-  MinDistance: 5
-  MaxDistance: 10
+  MinDistance: 1
+  MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -204,6 +207,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114037455073375684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  clips:
+  - {fileID: 8300000, guid: a2ec9f5e70c1c6847ae64a396fc703af, type: 3}
+  playRandom: 0
+  volume: 1
+  variableVolume: 1
+  volumeMin: 0.4
+  volumeMax: 0.5
+  pitch: 1
+  variablePitch: 1
+  pitchMin: 0.8
+  pitchMax: 1
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114141140611659820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +254,37 @@ MonoBehaviour:
   SpinDirection: 1
   minPushPercent: 0.25
   timeForKillCredit: 1.5
+--- !u!114 &114262421190289972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da5e45bf21074e44ab890f5b126a24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  soundEffect: {fileID: 114037455073375684}
+--- !u!114 &114361510945876556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d61dbe07f4f144fb319006b88d90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEffects:
+  - {fileID: 114262421190289972}
+  isTriggerCollider: 0
+  destroyAfterActivation: 0
+  destroyDelay: 0
+  onlyActivateOnce: 0
+  alreadyActivated: 0
 --- !u!212 &212550780965139944
 SpriteRenderer:
   m_ObjectHideFlags: 1

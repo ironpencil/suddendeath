@@ -22,6 +22,12 @@ GameObject:
   - component: {fileID: 61771989964610534}
   - component: {fileID: 114773534439791764}
   - component: {fileID: 50303235231278218}
+  - component: {fileID: 114045283548811722}
+  - component: {fileID: 114649024241385668}
+  - component: {fileID: 114052544216609770}
+  - component: {fileID: 114272286665959946}
+  - component: {fileID: 114205939093162288}
+  - component: {fileID: 82774203596175082}
   m_Layer: 26
   m_Name: Wall Laser
   m_TagString: Untagged
@@ -146,6 +152,207 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!82 &82774203596175082
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 47458a14507c94e419374b8970ccb4b1, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.1
+  m_Pitch: 0.3
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!114 &114045283548811722
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99d61dbe07f4f144fb319006b88d90ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onCollisionEffects:
+  - {fileID: 114649024241385668}
+  isTriggerCollider: 1
+  destroyAfterActivation: 0
+  destroyDelay: 0
+  onlyActivateOnce: 0
+  alreadyActivated: 0
+--- !u!114 &114052544216609770
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  clips:
+  - {fileID: 8300000, guid: 2e72056b29ede274aa5cfc0ea43cee20, type: 3}
+  playRandom: 0
+  volume: 0.2
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 1
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114205939093162288
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Fire
+  clips:
+  - {fileID: 8300000, guid: 31776610ab1ba114cbff721294ed9df6, type: 3}
+  playRandom: 0
+  volume: 0.4
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 1
+  pitchMin: 0.9
+  pitchMax: 1.1
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114272286665959946
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Charge
+  clips:
+  - {fileID: 8300000, guid: f86dac395ad5753409bbb9c6612d5998, type: 3}
+  playRandom: 0
+  volume: 0.3
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114649024241385668
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1328865512593642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0da5e45bf21074e44ab890f5b126a24a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Bounce
+  soundEffect: {fileID: 114052544216609770}
 --- !u!114 &114773534439791764
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,8 +367,8 @@ MonoBehaviour:
   MoveSpeed: 5
   IsVertical: 1
   IsCharging: 0
-  shotFrequency: 0.9
-  chargeTime: 0.1
+  shotFrequency: 0.5
+  chargeTime: 0.5
   IdleSprite: {fileID: 21300000, guid: 271722fc814ddbb4daab73cf940d9de9, type: 3}
   ChargingSprite: {fileID: 21300000, guid: 271722fc814ddbb4daab73cf940d9de9, type: 3}
   sprite: {fileID: 212531279502347024}
@@ -172,6 +379,8 @@ MonoBehaviour:
   maxSpawn: {x: 0, y: 0}
   minSpawn: {x: 0, y: 0}
   firingPosition: {fileID: 4209558709735022}
+  chargeSound: {fileID: 114272286665959946}
+  fireSound: {fileID: 114205939093162288}
 --- !u!212 &212531279502347024
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4061820232378584}
   - component: {fileID: 58280889793311422}
   - component: {fileID: 114062384804936684}
+  - component: {fileID: 114044091651796462}
   m_Layer: 20
   m_Name: LargeExplosion
   m_TagString: Untagged
@@ -86,6 +87,37 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.65
+--- !u!114 &114044091651796462
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1119816873204034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  clips:
+  - {fileID: 8300000, guid: 60098bdb12d8b514bb358eebbb152d99, type: 3}
+  - {fileID: 8300000, guid: f085af39e73a79841a34e04ee9d14ad5, type: 3}
+  playRandom: 0
+  volume: 1
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 1
+  playDelayMin: 0
+  playDelayMax: 0.05
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 1
 --- !u!114 &114062384804936684
 MonoBehaviour:
   m_ObjectHideFlags: 1

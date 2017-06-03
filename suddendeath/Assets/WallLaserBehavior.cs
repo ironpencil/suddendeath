@@ -18,7 +18,10 @@ public class WallLaserBehavior : MonoBehaviour {
     public Vector2 maxSpawn;
     public Vector2 minSpawn;
     public Transform firingPosition;
-    
+
+    public SoundEffectHandler chargeSound;
+    public SoundEffectHandler fireSound;
+
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -66,11 +69,19 @@ public class WallLaserBehavior : MonoBehaviour {
         {
             IsCharging = false;
             sprite.sprite = IdleSprite;
+            if (fireSound != null)
+            {
+                fireSound.PlayEffect();
+            }
         }
         else
         {
             IsCharging = true;
             sprite.sprite = ChargingSprite;
+            if (chargeSound != null)
+            {
+                chargeSound.PlayEffect();
+            }
         }
     }
 
