@@ -20,8 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4700832967826576}
   - component: {fileID: 50826313828385418}
+  - component: {fileID: 58186783134693980}
   - component: {fileID: 114141140611659820}
   - component: {fileID: 82406595103463432}
+  - component: {fileID: 58596434292122780}
   m_Layer: 20
   m_Name: Spinner
   m_TagString: Untagged
@@ -92,6 +94,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58186783134693980
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.9
 --- !u!58 &58596434292122780
 CircleCollider2D:
   m_ObjectHideFlags: 1
