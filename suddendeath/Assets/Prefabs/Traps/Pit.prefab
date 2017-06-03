@@ -163,6 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f341c1435e564e04db95c45f3da03f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pitCollider: {fileID: 61726199195641160}
 --- !u!212 &212396803143115848
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -195,8 +196,8 @@ SpriteRenderer:
   m_SortingLayerID: 560340477
   m_SortingLayer: -1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 008466400df060343a2e2285fe4665e0, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 246df62897489064994fed940e1afc53, type: 3}
+  m_Color: {r: 0.45588237, g: 0.45588237, b: 0.45588237, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

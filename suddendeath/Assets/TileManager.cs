@@ -24,7 +24,6 @@ public class TileManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         Reset();
-        StartCollapsing();
 	}
 	
 	// Update is called once per frame

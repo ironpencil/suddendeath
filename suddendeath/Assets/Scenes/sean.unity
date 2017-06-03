@@ -776,7 +776,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 271390534}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37cf7fd959f48064ea08e5f095b40ae4, type: 3}
   m_Name: 
@@ -1535,6 +1535,48 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!1001 &546006853
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1372115511}
+    m_Modifications:
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: ce5de59171e61e841bf6c0167a26cedd, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &546969577
 GameObject:
   m_ObjectHideFlags: 0
@@ -4585,53 +4627,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1848949589}
---- !u!1 &1912545814
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1912545815}
-  - component: {fileID: 1912545816}
-  m_Layer: 20
-  m_Name: TileManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1912545815
+--- !u!4 &1912545815 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912545814}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1372115511}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1912545816
+  m_PrefabParentObject: {fileID: 4376502624589378, guid: ce5de59171e61e841bf6c0167a26cedd,
+    type: 2}
+  m_PrefabInternal: {fileID: 546006853}
+--- !u!114 &1912545816 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1912545814}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114952747674038738, guid: ce5de59171e61e841bf6c0167a26cedd,
+    type: 2}
+  m_PrefabInternal: {fileID: 546006853}
   m_Script: {fileID: 11500000, guid: 424085cb1d2d54f47b11d84e9c381f6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tilePrefab: {fileID: 1391781535762864, guid: 86ea58ff4af15874cbec28d8d14163f4, type: 2}
-  arenaSize: {x: 31, y: 17}
-  arenaUpperLeft: {x: -15, y: 8}
-  isCollapsing: 0
-  collapseTime: 0.05
-  timeGroupSize: 16
-  timeGroupAdjust: 0.05
 --- !u!1001 &1923684886
 Prefab:
   m_ObjectHideFlags: 0

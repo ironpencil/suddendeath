@@ -44,15 +44,25 @@ public class CollapsingFloor : MonoBehaviour {
         float duration = collapseDuration;
 
         Color floorColor = floorSprite.color;
+        Color tempColor = floorColor;
+
+        GameObject pit = GameObject.Instantiate(pitPrefab, transform);
+        pit.transform.parent = transform.parent;
+        PitController pitController = pit.GetComponent<PitController>();
+        pitController.ActivatePit(false);
+
+        Vector2 floorScale = floorSprite.transform.localScale;
 
         while (elapsed < duration)
         {
             elapsed = Time.time - startTime;
-            floorSprite.color = Color.Lerp(floorColor, Color.black, elapsed / duration);
+            floorSprite.transform.localScale = Vector2.Lerp(floorScale, Vector2.zero, elapsed / duration);
+            //tempColor.a = Mathf.Lerp(floorColor.a, 0, elapsed / duration);
+            //floorSprite.color = tempColor;
             yield return new WaitForSeconds(0.1f);
         }
 
-        GameObject pit = GameObject.Instantiate(pitPrefab, transform);
-        pit.transform.parent = transform.parent;
+        pitController.ActivatePit(true);
+        
     }
 }
