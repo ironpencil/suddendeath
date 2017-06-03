@@ -89,7 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df2e94926257ae54f9cb20012d8afa75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unarmedColor: {r: 0, g: 0, b: 1, a: 1}
+  unarmedColor: {r: 1, g: 1, b: 1, a: 1}
   armedColor1: {r: 1, g: 1, b: 0, a: 1}
   armedColor2: {r: 1, g: 0, b: 0, a: 1}
   armedTime: 3
