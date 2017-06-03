@@ -15,11 +15,15 @@ public class WallLaserBehavior : MonoBehaviour {
     public float timeLeft;
     public GameObject projectilePrefab;
     public Vector2 facing;
-
+    public Vector2 maxSpawn;
+    public Vector2 minSpawn;
+    public Transform firingPosition;
+    
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
         timeLeft = shotFrequency;
+        if (Random.value > 0.5f) MoveSpeed = -MoveSpeed;
     }
 	
 	// Update is called once per frame
@@ -74,7 +78,7 @@ public class WallLaserBehavior : MonoBehaviour {
     {
         Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
         GameObject laser = Instantiate(projectilePrefab, DynamicsParent);
-        laser.transform.position = transform.position;
+        laser.transform.localPosition = firingPosition.localPosition;
         laser.transform.rotation = transform.rotation;
         laser.GetComponent<ProjectileController>().FireDirection = facing;
     }

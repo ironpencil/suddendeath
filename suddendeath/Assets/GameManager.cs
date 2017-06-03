@@ -15,10 +15,17 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> wallBlades;
     public List<GameObject> mines;
     public List<Kill> kills;
+    public List<Text> hudScores;
+    public Text hudRound;
+    public Text hudTime;
+    public Text hudFps;
 
-    public List<int> joinedPlayers = new List<int>();
+    public List<int> joinedPlayers;
 
     private int numPlayers = 0;
+
+    public int currentRound = 0;
+    public int RoundsToWin = 10;
     public Dictionary<int, PlayerStats> playerStats;
     public int lastRoundWinner = 0;
     public float roundStartTime = 0.0f;
@@ -31,7 +38,7 @@ public class GameManager : MonoBehaviour {
     public GameObject laserPrefab;
     public GameObject bombSpawnerPrefab;
     public GameObject wallBladePrefab;
-    public GameObject minePrefab;
+    public GameObject mineSpawnerPrefab;
 
     public GameObject playerSetupUI;
     public ScoreScreenBehavior scoreScreenUI;
@@ -41,6 +48,9 @@ public class GameManager : MonoBehaviour {
     public float collapsingFloorDifficulty = 1.0f;
     public float spinnerDifficulty = 1.0f;
     public float laserDifficulty = 1.0f;
+    public Vector2 minWallLaserSpawn;
+    public Vector2 maxWallLaserSpawn;
+    
     public float bombDifficulty = 1.0f;
     public float wallBladeDifficulty = 1.0f;
     public float mineDifficulty = 1.0f;
@@ -50,33 +60,44 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        SetupGame();
-	}
+        
+    }
 
-    private void SetupGame()
+    public void SetupGame()
     {
+        int i = 1;
+        foreach (Text text in hudScores)
+        {
+            text.text = "Player " + i++ + ": " + 0;
+            text.gameObject.SetActive(false);
+        }
+        hudRound.gameObject.SetActive(false);
+        hudTime.gameObject.SetActive(false);
+        currentRound = 0;
+        lastRoundWinner = 0;
+        joinedPlayers = new List<int>();
         playerStats = new Dictionary<int, PlayerStats>();
         kills = new List<Kill>();
-        playerSetupUI.SetActive(true);
+        playerSetupUI.GetComponent<PlayerSetupBehavior>().Display();
     }
     
-    void OnGUI()
+    void UpdateHud()
     {
         if (displayFrameRate)
         {
-            int w = Screen.width, h = Screen.height;
-
-            GUIStyle style = new GUIStyle();
-
-            Rect rect = new Rect(0, 0, w, h * 2 / 100);
-            style.alignment = TextAnchor.UpperLeft;
-            style.fontSize = h * 2 / 100;
-            style.normal.textColor = new Color(0.0f, 0.0f, 0.5f, 1.0f);
             float msec = deltaTime * 1000.0f;
             float fps = 1.0f / deltaTime;
-            string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
-            GUI.Label(rect, text, style);
+            hudFps.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         }
+
+        TimeSpan t = TimeSpan.FromSeconds(Time.time - roundStartTime);
+
+        string time = string.Format("{0:D2}:{1:D2}:{2:D3}",
+                        t.Minutes,
+                        t.Seconds,
+                        t.Milliseconds);
+
+        hudTime.text = time;
     }
 
     // Update is called once per frame
@@ -89,7 +110,7 @@ public class GameManager : MonoBehaviour {
 
             if (livingPlayersList.Count > 1)
             {
-                //keep playing
+                UpdateHud();
             }
             else if (livingPlayersList.Count == 1)
             {
@@ -97,7 +118,6 @@ public class GameManager : MonoBehaviour {
                 {
                     //stop, this player won
                     lastRoundWinner = livingPlayersList[0].GetComponent<PlayerInput>().PlayerNum;
-                    Debug.Log("Player " + lastRoundWinner + " Wins!");
                     StartCoroutine(EndRound());
                 }
             }
@@ -119,10 +139,10 @@ public class GameManager : MonoBehaviour {
         if (!joinedPlayers.Contains(playerNum))
         {
             joinedPlayers.Add(playerNum);
+            hudScores[playerNum - 1].gameObject.SetActive(true);
         }
         if (!playerStats.Keys.Contains(playerNum))
         {
-            Debug.Log("Adding Player Num: " + playerNum);
             PlayerStats ps = new PlayerStats();
             ps.playerNum = playerNum;
             playerStats.Add(playerNum, ps);
@@ -136,6 +156,12 @@ public class GameManager : MonoBehaviour {
 
     public void StartRound()
     {
+        hudTime.gameObject.SetActive(true);
+
+        currentRound++;
+        hudRound.text = "Round " + currentRound.ToString();
+        hudRound.gameObject.SetActive(true);
+
         livingPlayers = new Dictionary<int, PlayerController>();
         spinners = new List<GameObject>();
         lasers = new List<GameObject>();
@@ -156,9 +182,12 @@ public class GameManager : MonoBehaviour {
 
         if (spinnerDifficulty > 0)
         {
-            GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-            spinner.transform.position = Vector2.zero;
-            spinners.Add(spinner);
+            for (int i = 0; i < spinnerDifficulty; i++)
+            {
+                GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
+                spinner.transform.position = Vector2.zero;
+                spinners.Add(spinner);
+            }
         }
 
         if (bombDifficulty > 0)
@@ -167,9 +196,18 @@ public class GameManager : MonoBehaviour {
             bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
         }
 
+        if (mineDifficulty > 0)
+        {
+            GameObject mineSpawner = GameObject.Instantiate(mineSpawnerPrefab, dynamicsParent);
+            mineSpawner.transform.position = new Vector2(0.0f, 0.0f);
+        }
+
         if (laserDifficulty > 0)
         {
-            CreateWallLaser();
+            for (int i = 0; i < laserDifficulty; i++)
+            {
+                CreateWallLaser();
+            }
         }
 
         if (collapsingFloorDifficulty > 0)
@@ -185,13 +223,6 @@ public class GameManager : MonoBehaviour {
             wallBlades.Add(wallBlade);
         }
 
-        if (mineDifficulty > 0)
-        {
-            GameObject mine = GameObject.Instantiate(minePrefab, dynamicsParent);
-            mine.transform.position = new Vector2(UnityEngine.Random.Range(-3, 4), UnityEngine.Random.Range(-3, 4));
-            mines.Add(mine);
-        }
-
         isRoundActive = true;
         isRoundReady = false;
     }
@@ -199,9 +230,8 @@ public class GameManager : MonoBehaviour {
     void CreateWallLaser()
     {
         // generate Wall Laser
-        // N = 1, E = 2, S = 3, W = 4
+        // N = 0, E = 1, S = 2, W = 3
         int wall = UnityEngine.Random.Range(0, 4);
-        //wall = 4;
 
         Vector2 laserpos = new Vector2();
         Vector2 facing = new Vector2();
@@ -211,7 +241,7 @@ public class GameManager : MonoBehaviour {
         switch (wall)
         {
             case 0:
-                laserpos.x = 0.0f;
+                laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
                 laserpos.y = 8f;
                 laserrotation = 90.0f;
                 facing.x = 0.0f;
@@ -219,14 +249,14 @@ public class GameManager : MonoBehaviour {
                 break;
             case 1:
                 laserpos.x = 15f;
-                laserpos.y = 0.0f;
+                laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 0.0f;
                 facing.x = -1.0f;
                 facing.y = 0.0f;
                 IsVertical = true;
                 break;
             case 2:
-                laserpos.x = 0.0f;
+                laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
                 laserpos.y = -8f;
                 laserrotation = -90.0f;
                 facing.x = 0.0f;
@@ -234,7 +264,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case 3:
                 laserpos.x = -15f;
-                laserpos.y = 0.0f;
+                laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 180.0f;
                 facing.x = 1.0f;
                 facing.y = 0.0f;
@@ -248,17 +278,22 @@ public class GameManager : MonoBehaviour {
         WallLaserBehavior wlb = wallLaser.GetComponent<WallLaserBehavior>();
         wlb.facing = facing;
         wlb.IsVertical = IsVertical;
+
         lasers.Add(wallLaser);
     }
 
     public void AddKill(int killer, int victim, Kill.Weapon weapon)
     {
-        Debug.Log("Player" + killer + " killed Player" + victim + " with " + weapon);
         Kill kill = new Kill(killer, victim, weapon);
 
         playerStats[killer].kills.Add(kill);
         playerStats[victim].deaths.Add(kill);
         kills.Add(kill);
+
+        if (killer != victim)
+        {
+            livingPlayers[killer].NotifyOfKill();
+        }
     }
 
     IEnumerator EndRound()
@@ -266,15 +301,13 @@ public class GameManager : MonoBehaviour {
         isRoundActive = false;
         Time.timeScale = 0.0f;
 
+        // Last round ended in tie
         if (lastRoundWinner != 0)
         {
-            Debug.Log("Last Round Winner: " + lastRoundWinner);
             playerStats[lastRoundWinner].wins++;
-        } else
-        {
-            Debug.Log("Last Round Ended in a Tie ");
+            hudScores[lastRoundWinner - 1].text = "Player " + lastRoundWinner + ":  " + playerStats[lastRoundWinner].wins;
         }
-        
+
         yield return new WaitForSecondsRealtime(2.0f);
 
         foreach (PlayerController player in livingPlayers.Values)
@@ -293,6 +326,22 @@ public class GameManager : MonoBehaviour {
 
         tileManager.Reset();
         Time.timeScale = 1.0f;
+
         scoreScreenUI.Display();
+    }
+
+    public PlayerStats GetWinner()
+    {
+        PlayerStats winner = null;
+
+        foreach (PlayerStats ps in playerStats.Values)
+        {
+            if (ps.wins >= RoundsToWin)
+            {
+                winner = ps;
+            }
+        }
+
+        return winner;
     }
 }

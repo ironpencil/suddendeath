@@ -13,6 +13,9 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public GameObject ExplosionPrefab;
     public bool onlyArmByPlayer = true;
     public bool bodyCollisionKillsPlayer = true;
+    public MineSpawnerBehavior MineSpawnerBehavior;
+    public bool IsMineDestroyedOnExplosion = false;
+    public bool StartsArmed = false;
 
     private float elapsedTime;
     private float nextColorSwitch;
@@ -24,6 +27,7 @@ public class MineBehavior : MonoBehaviour, Explosive {
 	void Start () {
         gameObject.GetComponent<SpriteRenderer>().color = unarmedColor;
         colliders = new List<int>();
+        isArmed = StartsArmed;
     }
 	
 	// Update is called once per frame
@@ -74,12 +78,6 @@ public class MineBehavior : MonoBehaviour, Explosive {
             }
         } else if (bodyCollisionKillsPlayer)
         {
-            /*
-            int killer = GetLastCollider(pi.PlayerNum);
-            pi.gameObject.GetComponent<PlayerController>().Kill();
-            if (killer == -1) killer = pi.PlayerNum;
-            Globals.Instance.GetComponent<GameManager>().AddKill(killer, pi.PlayerNum, Kill.Weapon.Mine);
-            */
             Explode();
         }
 
@@ -107,11 +105,18 @@ public class MineBehavior : MonoBehaviour, Explosive {
         isArmed = false;
         nextColorSwitch = 0.0f;
         elapsedTime = 0.0f;
+
+        // Remove the mine from visibility for now
+        // Destroy gameObject when explosion finishes
+        if (IsMineDestroyedOnExplosion)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     public int GetLastCollider(int playerNum)
     {
-        int lastCollider = -1;
+        int lastCollider = playerNum;
 
         for (int i = colliders.Count - 1; i >= 0; i--)
         {
@@ -140,5 +145,10 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public void EndExploding()
     {
         colliders.Clear();
+        if (IsMineDestroyedOnExplosion)
+        {
+            MineSpawnerBehavior.RemoveMine(gameObject);
+            Destroy(gameObject);
+        }
     }
 }

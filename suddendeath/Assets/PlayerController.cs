@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour {
     public bool invincible = false;
     bool isDead = false;
     public int gamesWon = 0;
+    public NotifyController killNotify;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour {
             Globals.Instance.GameManager.livingPlayers.Remove(playerNum);          
         }
 	}
+
+    public void NotifyOfKill()
+    {
+        killNotify.Notify();
+    }
 
     public bool Kill()
     {

@@ -20,7 +20,6 @@ public class PlayerSelector : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
         if (XCI.GetButtonDown(XboxButton.A, controller))
         {
             if (!playerJoined)

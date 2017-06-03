@@ -15,4 +15,16 @@ public class PlayerStats {
         kills = new List<Kill>();
         deaths = new List<Kill>();
     }
+
+    public int GetOtherKillCount()
+    {
+        int killOtherCount = 0;
+
+        foreach (Kill kill in kills)
+        {
+            if (kill.victimPlayerNum != kill.killerPlayerNum) killOtherCount++;
+        }
+
+        return killOtherCount;
+    }
 }

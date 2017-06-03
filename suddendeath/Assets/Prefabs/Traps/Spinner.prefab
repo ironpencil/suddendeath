@@ -83,7 +83,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 16
+  m_Mass: 8
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -123,6 +123,7 @@ MonoBehaviour:
   PushForce: 3500
   SpinDirection: 1
   minPushPercent: 0.25
+  timeForKillCredit: 1.5
 --- !u!212 &212550780965139944
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,11 +156,11 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f9403d2142632f846a90e9b8a616dba4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 40fe75b171320604a96c81130eda9fe9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0

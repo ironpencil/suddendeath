@@ -79,7 +79,7 @@ public class WallBladeBehavior : MonoBehaviour {
             // Get the closest point
             Vector2 closestPoint = Vector2.zero;
             float closestDistance = 0.0f;
-            int pointIdx = -1;
+
             for (int i = 0; i < ec.points.Length; i++)
             {
                 Vector2 point = ec.points[i];
@@ -88,7 +88,6 @@ public class WallBladeBehavior : MonoBehaviour {
                     distance < closestDistance) {
                     closestPoint = point;
                     closestDistance = distance;
-                    pointIdx = i;
                 }
             }
         }

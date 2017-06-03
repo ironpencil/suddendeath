@@ -33,20 +33,23 @@ public class BombSpawnerController : MonoBehaviour {
         //float y = Random.Range(UpperLeftBound.y, LowerRightBound.y);
         List<int> livingPlayerNums = Globals.Instance.GameManager.livingPlayers.Keys.ToList();
 
-        int targetPlayerNum = livingPlayerNums[Random.Range(0, livingPlayerNums.Count)];
-        Globals.Instance.GameManager.playerStats[targetPlayerNum].bombTargets++;
-        PlayerController pc = Globals.Instance.GameManager.livingPlayers[targetPlayerNum];
+        if (livingPlayerNums.Count > 0)
+        {
+            int targetPlayerNum = livingPlayerNums[Random.Range(0, livingPlayerNums.Count)];
+            Globals.Instance.GameManager.playerStats[targetPlayerNum].bombTargets++;
+            PlayerController pc = Globals.Instance.GameManager.livingPlayers[targetPlayerNum];
 
-        Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
+            Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
 
-        GameObject bombShadow = Instantiate(ShadowPrefab, DynamicsParent);
-        bombShadow.transform.position = new Vector2(pc.transform.position.x, pc.transform.position.y);
+            GameObject bombShadow = Instantiate(ShadowPrefab, DynamicsParent);
+            bombShadow.transform.position = new Vector2(pc.transform.position.x, pc.transform.position.y);
 
-        GameObject bomb = Instantiate(BombPrefab, DynamicsParent);
-        bomb.transform.position = new Vector2(bombShadow.transform.position.x, bombShadow.transform.position.y + heightOffset);
-        // TODO Use the euler angles
-        bomb.transform.rotation = new Quaternion(0.0f, 0.0f, 1.0f, 0.0f);
-        bomb.GetComponent<BombBehavior>().shadow = bombShadow;
-        bomb.GetComponent<BombBehavior>().targetPlayerNum = targetPlayerNum;
+            GameObject bomb = Instantiate(BombPrefab, DynamicsParent);
+            bomb.transform.position = new Vector2(bombShadow.transform.position.x, bombShadow.transform.position.y + heightOffset);
+            // TODO Use the euler angles
+            bomb.transform.rotation = new Quaternion(0.0f, 0.0f, 1.0f, 0.0f);
+            bomb.GetComponent<BombBehavior>().shadow = bombShadow;
+            bomb.GetComponent<BombBehavior>().targetPlayerNum = targetPlayerNum;
+        }
     }
 }
