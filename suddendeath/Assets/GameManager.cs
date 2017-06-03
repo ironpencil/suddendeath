@@ -58,6 +58,11 @@ public class GameManager : MonoBehaviour {
     public bool isRoundActive = false;
     public bool isRoundReady = false;
 
+    public Color player1Color;
+    public Color player2Color;
+    public Color player3Color;
+    public Color player4Color;
+
     // Use this for initialization
     void Start () {
         
@@ -178,6 +183,28 @@ public class GameManager : MonoBehaviour {
             player.transform.position = playerSpawnPoints[playerNum-1].position;
             livingPlayers[playerNum] = player.GetComponent<PlayerController>();
             livingPlayers[playerNum].GetComponent<PlayerInput>().PlayerNum = playerNum; //todo: clean this up
+            SpriteRenderer psr = player.GetComponent<PlayerInput>().sprite.GetComponent<SpriteRenderer>();
+            SpriteRenderer ssr = player.GetComponent<PlayerInput>().shield.GetComponent<SpriteRenderer>();
+
+            switch (playerNum)
+            {
+                case 1:
+                    psr.color = player1Color;
+                    ssr.color = player1Color;
+                    break;
+                case 2:
+                    psr.color = player2Color;
+                    ssr.color = player2Color;
+                    break;
+                case 3:
+                    psr.color = player3Color;
+                    ssr.color = player3Color;
+                    break;
+                case 4:
+                    psr.color = player4Color;
+                    ssr.color = player4Color;
+                    break;
+            }
         }
 
         if (spinnerDifficulty > 0)
@@ -232,7 +259,6 @@ public class GameManager : MonoBehaviour {
         // generate Wall Laser
         // N = 0, E = 1, S = 2, W = 3
         int wall = UnityEngine.Random.Range(0, 4);
-        wall = 3;
 
         Vector2 laserpos = new Vector2();
         Vector2 facing = new Vector2();

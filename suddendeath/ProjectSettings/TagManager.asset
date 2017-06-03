@@ -22,13 +22,13 @@ TagManager:
   - 
   - Walls
   - 
-  - 
+  - Dashing Player
   - Player
   - Shield
   - 
   - Hazards
-  - Rails
   - 
+  - Lasers
   - Projectiles
   - 
   - 

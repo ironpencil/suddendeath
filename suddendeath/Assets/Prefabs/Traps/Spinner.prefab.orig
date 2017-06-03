@@ -21,7 +21,11 @@ GameObject:
   - component: {fileID: 4700832967826576}
   - component: {fileID: 50826313828385418}
   - component: {fileID: 114141140611659820}
+<<<<<<< HEAD
   - component: {fileID: 82406595103463432}
+=======
+  - component: {fileID: 58596434292122780}
+>>>>>>> 259cbcf6cf001f5b90ceca7a1f4d71cd2305ef88
   m_Layer: 20
   m_Name: Spinner
   m_TagString: Untagged

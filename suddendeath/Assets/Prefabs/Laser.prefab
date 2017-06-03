@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4385358807565044}
   - component: {fileID: 96005607658120548}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 58780463642369646}
   - component: {fileID: 114887527680363598}
   - component: {fileID: 96225970159500008}
-  m_Layer: 20
+  m_Layer: 22
   m_Name: Laser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
