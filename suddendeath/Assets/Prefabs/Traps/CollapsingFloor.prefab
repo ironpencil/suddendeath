@@ -84,6 +84,8 @@ MonoBehaviour:
   pitPrefab: {fileID: 1299743909172460, guid: a8b242db2463cfd4596ff338bbeff4d1, type: 2}
   doCollapse: 0
   collapseDuration: 1.5
+  collapseMaxRotation: 720
+  floorImage: {fileID: 0}
 --- !u!212 &212028859847898166
 SpriteRenderer:
   m_ObjectHideFlags: 1

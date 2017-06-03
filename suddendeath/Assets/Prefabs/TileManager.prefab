@@ -54,6 +54,11 @@ MonoBehaviour:
   tilePrefab: {fileID: 1391781535762864, guid: 86ea58ff4af15874cbec28d8d14163f4, type: 2}
   arenaSize: {x: 31, y: 17}
   arenaUpperLeft: {x: -15, y: 8}
+  floorSprites:
+  - {fileID: 21300000, guid: 17e432643f6e8c041a618f74e2f7e0f1, type: 3}
+  - {fileID: 21300000, guid: b77d9c8f55ada4e4fa68d73583d886c5, type: 3}
+  - {fileID: 21300000, guid: 4df1ef72d24941043a50c47e56cd7be8, type: 3}
+  - {fileID: 21300000, guid: 378b0445cf5dc20439f30fbe2fd4bcee, type: 3}
   isCollapsing: 0
   collapseTime: 0.05
   timeGroupSize: 16

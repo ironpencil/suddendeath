@@ -9,13 +9,16 @@ public class CollapsingFloor : MonoBehaviour {
     public bool doCollapse = false;
 
     public float collapseDuration = 1.0f;
+    public float collapseMaxRotation = 360.0f;
     SpriteRenderer floorSprite;
+    public Sprite floorImage;
 
     bool doDestroy = false;
 
 	// Use this for initialization
 	void Start () {
         floorSprite = gameObject.GetComponentInChildren<SpriteRenderer>();
+        floorSprite.sprite = floorImage;
 	}
 	
 	// Update is called once per frame
@@ -43,22 +46,22 @@ public class CollapsingFloor : MonoBehaviour {
         float elapsed = 0.0f;
         float duration = collapseDuration;
 
-        Color floorColor = floorSprite.color;
-        Color tempColor = floorColor;
-
         GameObject pit = GameObject.Instantiate(pitPrefab, transform);
         pit.transform.parent = transform.parent;
         PitController pitController = pit.GetComponent<PitController>();
         pitController.ActivatePit(false);
 
         Vector2 floorScale = floorSprite.transform.localScale;
+        float randomRotation = Random.Range(collapseMaxRotation * -1, collapseMaxRotation);
+        Vector3 floorAngles = floorSprite.transform.eulerAngles;
+        Vector3 finalAngles = floorAngles;
+        finalAngles.z = randomRotation;
 
         while (elapsed < duration)
         {
             elapsed = Time.time - startTime;
             floorSprite.transform.localScale = Vector2.Lerp(floorScale, Vector2.zero, elapsed / duration);
-            //tempColor.a = Mathf.Lerp(floorColor.a, 0, elapsed / duration);
-            //floorSprite.color = tempColor;
+            floorSprite.transform.eulerAngles = Vector3.Lerp(floorAngles, finalAngles, elapsed / duration);
             yield return new WaitForSeconds(0.1f);
         }
 

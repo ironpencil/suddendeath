@@ -10,6 +10,7 @@ public class TileManager : MonoBehaviour {
     public Vector2 arenaUpperLeft = new Vector2(-16, 9);
 
     List<CollapsingFloor> tiles;
+    public List<Sprite> floorSprites;
 
     public bool isCollapsing = false;
 
@@ -76,7 +77,9 @@ public class TileManager : MonoBehaviour {
 
                 GameObject newTile = GameObject.Instantiate(tilePrefab, transform);
                 newTile.transform.position = new Vector2(tileX, tileY);
-                tiles.Add(newTile.GetComponent<CollapsingFloor>());
+                CollapsingFloor floorTile = newTile.GetComponent<CollapsingFloor>();
+                floorTile.floorImage = floorSprites[Random.Range(0, 4)];
+                tiles.Add(floorTile);
             }
         }
     }
