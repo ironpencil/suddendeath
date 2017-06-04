@@ -42,12 +42,13 @@ public class GameManager : MonoBehaviour {
 
     public GameObject playerSetupUI;
     public ScoreScreenBehavior scoreScreenUI;
+    public GameObject optionsUI;
     
     public TileManager tileManager;
 
+    public GameOptions gameOptions;
+
     public float collapsingFloorDifficulty = 1.0f;
-    public float spinnerDifficulty = 1.0f;
-    public float laserDifficulty = 1.0f;
     public Vector2 minWallLaserSpawn;
     public Vector2 maxWallLaserSpawn;
     
@@ -65,7 +66,8 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        
+        gameOptions = new GameOptions();
+        optionsUI.GetComponent<OptionsScreenBehavior>().gameOptions = gameOptions;
     }
 
     public void SetupGame()
@@ -159,6 +161,12 @@ public class GameManager : MonoBehaviour {
         joinedPlayers.Remove(playerNum);
     }
 
+    public void DisplayOptions()
+    {
+        playerSetupUI.SetActive(false);
+        optionsUI.SetActive(true);
+    }
+
     public void StartRound()
     {
         hudTime.gameObject.SetActive(true);
@@ -207,14 +215,11 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (spinnerDifficulty > 0)
+        if (gameOptions.IsSpinnerEnabled)
         {
-            for (int i = 0; i < spinnerDifficulty; i++)
-            {
-                GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-                spinner.transform.position = Vector2.zero;
-                spinners.Add(spinner);
-            }
+            GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
+            spinner.transform.position = Vector2.zero;
+            spinners.Add(spinner);
         }
 
         if (bombDifficulty > 0)
@@ -229,12 +234,9 @@ public class GameManager : MonoBehaviour {
             mineSpawner.transform.position = new Vector2(0.0f, 0.0f);
         }
 
-        if (laserDifficulty > 0)
+        if (gameOptions.IsWallLaserEnabled)
         {
-            for (int i = 0; i < laserDifficulty; i++)
-            {
-                CreateWallLaser();
-            }
+            CreateWallLaser();
         }
 
         if (collapsingFloorDifficulty > 0)

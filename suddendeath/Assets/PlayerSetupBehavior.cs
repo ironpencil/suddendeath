@@ -20,7 +20,6 @@ public class PlayerSetupBehavior : MonoBehaviour {
         foreach (PlayerSelector ps in playerSelectors)
         {
             ps.playerJoined = false;
-            ps.playerStatus.text = "Waiting...";
         }
         
         gameObject.SetActive(true);
