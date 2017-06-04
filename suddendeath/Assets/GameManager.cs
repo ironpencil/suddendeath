@@ -230,7 +230,7 @@ public class GameManager : MonoBehaviour {
             for (int i = 0; i < gameOptions.spinnerCount; i++)
             {
                 GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-                spinner.transform.position = new Vector2(UnityEngine.Random.Range(-16, 16), UnityEngine.Random.Range(-9, 9));
+                spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
                 spinners.Add(spinner);
             }
         }
@@ -287,13 +287,13 @@ public class GameManager : MonoBehaviour {
         {
             case 0:
                 laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
-                laserpos.y = 8f;
+                laserpos.y = 7.5f;
                 laserrotation = 90.0f;
                 facing.x = 0.0f;
                 facing.y = -1.0f;
                 break;
             case 1:
-                laserpos.x = 15f;
+                laserpos.x = 14.5f;
                 laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 0.0f;
                 facing.x = -1.0f;
@@ -302,13 +302,13 @@ public class GameManager : MonoBehaviour {
                 break;
             case 2:
                 laserpos.x = UnityEngine.Random.Range(minWallLaserSpawn.x, maxWallLaserSpawn.x);
-                laserpos.y = -8f;
+                laserpos.y = -7.5f;
                 laserrotation = -90.0f;
                 facing.x = 0.0f;
                 facing.y = 1.0f;
                 break;
             case 3:
-                laserpos.x = -15f;
+                laserpos.x = -14.5f;
                 laserpos.y = UnityEngine.Random.Range(minWallLaserSpawn.y, maxWallLaserSpawn.y);
                 laserrotation = 180.0f;
                 facing.x = 1.0f;

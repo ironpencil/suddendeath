@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class MineSpawnerBehavior : MonoBehaviour {
@@ -36,10 +37,27 @@ public class MineSpawnerBehavior : MonoBehaviour {
 
     public void AddMine()
     {
+        List<PlayerController> players = Globals.Instance.GameManager.livingPlayers.Values.ToList();
+
         GameObject mine = GameObject.Instantiate(MinePrefab, gm.dynamicsParent);
-        float x = UnityEngine.Random.Range(LowerSpawnBounds.x, UpperSpawnBounds.x + 1);
-        float y = UnityEngine.Random.Range(LowerSpawnBounds.y, UpperSpawnBounds.y + 1);
-        mine.transform.position = new Vector2(x, y);
+
+        bool mineOnPlayer = true;
+
+        while (mineOnPlayer)
+        {
+            float x = UnityEngine.Random.Range(LowerSpawnBounds.x, UpperSpawnBounds.x + 1);
+            float y = UnityEngine.Random.Range(LowerSpawnBounds.y, UpperSpawnBounds.y + 1);
+
+            Vector2 minePos = new Vector2(x, y);
+
+            if (!players.Any(p => Vector2.Distance(p.transform.position, minePos) < 2.0f))
+            {
+                mineOnPlayer = false;
+            }
+
+            mine.transform.position = new Vector2(x, y);
+        }
+
         mine.GetComponent<MineBehavior>().MineSpawnerBehavior = this;
         MineCount++;
         
