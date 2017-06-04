@@ -674,7 +674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dc4ab2cebcb2144e8f0619d0d85eb7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 1
+  invincible: 0
   gamesWon: 0
   killNotify: {fileID: 114961914713926404}
   dissolveSound: {fileID: 114246923449088148}
