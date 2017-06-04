@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: 4752583537256330}
   - component: {fileID: 61584747793653294}
   - component: {fileID: 50637645562791508}
+  - component: {fileID: 114693959322513904}
   m_Layer: 14
   m_Name: LongWall
   m_TagString: Untagged
@@ -1075,6 +1076,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 32, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114693959322513904
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1331943534982334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98a087f838174f24abd48aaefeea50a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212029954215995724
 SpriteRenderer:
   m_ObjectHideFlags: 1

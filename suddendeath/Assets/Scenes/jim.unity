@@ -843,7 +843,7 @@ MonoBehaviour:
   maxWallLaserSpawn: {x: 14, y: 7}
   bombDifficulty: 0
   wallBladeDifficulty: 0
-  mineDifficulty: 2
+  mineDifficulty: 0
   isRoundActive: 0
   isRoundReady: 0
   player1Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
