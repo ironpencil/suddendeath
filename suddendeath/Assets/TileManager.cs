@@ -7,7 +7,7 @@ public class TileManager : MonoBehaviour {
     public GameObject tilePrefab;
 
     public Vector2 arenaSize = new Vector2(32, 18);
-    public Vector2 arenaUpperLeft = new Vector2(-16, 9);
+    public Vector2 arenaUpperLeft = new Vector2(-15.5f, 8.5f);
 
     List<CollapsingFloor> tiles;
     public List<Sprite> floorSprites;
@@ -19,6 +19,7 @@ public class TileManager : MonoBehaviour {
     float actualCollapseTime;
     public int timeGroupSize = 16;
     public float timeGroupAdjust = 0.5f;
+    
 
     int tilesCollapsedInGroup = 0;
 
@@ -70,10 +71,10 @@ public class TileManager : MonoBehaviour {
 
         for (int x = 0; x < arenaSize.x; x++)
         {
-            int tileX = (int)arenaUpperLeft.x + x;
+            float tileX = arenaUpperLeft.x + x;
             for (int y = 0; y < arenaSize.y; y++)
             {
-                int tileY = (int)arenaUpperLeft.y - y;
+                float tileY = arenaUpperLeft.y - y;
 
                 GameObject newTile = GameObject.Instantiate(tilePrefab, transform);
                 newTile.transform.position = new Vector2(tileX, tileY);
