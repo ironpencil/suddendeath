@@ -103,7 +103,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 60098bdb12d8b514bb358eebbb152d99, type: 3}
   - {fileID: 8300000, guid: f085af39e73a79841a34e04ee9d14ad5, type: 3}
   playRandom: 0
-  volume: 1
+  volume: 1.25
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1

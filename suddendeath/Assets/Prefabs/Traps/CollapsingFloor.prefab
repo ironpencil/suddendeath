@@ -36,6 +36,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783341383942626}
   - component: {fileID: 114811867920417512}
+  - component: {fileID: 114472219763107602}
   m_Layer: 20
   m_Name: CollapsingFloor
   m_TagString: Untagged
@@ -70,6 +71,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114472219763107602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1391781535762864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: 
+  clips:
+  - {fileID: 8300000, guid: d8bd780e00f787f4887cd820ef52412d, type: 3}
+  playRandom: 0
+  volume: 0.1
+  variableVolume: 1
+  volumeMin: 0.08
+  volumeMax: 0.12
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114811867920417512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,7 +117,7 @@ MonoBehaviour:
   collapseDuration: 1.5
   collapseMaxRotation: 720
   floorImage: {fileID: 0}
-  collapseSound: {fileID: 0}
+  collapseSound: {fileID: 114472219763107602}
 --- !u!212 &212028859847898166
 SpriteRenderer:
   m_ObjectHideFlags: 1

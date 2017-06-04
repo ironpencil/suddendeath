@@ -474,7 +474,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: e8012b307849d7345b8dc84a253f3cd3, type: 3}
   playRandom: 0
-  volume: 1.2
+  volume: 2
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1
@@ -553,6 +553,7 @@ MonoBehaviour:
   destroyDelay: 0
   onlyActivateOnce: 0
   alreadyActivated: 0
+  delayBetweenActivations: 0.2
 --- !u!114 &114246923449088148
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -568,7 +569,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 588c64458196a634f99afdc13208044d, type: 3}
   playRandom: 0
-  volume: 0.8
+  volume: 0.6
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1
@@ -626,9 +627,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Fall
   clips:
-  - {fileID: 8300000, guid: 8f1202efc00c3f843abe1f207d9f29c0, type: 3}
+  - {fileID: 8300000, guid: d96410e838f05f04bbaba7bd2226a668, type: 3}
   playRandom: 0
-  volume: 1.5
+  volume: 1
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1

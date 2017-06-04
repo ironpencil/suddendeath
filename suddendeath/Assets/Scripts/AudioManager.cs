@@ -14,6 +14,8 @@ public class AudioManager : Singleton<AudioManager>
     public float maxVolume = 1.0f;
     public float minVolume = 0.0f;
 
+    public float musicFadeInTime = 2.0f;
+
     // Use this for initialization
     public override void Start()
     {
@@ -22,6 +24,8 @@ public class AudioManager : Singleton<AudioManager>
         if (this == null) { return; }
 
         AudioListener.volume = startingVolume;
+
+        StartMusic(musicFadeInTime);
     }
 
     // Update is called once per frame
@@ -43,14 +47,38 @@ public class AudioManager : Singleton<AudioManager>
         AudioListener.volume = Mathf.Clamp(volume, minVolume, maxVolume);
     }
 
-    public void StartMusic()
+    public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = Mathf.Clamp(volume, minVolume, maxVolume);
+    }
+
+    public void StartMusic(float fadeInTime)
     {
         if (musicSource.isPlaying)
         {
             musicSource.Stop();
         }
 
+        StartCoroutine(DoStartMusic(fadeInTime));
+    }
+
+    private IEnumerator DoStartMusic(float fadeInTime)
+    {
+        float startTime = Time.time;
+        float elapsedTime = 0.0f;
+
+        float targetVolume = musicSource.volume;
+        musicSource.volume = 0.0f;
         musicSource.Play();
+
+        while (elapsedTime < fadeInTime)
+        {
+            yield return new WaitForSeconds(0.1f);
+            elapsedTime = Time.time - startTime;
+            musicSource.volume = Mathf.Lerp(0.0f, targetVolume, elapsedTime / fadeInTime);
+        }
+
+        musicSource.volume = targetVolume;
     }
 
     public void StopMusic()

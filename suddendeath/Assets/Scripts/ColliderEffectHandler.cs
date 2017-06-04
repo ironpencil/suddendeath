@@ -12,6 +12,9 @@ public class ColliderEffectHandler : MonoBehaviour {
     public bool onlyActivateOnce = true;
     public bool alreadyActivated = false;
 
+    public float delayBetweenActivations = 0.0f;
+    float lastActivation = 0.0f;
+
 	// Use this for initialization
 	void Start () {
 	
@@ -41,6 +44,15 @@ public class ColliderEffectHandler : MonoBehaviour {
     void ActivateEffects(Collider2D other)
     {
         if (onlyActivateOnce && alreadyActivated) { return; }
+
+        if (delayBetweenActivations > 0.0f)
+        {
+            if (Time.time < lastActivation + delayBetweenActivations)
+            {
+                return;
+            }
+            lastActivation = Time.time;
+        }
 
         alreadyActivated = true;
 
