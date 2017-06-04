@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using XboxCtrlrInput;
 
 public class OptionsScreenBehavior : MonoBehaviour {
     public GameOptions gameOptions;
@@ -18,7 +19,8 @@ public class OptionsScreenBehavior : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (XCI.GetButtonDown(XboxButton.Back, controller))
+        for (int player = 1; player < 5; player++)
+        if (XCI.GetButtonDown(XboxButton.Back, (XboxController)player))
         {
             Globals.Instance.GameManager.DisplayOptions();
         }
