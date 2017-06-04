@@ -27,6 +27,8 @@ GameObject:
   - component: {fileID: 114262421190289972}
   - component: {fileID: 114037455073375684}
   - component: {fileID: 82535439073620896}
+  - component: {fileID: 114702441318005632}
+  - component: {fileID: 114174166898020028}
   m_Layer: 20
   m_Name: Spinner
   m_TagString: Untagged
@@ -219,6 +221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Bounce
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: a2ec9f5e70c1c6847ae64a396fc703af, type: 3}
   playRandom: 0
@@ -254,6 +257,25 @@ MonoBehaviour:
   SpinDirection: 1
   minPushPercent: 0.25
   timeForKillCredit: 1.5
+--- !u!114 &114174166898020028
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13862d7add00d4090b58e0d3ee9473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.2
+  sustainTime: 0.2
+  decayTime: 0.3
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 262144
 --- !u!114 &114262421190289972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -286,6 +308,25 @@ MonoBehaviour:
   onlyActivateOnce: 0
   alreadyActivated: 0
   delayBetweenActivations: 0
+--- !u!114 &114702441318005632
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1238128772900036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13862d7add00d4090b58e0d3ee9473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.1
+  sustainTime: 0.1
+  decayTime: 0.2
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 16384
 --- !u!212 &212550780965139944
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -51,8 +51,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774ba82972961094cb1d7a8f2e2ee581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minCrates: 100
-  maxCrates: 101
+  minCrates: 1
+  maxCrates: 6
   minBounds: {x: -15, y: -8}
   maxBounds: {x: 15, y: 8}
   doSpawnCrates: 1

@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 114204780747130298}
   - component: {fileID: 114568684299002712}
   - component: {fileID: 114184232175968600}
+  - component: {fileID: 114972243547818292}
   m_Layer: 18
   m_Name: Shield
   m_TagString: Untagged
@@ -471,6 +472,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Explode
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: e8012b307849d7345b8dc84a253f3cd3, type: 3}
   playRandom: 0
@@ -501,6 +503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Bounce
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: b92e7fc8004ddd14c829011508a7f8a6, type: 3}
   playRandom: 0
@@ -566,6 +569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Dissolve
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 588c64458196a634f99afdc13208044d, type: 3}
   playRandom: 0
@@ -596,6 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Dash
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: e05250a2bda9bd04783854c5468641ba, type: 3}
   playRandom: 0
@@ -626,6 +631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Fall
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: d96410e838f05f04bbaba7bd2226a668, type: 3}
   playRandom: 0
@@ -689,7 +695,7 @@ MonoBehaviour:
   PlayerNum: 1
   UseForces: 1
   PlayerSprite: {fileID: 21300000, guid: f75280a539739984c85066862cb9b592, type: 3}
-  DashRechargeTime: 2
+  DashRechargeTime: 1
   DashTime: 0.15
   DashSpeed: 20000
   DashingSprite: {fileID: 21300000, guid: 33ec3c615ac49c24e928afc1416edcad, type: 3}
@@ -751,6 +757,25 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114972243547818292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1479963223348032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13862d7add00d4090b58e0d3ee9473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.1
+  sustainTime: 0.1
+  decayTime: 0.1
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 262144
 --- !u!198 &198853557876955048
 ParticleSystem:
   m_ObjectHideFlags: 1

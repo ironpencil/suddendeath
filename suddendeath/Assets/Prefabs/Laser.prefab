@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 114451864224855576}
   - component: {fileID: 114885478698532876}
   - component: {fileID: 114502341049576330}
+  - component: {fileID: 114909356761868584}
   m_Layer: 22
   m_Name: Laser
   m_TagString: Untagged
@@ -327,6 +328,7 @@ MonoBehaviour:
   destroyDelay: 0
   onlyActivateOnce: 0
   alreadyActivated: 0
+  delayBetweenActivations: 0
 --- !u!114 &114502341049576330
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,6 +341,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: 
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 22e370666c440594885b1428a71170cc, type: 3}
   playRandom: 0
@@ -386,3 +389,22 @@ MonoBehaviour:
   MaxWallBounceCount: 3
   collisionParticle: {fileID: 1371330884197024, guid: e0321851b10f3624e834682bb53c4810,
     type: 2}
+--- !u!114 &114909356761868584
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1762763980108584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13862d7add00d4090b58e0d3ee9473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.08
+  sustainTime: 0.1
+  decayTime: 0
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 262144

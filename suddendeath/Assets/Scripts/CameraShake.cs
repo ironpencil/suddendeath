@@ -36,8 +36,8 @@ public class CameraShake : MonoBehaviour {
             //float y = Random.value * 2.0f - 1.0f;
             float x = Mathf.Clamp(Mathf.PerlinNoise(seed, 0), 0.0f, 1.0f) * 2.0f - 1.0f;
             float y = Mathf.Clamp(Mathf.PerlinNoise(0, seed), 0.0f, 1.0f) * 2.0f - 1.0f;
-            x *= shakeMagnitude;
-            y *= shakeMagnitude;
+            x *= shakeMagnitude * Time.timeScale;
+            y *= shakeMagnitude * Time.timeScale;
 
             mainCamera.transform.localPosition = new Vector3(x, y, mainCamera.transform.localPosition.z);
 
