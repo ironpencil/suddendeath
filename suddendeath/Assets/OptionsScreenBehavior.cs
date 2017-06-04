@@ -20,9 +20,11 @@ public class OptionsScreenBehavior : MonoBehaviour {
     void Update()
     {
         for (int player = 1; player < 5; player++)
-        if (XCI.GetButtonDown(XboxButton.Back, (XboxController)player))
         {
-            Globals.Instance.GameManager.DisplayOptions();
+            if (XCI.GetButtonDown(XboxButton.Back, (XboxController)player))
+            {
+                Globals.Instance.GameManager.DisplayPlayerSetup();
+            }
         }
     }
 

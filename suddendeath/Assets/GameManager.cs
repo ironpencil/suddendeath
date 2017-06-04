@@ -167,6 +167,12 @@ public class GameManager : MonoBehaviour {
         optionsUI.SetActive(true);
     }
 
+    public void DisplayPlayerSetup()
+    {
+        playerSetupUI.SetActive(true);
+        optionsUI.SetActive(false);
+    }
+
     public void StartRound()
     {
         hudTime.gameObject.SetActive(true);
