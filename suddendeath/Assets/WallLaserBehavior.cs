@@ -90,7 +90,7 @@ public class WallLaserBehavior : MonoBehaviour {
         Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
         GameObject laser = Instantiate(projectilePrefab, DynamicsParent);
         //laser.transform.position = firingPosition.position;
-        laser.transform.position = new Vector2(firingPosition.position.x, firingPosition.position.y) + rb2d.velocity * Time.deltaTime * 5;
+        laser.transform.position = new Vector2(firingPosition.position.x, firingPosition.position.y) + rb2d.velocity * Time.fixedDeltaTime * 3;
         laser.transform.rotation = transform.rotation;
         laser.GetComponent<ProjectileController>().FireDirection = facing;
     }
