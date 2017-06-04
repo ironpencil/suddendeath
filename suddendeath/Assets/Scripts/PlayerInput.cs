@@ -47,12 +47,19 @@ public class PlayerInput : MonoBehaviour {
 	void Update () {
         if (Globals.Instance.acceptPlayerGameInput)
         {
-            HandleDash();
-            HandleMovement();
             HandleShieldMovement();
             HandleAttack();
         }
         HandlePause();
+    }
+
+    void FixedUpdate()
+    {
+        if (Globals.Instance.acceptPlayerGameInput)
+        {
+            HandleDash();
+            HandleMovement();
+        }
     }
 
     private void HandleAttack()
@@ -74,7 +81,7 @@ public class PlayerInput : MonoBehaviour {
 
     void HandleDash()
     {
-        DashRechargeTimeLeft -= Time.deltaTime;
+        DashRechargeTimeLeft -= Time.fixedDeltaTime;
 
 //        Debug.Log("A? " + XCI.GetButtonDown(XboxButton.A, xboxController));
   //      Debug.Log("B? " + XCI.GetButtonDown(XboxButton.B, xboxController));
@@ -104,8 +111,10 @@ public class PlayerInput : MonoBehaviour {
         }
     }
 
+    private Vector3 beginDashPos;
     void BeginDash()
     {
+        beginDashPos = gameObject.transform.position;
         IsDashing = true;
         DashTimeLeft = DashTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
@@ -137,7 +146,7 @@ public class PlayerInput : MonoBehaviour {
     {
         if (IsDashing)
         {
-            DashTimeLeft -= Time.deltaTime;
+            DashTimeLeft -= Time.fixedDeltaTime;
             if (DashTimeLeft <= 0)
             {
                 EndDash();
@@ -160,15 +169,22 @@ public class PlayerInput : MonoBehaviour {
             LastVertical = vertical;
         }
 
-        Vector2 moveDirection = new Vector2(horizontal * CurrentSpeed, vertical * CurrentSpeed);
+        Vector2 moveDirection = new Vector2(horizontal, vertical);
+
+        if (IsDashing)
+        {
+            moveDirection.Normalize(); //always dash with full speed
+        }
+
+        Vector2 moveForce = moveDirection * CurrentSpeed;
 
         if (UseForces)
         {
-            rb2d.AddForce(moveDirection, ForceMode2D.Force);
+            rb2d.AddForce(moveForce, ForceMode2D.Force);
         }
         else
         {
-            rb2d.velocity = moveDirection;
+            rb2d.velocity = moveForce;
         }
 
         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg - 90;

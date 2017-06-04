@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114701847623792324}
   - component: {fileID: 114169680278213112}
   - component: {fileID: 114097936199075512}
+  - component: {fileID: 114458430254546404}
   m_Layer: 20
   m_Name: Mine
   m_TagString: Untagged
@@ -176,6 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Bounce
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: ea21e69715f0c2749b4fcb68485ba2a3, type: 3}
   playRandom: 0
@@ -206,6 +208,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Beep
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 9cd6be802fb3ac947b121438b10e7ecc, type: 3}
   playRandom: 0
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Spawn
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 19a3d59b3f511314580fa59b7735c53d, type: 3}
   playRandom: 0
@@ -267,6 +271,25 @@ MonoBehaviour:
   ignoreTimeScale: 0
   playOneShot: 1
   playOnStart: 1
+--- !u!114 &114458430254546404
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1319833556920904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac13862d7add00d4090b58e0d3ee9473, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  magnitude: 0.1
+  sustainTime: 0.1
+  decayTime: 0.15
+  shakeOnStart: 0
+  shakeOnCollision: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 262144
 --- !u!114 &114573133293643736
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -330,6 +353,7 @@ MonoBehaviour:
   destroyDelay: 0
   onlyActivateOnce: 0
   alreadyActivated: 0
+  delayBetweenActivations: 0
 --- !u!212 &212804604442955598
 SpriteRenderer:
   m_ObjectHideFlags: 1
