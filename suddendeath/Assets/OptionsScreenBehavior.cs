@@ -28,8 +28,8 @@ public class OptionsScreenBehavior : MonoBehaviour {
     public Text wallLaserShotFrequencyText;
     public Slider wallLaserShotFrequency;
 
-    public Text wallLaserChargeTimeText;
-    public Slider wallLaserChargeTime;
+    //public Text wallLaserChargeTimeText;
+    //public Slider wallLaserChargeTime;
 
     // Bomb Menu
     public Toggle bomb;
@@ -64,35 +64,91 @@ public class OptionsScreenBehavior : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
-        
-        // Spinner Handlers
+        // Spinner
+        //   -- Handlers
         spinner.onValueChanged.AddListener(val => { gameOptions.isSpinnerEnabled = val; Debug.Log("Spinner Enabled: " + val); });
-        //spinnerCount.onValueChanged.AddListener(val => { gameOptions.spinnerCount = (int)val; Debug.Log("") });
-        //spinnerSpeed.onValueChanged.AddListener(val => { gameOptions.spinnerSpeed = (int)val; Debug.Log("") });
+        spinnerCount.onValueChanged.AddListener(val => { gameOptions.spinnerCount = (int)val; spinnerCountText.text = "Spinner Count: " + (int)val; Debug.Log("Spinner Count: " + (int)val); });
+        spinnerSpeed.onValueChanged.AddListener(val => { gameOptions.spinnerSpeed = (int)val; spinnerSpeedText.text = "Spinner Speed: " + (int)val; Debug.Log("Spinner Speed: " + (int)val); });
+
+        //   -- Defaults
+        spinner.isOn = gameOptions.isSpinnerEnabled;
+        spinnerCount.value = gameOptions.spinnerCount;
+        spinnerCountText.text = "Spinner Count: " + gameOptions.spinnerCount;
+        spinnerSpeed.value = gameOptions.spinnerSpeed;
+        spinnerSpeedText.text = "Spinner Speed: " + gameOptions.spinnerSpeed;
+
+
+
 
         // Wall Laser (Laser Turret) Handlers
+        //   -- Handlers
         wallLaser.onValueChanged.AddListener(val => { gameOptions.isWallLaserEnabled = val; Debug.Log("Wall Turret Enabled: " + val); });
-        //wallLaserCount.onValueChanged.AddListener(val => { gameOptions.wallLaserCount = (int)val; wallLaserCountText.text = "Wall Laser Count: " + (int)val; Debug.Log("") });
-        //wallLaserBounceCount.onValueChanged.AddListener(val => { gameOptions.wallLaserBounceCount = (int)val; wallLaserBounceCountText.text = "Laser Bounce Count: " + (int)val; Debug.Log("") });
-        //wallLaserShotFrequency.onValueChanged.AddListener(val => { gameOptions.wallLaserShotFrequency = val; wallLaserShotFrequencyText.text = "Wall Laser Shot Freq: " + val; Debug.Log("") });
-        //wallLaserChargeTime.onValueChanged.AddListener(val => { gameOptions.wallLaserChargeTime = val; wallLaserChargeTimeText.text = "Wall Laser Charge Time: " + val; Debug.Log("") });
+        wallLaserCount.onValueChanged.AddListener(val => { gameOptions.wallLaserCount = (int)val; wallLaserCountText.text = "Wall Turret Count: " + (int)val; Debug.Log("Wall Turret Count: " + (int)val); });
+        wallLaserShotFrequency.onValueChanged.AddListener(val => { gameOptions.wallLaserShotFrequency = val; wallLaserShotFrequencyText.text = "Turret Shot Freq: " + val; Debug.Log("Wall Turret Shot Freq: " + val); });
+        //wallLaserChargeTime.onValueChanged.AddListener(val => { gameOptions.wallLaserChargeTime = val; wallLaserChargeTimeText.text = "Wall Turret Charge Time: " + val; Debug.Log("Wall Turret Charge Time: " + val); });
+        wallLaserBounceCount.onValueChanged.AddListener(val => { gameOptions.wallLaserBounceCount = (int)val; wallLaserBounceCountText.text = "Laser Bounces: " + (int)val; Debug.Log("Laser Bounces: " + (int)val); });
+
+        //   -- Defaults
+        wallLaser.isOn = gameOptions.isWallLaserEnabled;
+        wallLaserCount.value = gameOptions.wallLaserCount;
+        wallLaserCountText.text = "Wall Turret Count: " + gameOptions.wallLaserCount;
+        wallLaserShotFrequency.value = gameOptions.wallLaserShotFrequency;
+        wallLaserShotFrequencyText.text = "Turret Shot Freq: " + gameOptions.wallLaserShotFrequency;
+        wallLaserBounceCount.value = gameOptions.wallLaserBounceCount;
+        wallLaserBounceCountText.text = "Laser Bounces: " + gameOptions.wallLaserBounceCount;
+
+
+
 
         // Bomb Handlers
+        //   -- Handlers
         bomb.onValueChanged.AddListener(val => { gameOptions.isBombEnabled = val; Debug.Log("Bomb Enabled: " + val); });
-        //bombFrequency.onValueChanged.AddListener(val => { gameOptions.bombFrequency = val; bombFrequencyText.text = "Bomb Frequency: " + val; Debug.Log("") });
-        //bombFallTime.onValueChanged.AddListener(val => { gameOptions.bombFallTime = val; bombFallTimeText.text = "Bomb Fall Time: " + val; Debug.Log("") });
+        bombFrequency.onValueChanged.AddListener(val => { gameOptions.bombFrequency = val; bombFrequencyText.text = "Bomb Frequency: " + val; Debug.Log("Bomb Frequency: " + val); });
+        bombFallTime.onValueChanged.AddListener(val =>  { gameOptions.bombFallTime = val;  bombFallTimeText.text = "Bomb Fall Time: " + val;  Debug.Log("Bomb Fall Time: " + val); });
+
+        //   -- Defaults
+        bomb.isOn = gameOptions.isBombEnabled;
+        bombFrequency.value = gameOptions.bombFrequency;
+        bombFrequencyText.text = "Bomb Frequency: " + gameOptions.bombFrequency;
+        bombFallTime.value = gameOptions.bombFallTime;
+        bombFallTimeText.text = "Bomb Fall Time: " + gameOptions.bombFallTime;
+
+
+
 
         // Mine Handlers
+        //   -- Handlers
         mine.onValueChanged.AddListener(val => { gameOptions.isMineEnabled = val; Debug.Log("Mine Enabled: " + val); });
-        //mineStartsArmed.onValueChanged.AddListener(val => { gameOptions.mineStartsArmed = val; bombFallTimeText.text = "Bomb Fall Time: " + val; Debug.Log("") });
-        //mineTimeToDetonate.onValueChanged.AddListener(val => { gameOptions.mineTimeToDetonate = (int)val; bombFallTimeText.text = "Bomb Fall Time: " + val; Debug.Log("") });
-        //maxMines.onValueChanged.AddListener(val => { gameOptions.maxMines = (int)val; bombFallTimeText.text = "Bomb Fall Time: " + (int)val; Debug.Log(""));
-        //mineRespawnFrequency.onValueChanged.AddListener(val => { gameOptions.mineRespawnFrequency = (int)val; bombFallTimeText.text = "Bomb Fall Time: " + (int)val; Debug.Log("") });
-        //mineMaxLifetime.onValueChanged.AddListener(val => { gameOptions.mineMaxLifetime = (int)val; bombFallTimeText.text = "Bomb Fall Time: " + (int)val; Debug.Log("") });
+        mineStartsArmed.onValueChanged.AddListener(val => { gameOptions.mineStartsArmed = val; Debug.Log("Mines Start Armed: " + val); });
+        mineTimeToDetonate.onValueChanged.AddListener(val => { gameOptions.mineTimeToDetonate = (int)val; mineTimeToDetonateText.text = "Mine Time to Detonate: " + val; Debug.Log("Mine Time to Detonate: " + val); });
+        maxMines.onValueChanged.AddListener(val => { gameOptions.maxMines = (int)val; maxMinesText.text = "Max Mines: " + (int)val; Debug.Log("Max Mines: " + (int)val); });
+        mineRespawnFrequency.onValueChanged.AddListener(val => { gameOptions.mineRespawnFrequency = val; mineRespawnFrequencyText.text = "Mine Respawn Freq: " + val; Debug.Log("Mine Respawn Freq: " + val); });
+        mineMaxLifetime.onValueChanged.AddListener(val => { gameOptions.mineMaxLifetime = val; mineMaxLifetimeText.text = "Mine Max Lifetime: " + val; Debug.Log("Mine Max Lifetime: " + val); });
+
+        //   -- Defaults
+        mine.isOn = gameOptions.isMineEnabled;
+        mineStartsArmed.isOn = gameOptions.mineStartsArmed;
+        mineTimeToDetonate.value = gameOptions.mineTimeToDetonate;
+        mineTimeToDetonateText.text = "Mine Time to Detonate: " + gameOptions.mineTimeToDetonate;
+        maxMines.value = gameOptions.maxMines;
+        maxMinesText.text = "Max Mines: " + gameOptions.maxMines;
+        mineRespawnFrequency.value = gameOptions.mineRespawnFrequency;
+        mineRespawnFrequencyText.text = "Mine Respawn Freq: " + gameOptions.mineRespawnFrequency;
+        mineMaxLifetime.value = gameOptions.mineMaxLifetime;
+        mineMaxLifetimeText.text = "Mine max Lifetime: " + gameOptions.mineMaxLifetime;
+        
+
+
+
 
         // Floor Handlers
         floor.onValueChanged.AddListener(val => { gameOptions.isFloorEnabled = val; Debug.Log("Floor Enabled: " + val); });
-        //floorCollapseDuration.onValueChanged.AddListener(val => { gameOptions.floorCollapseDuration = (int)val; Debug.Log("") });
+        //   -- Handlers
+        floorCollapseDuration.onValueChanged.AddListener(val => { gameOptions.floorCollapseDuration = val; floorCollapseDurationText.text = "Floor Collapse Dur: " + val; Debug.Log("Floor Collapse Duration: " + val); });
+
+        //   -- Defaults
+        floorCollapseDuration.value = gameOptions.floorCollapseDuration;
+        floorCollapseDurationText.text = "Floor Collapse Dur: " + gameOptions.floorCollapseDuration;
     }
 
     // Update is called once per frame

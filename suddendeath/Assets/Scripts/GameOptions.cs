@@ -25,8 +25,8 @@ public class  GameOptions  {
     public bool mineStartsArmed = false;
     public int mineTimeToDetonate = 1;
     public int maxMines = 1;
-    public int mineRespawnFrequency = 3;
-    public int mineMaxLifetime = 10;
+    public float mineRespawnFrequency = 3.0f;
+    public float mineMaxLifetime = 10.0f;
     
     // Floor Options
     public bool isFloorEnabled = true;
