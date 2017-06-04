@@ -181,8 +181,8 @@ MonoBehaviour:
   playRandom: 0
   volume: 1
   variableVolume: 1
-  volumeMin: 0.5
-  volumeMax: 0.7
+  volumeMin: 0.7
+  volumeMax: 0.8
   pitch: 1
   variablePitch: 0
   pitchMin: 0.8
@@ -207,9 +207,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   description: Beep
   clips:
-  - {fileID: 8300000, guid: 2dc25548e51a4c640b290e65f8ab78f6, type: 3}
+  - {fileID: 8300000, guid: 9cd6be802fb3ac947b121438b10e7ecc, type: 3}
   playRandom: 0
-  volume: 0.2
+  volume: 0.1
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1
@@ -252,7 +252,7 @@ MonoBehaviour:
   clips:
   - {fileID: 8300000, guid: 19a3d59b3f511314580fa59b7735c53d, type: 3}
   playRandom: 0
-  volume: 0.8
+  volume: 1
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1
@@ -288,19 +288,19 @@ MonoBehaviour:
     - serializedVersion: 2
       time: 0
       value: 0
-      inSlope: 0.53027344
-      outSlope: 0.53027344
+      inSlope: 2
+      outSlope: 2
       tangentMode: 0
     - serializedVersion: 2
       time: 1
-      value: 0.75
-      inSlope: 1.1246735
-      outSlope: 1.1246735
+      value: 1
+      inSlope: 0
+      outSlope: 0
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
-  startFrequency: 0.3
+  startFrequency: 0.5
   ExplosionPrefab: {fileID: 1119816873204034, guid: 9e47260de082cb240a2a2fceba9199cc,
     type: 2}
   onlyArmByPlayer: 1
@@ -311,7 +311,7 @@ MonoBehaviour:
   MaxLifetime: 10
   beepSound: {fileID: 114131355415848260}
   slideSource: {fileID: 82958400110465536}
-  slideMaxVolume: 1
+  slideMaxVolume: 2
 --- !u!114 &114701847623792324
 MonoBehaviour:
   m_ObjectHideFlags: 1

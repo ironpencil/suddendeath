@@ -115,9 +115,8 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 05236f5dd9127384f829573d77289d4d, type: 3}
   - {fileID: 8300000, guid: 3121a40b513471c4b84146dfdf32f036, type: 3}
   - {fileID: 8300000, guid: 3747b11bc83aa074f9c38121a5b42af8, type: 3}
-  - {fileID: 8300000, guid: e63b05d1e63893343a99d8f8bad3318f, type: 3}
   playRandom: 1
-  volume: 1
+  volume: 1.25
   variableVolume: 0
   volumeMin: 0.9
   volumeMax: 1

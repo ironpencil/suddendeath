@@ -822,14 +822,14 @@ MonoBehaviour:
   playerSetupUI: {fileID: 1533842925}
   scoreScreenUI: {fileID: 1176841552}
   tileManager: {fileID: 1912545816}
-  collapsingFloorDifficulty: 0
-  spinnerDifficulty: 0
-  laserDifficulty: 0
+  collapsingFloorDifficulty: 1
+  spinnerDifficulty: 1
+  laserDifficulty: 1
   minWallLaserSpawn: {x: -14.5, y: -7.5}
   maxWallLaserSpawn: {x: 14.5, y: 7.5}
-  bombDifficulty: 0
+  bombDifficulty: 1
   wallBladeDifficulty: 0
-  mineDifficulty: 0
+  mineDifficulty: 1
   isRoundActive: 0
   isRoundReady: 0
   player1Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
