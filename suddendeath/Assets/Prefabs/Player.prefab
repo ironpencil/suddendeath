@@ -695,7 +695,7 @@ MonoBehaviour:
   PlayerNum: 1
   UseForces: 1
   PlayerSprite: {fileID: 21300000, guid: f75280a539739984c85066862cb9b592, type: 3}
-  DashRechargeTime: 1
+  DashRechargeTime: 0.1
   DashTime: 0.15
   DashSpeed: 20000
   DashingSprite: {fileID: 21300000, guid: 33ec3c615ac49c24e928afc1416edcad, type: 3}

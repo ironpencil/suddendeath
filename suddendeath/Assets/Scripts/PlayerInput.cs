@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using XboxCtrlrInput;
+using System;
 
 public class PlayerInput : MonoBehaviour {
 
@@ -30,6 +31,8 @@ public class PlayerInput : MonoBehaviour {
     public SoundEffectHandler dashSound;
     
     public bool mouseInput = false;
+    private bool dashPressed = false;
+    private bool dashReleased = false;
 
     XboxController xboxController;
 
@@ -49,8 +52,26 @@ public class PlayerInput : MonoBehaviour {
         {
             HandleShieldMovement();
             HandleAttack();
+            CheckDash();
         }
         HandlePause();
+    }
+
+    private void CheckDash()
+    {
+        if (XCI.GetButtonDown(XboxButton.A, xboxController)
+            || XCI.GetButtonDown(XboxButton.RightBumper, xboxController)
+            || XCI.GetButtonDown(XboxButton.B, xboxController))
+        {
+            dashPressed = true;
+        }
+
+        if (!XCI.GetButton(XboxButton.A, xboxController)
+            && !XCI.GetButton(XboxButton.B, xboxController)
+            && !XCI.GetButton(XboxButton.RightBumper, xboxController))
+        {
+            dashReleased = true;
+        }
     }
 
     void FixedUpdate()
@@ -87,9 +108,7 @@ public class PlayerInput : MonoBehaviour {
   //      Debug.Log("B? " + XCI.GetButtonDown(XboxButton.B, xboxController));
     //    Debug.Log("RB? " + XCI.GetButtonDown(XboxButton.RightBumper, xboxController));
 
-        if (XCI.GetButtonDown(XboxButton.A, xboxController) 
-            || XCI.GetButtonDown(XboxButton.RightBumper, xboxController)
-            || XCI.GetButtonDown(XboxButton.B, xboxController))
+        if (dashPressed)
         {
             if (DashRechargeTimeLeft <= 0 && !IsDashing)
             {
@@ -102,13 +121,14 @@ public class PlayerInput : MonoBehaviour {
                 //Debug.Log("Can't dash, let player know here");
             }
         }
-        else if (IsDashing 
-            && !XCI.GetButton(XboxButton.A, xboxController)
-            && !XCI.GetButton(XboxButton.B, xboxController)
-            && !XCI.GetButton(XboxButton.RightBumper, xboxController))
+        else if (IsDashing && dashReleased)
         {
+            dashReleased = false;
             EndDash();
         }
+
+        dashPressed = false;
+        dashReleased = false;
     }
 
     private Vector3 beginDashPos;
