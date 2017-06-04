@@ -14,6 +14,7 @@ public class ScoreScreenBehavior : MonoBehaviour {
     public VictoryScreenBehavior victoryScreenUI;
     GameManager gm;
 
+    public SoundEffectHandler endGameSound;
 
     public void Display()
     {
@@ -84,6 +85,7 @@ public class ScoreScreenBehavior : MonoBehaviour {
                 {
                     gameObject.SetActive(false);
                     victoryScreenUI.Display();
+                    endGameSound.PlayEffect();
                 }
                 else
                 {
