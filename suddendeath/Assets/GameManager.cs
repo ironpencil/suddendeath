@@ -221,31 +221,31 @@ public class GameManager : MonoBehaviour {
             }
         }
 
-        if (gameOptions.IsSpinnerEnabled)
+        if (gameOptions.isSpinnerEnabled)
         {
             GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
             spinner.transform.position = Vector2.zero;
             spinners.Add(spinner);
         }
 
-        if (bombDifficulty > 0)
+        if (gameOptions.isBombEnabled)
         {
             GameObject bombSpawner = GameObject.Instantiate(bombSpawnerPrefab, dynamicsParent);
             bombSpawner.transform.position = new Vector2(0.0f, 9.0f);
         }
 
-        if (mineDifficulty > 0)
+        if (gameOptions.isMineEnabled)
         {
             GameObject mineSpawner = GameObject.Instantiate(mineSpawnerPrefab, dynamicsParent);
             mineSpawner.transform.position = new Vector2(0.0f, 0.0f);
         }
 
-        if (gameOptions.IsWallLaserEnabled)
+        if (gameOptions.isWallLaserEnabled)
         {
             CreateWallLaser();
         }
 
-        if (collapsingFloorDifficulty > 0)
+        if (gameOptions.isFloorEnabled)
         {
             tileManager.gameObject.SetActive(true);
             tileManager.StartCollapsing();
