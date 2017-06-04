@@ -241,7 +241,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Time: 0.1
+  m_Time: 0.15
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.125
@@ -384,7 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d84ee63094a02448a4fa030946b853b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 20
+  MoveSpeed: 15
   FireDirection: {x: 0, y: 0}
   MaxWallBounceCount: 3
   collisionParticle: {fileID: 1371330884197024, guid: e0321851b10f3624e834682bb53c4810,

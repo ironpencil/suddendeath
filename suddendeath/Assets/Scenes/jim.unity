@@ -913,7 +913,7 @@ MonoBehaviour:
   hudFps: {fileID: 407401344}
   joinedPlayers: 
   currentRound: 0
-  RoundsToWin: 1
+  RoundsToWin: 10
   lastRoundWinner: 0
   roundStartTime: 0
   playerSpawnPoints:
@@ -947,7 +947,7 @@ MonoBehaviour:
   maxWallLaserSpawn: {x: 14.5, y: 7.5}
   bombDifficulty: 1
   wallBladeDifficulty: 0
-  mineDifficulty: 1
+  mineDifficulty: 2
   isRoundActive: 0
   isRoundReady: 0
   player1Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
@@ -3876,7 +3876,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spinner: {fileID: 1690037501}
+  spinnerCountText: {fileID: 0}
+  spinnerCount: {fileID: 0}
+  spinnerSpeedText: {fileID: 0}
+  spinnerSpeed: {fileID: 0}
   wallLaser: {fileID: 1827668641}
+  wallLaserCountText: {fileID: 0}
+  wallLaserCount: {fileID: 0}
+  wallLaserBounceCountText: {fileID: 0}
+  wallLaserBounceCount: {fileID: 0}
+  wallLaserShotFrequencyText: {fileID: 0}
+  wallLaserShotFrequency: {fileID: 0}
+  wallLaserChargeTimeText: {fileID: 0}
+  wallLaserChargeTime: {fileID: 0}
+  bomb: {fileID: 0}
+  bombFrequencyText: {fileID: 0}
+  bombFrequency: {fileID: 0}
+  bombFallTimeText: {fileID: 0}
+  bombFallTime: {fileID: 0}
+  mine: {fileID: 0}
+  mineStartsArmed: {fileID: 0}
+  mineTimeToDetonateText: {fileID: 0}
+  mineTimeToDetonate: {fileID: 0}
+  maxMinesText: {fileID: 0}
+  maxMines: {fileID: 0}
+  mineRespawnFrequencyText: {fileID: 0}
+  mineRespawnFrequency: {fileID: 0}
+  mineMaxLifetimeText: {fileID: 0}
+  mineMaxLifetime: {fileID: 0}
+  floor: {fileID: 0}
+  floorCollapseDurationText: {fileID: 0}
+  floorCollapseDuration: {fileID: 0}
 --- !u!222 &1008229298
 CanvasRenderer:
   m_ObjectHideFlags: 0

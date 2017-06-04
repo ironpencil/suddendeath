@@ -64,6 +64,7 @@ public class OptionsScreenBehavior : MonoBehaviour {
     
 	// Use this for initialization
 	void Start () {
+        /*
         // Spinner Handlers
         spinner.onValueChanged.AddListener(val => { gameOptions.isSpinnerEnabled = val; Debug.Log("") });
         spinnerCount.onValueChanged.AddListener(val => { gameOptions.spinnerCount = (int)val; Debug.Log("") });
@@ -92,11 +93,13 @@ public class OptionsScreenBehavior : MonoBehaviour {
         // Floor Handlers
         floor.onValueChanged.AddListener(val => { gameOptions.isFloorEnabled = val; Debug.Log("") });
         floorCollapseDuration.onValueChanged.AddListener(val => { gameOptions.floorCollapseDuration = (int)val; Debug.Log("") });
+        */
     }
 
     // Update is called once per frame
     void Update()
     {
+        /*
         for (int player = 1; player < 5; player++)
         {
             if (XCI.GetButtonDown(XboxButton.Back, (XboxController)player))
@@ -104,5 +107,6 @@ public class OptionsScreenBehavior : MonoBehaviour {
                 Globals.Instance.GameManager.DisplayPlayerSetup();
             }
         }
+        */
     }
 }

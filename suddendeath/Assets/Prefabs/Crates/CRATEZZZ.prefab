@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minCrates: 1
-  maxCrates: 6
+  maxCrates: 4
   minBounds: {x: -15, y: -8}
   maxBounds: {x: 15, y: 8}
   doSpawnCrates: 1

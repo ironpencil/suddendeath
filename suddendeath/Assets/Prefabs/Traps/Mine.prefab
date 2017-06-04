@@ -331,7 +331,7 @@ MonoBehaviour:
   MineSpawnerBehavior: {fileID: 0}
   IsMineDestroyedOnExplosion: 1
   StartsArmed: 0
-  MaxLifetime: 10
+  MaxLifetime: 7
   beepSound: {fileID: 114131355415848260}
   slideSource: {fileID: 82958400110465536}
   slideMaxVolume: 2

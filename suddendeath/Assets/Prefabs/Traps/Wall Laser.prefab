@@ -250,6 +250,7 @@ MonoBehaviour:
   destroyDelay: 0
   onlyActivateOnce: 0
   alreadyActivated: 0
+  delayBetweenActivations: 0
 --- !u!114 &114052544216609770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -262,6 +263,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Bounce
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 2e72056b29ede274aa5cfc0ea43cee20, type: 3}
   playRandom: 0
@@ -292,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Fire
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 31776610ab1ba114cbff721294ed9df6, type: 3}
   playRandom: 0
@@ -322,6 +325,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Charge
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: f86dac395ad5753409bbb9c6612d5998, type: 3}
   playRandom: 0
@@ -367,7 +371,7 @@ MonoBehaviour:
   MoveSpeed: 5
   IsVertical: 1
   IsCharging: 0
-  shotFrequency: 0.5
+  shotFrequency: 1
   chargeTime: 0.5
   IdleSprite: {fileID: 21300000, guid: 271722fc814ddbb4daab73cf940d9de9, type: 3}
   ChargingSprite: {fileID: 21300000, guid: 271722fc814ddbb4daab73cf940d9de9, type: 3}
