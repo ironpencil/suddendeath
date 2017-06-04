@@ -39,6 +39,7 @@ public class GameManager : MonoBehaviour {
     public GameObject bombSpawnerPrefab;
     public GameObject wallBladePrefab;
     public GameObject mineSpawnerPrefab;
+    public GameObject crateSpawnerPrefab;
 
     public GameObject playerSetupUI;
     public ScoreScreenBehavior scoreScreenUI;
@@ -47,6 +48,8 @@ public class GameManager : MonoBehaviour {
     public TileManager tileManager;
 
     public GameOptions gameOptions;
+    public SoundEffectHandler startRoundSound;
+    public SoundEffectHandler endRoundSound;
 
     public float collapsingFloorDifficulty = 1.0f;
     public Vector2 minWallLaserSpawn;
@@ -177,6 +180,7 @@ public class GameManager : MonoBehaviour {
     {
         hudTime.gameObject.SetActive(true);
 
+        startRoundSound.PlayEffect();
         currentRound++;
         hudRound.text = "Round " + currentRound.ToString();
         hudRound.gameObject.SetActive(true);
@@ -257,6 +261,9 @@ public class GameManager : MonoBehaviour {
             wallBlade.transform.position = Vector2.zero;
             wallBlades.Add(wallBlade);
         }
+
+        GameObject crateSpawner = GameObject.Instantiate(crateSpawnerPrefab, dynamicsParent);
+        crateSpawner.GetComponent<CrateSpawner>().SpawnCrates();
 
         isRoundActive = true;
         isRoundReady = false;
@@ -362,6 +369,7 @@ public class GameManager : MonoBehaviour {
         tileManager.Reset();
         Time.timeScale = 1.0f;
 
+        endRoundSound.PlayEffect();
         scoreScreenUI.Display();
     }
 

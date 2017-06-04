@@ -6,6 +6,8 @@ public class SoundEffectHandler : MonoBehaviour
 {
     public string description;
 
+    public bool useUISource = false;
+
     public List<AudioClip> clips;
     public bool playRandom = false;
 
@@ -102,13 +104,25 @@ public class SoundEffectHandler : MonoBehaviour
 
         if (playOneShot)
         {
-            source = AudioManager.Instance.sfxSource;
+            if (useUISource)
+            {
+                source = AudioManager.Instance.uiSource;
+            }
+            else {
+                source = AudioManager.Instance.sfxSource;
+            }
             source.pitch = clipPitch;
             source.PlayOneShot(clip, clipVolume);
         }
         else
         {
-            source = AudioManager.Instance.sharedSFXSource;
+            if (useUISource)
+            {
+                source = AudioManager.Instance.uiSource;
+            }
+            else {
+                source = AudioManager.Instance.sharedSFXSource;
+            }
             source.clip = clip;
             source.volume = clipVolume;
             source.pitch = clipPitch;

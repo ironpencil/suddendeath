@@ -6,7 +6,8 @@ public class AudioManager : Singleton<AudioManager>
 {
     public AudioSource sfxSource;
     public AudioSource sharedSFXSource;
-    public AudioSource musicSource;    
+    public AudioSource musicSource;
+    public AudioSource uiSource;
 
     public float volumeIncrement = 0.1f;
 
