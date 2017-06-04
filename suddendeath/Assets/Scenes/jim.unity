@@ -870,7 +870,7 @@ MonoBehaviour:
   gameStartSound: {fileID: 271390539}
   pauseSound: {fileID: 271390543}
   unpauseSound: {fileID: 271390542}
-  screenShakeFactor: 100
+  screenShakeFactor: 1
   GameManager: {fileID: 271390537}
   isQuitting: 0
 --- !u!4 &271390536
@@ -3320,7 +3320,7 @@ Camera:
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 0
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -3863,7 +3863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1008229297
 MonoBehaviour:
   m_ObjectHideFlags: 0
