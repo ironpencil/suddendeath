@@ -15,6 +15,7 @@ public class BombSpawnerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         timeLeft = frequency;
+        frequency = Globals.Instance.GameManager.gameOptions.bombFrequency;
     }
 	
 	// Update is called once per frame
@@ -47,8 +48,10 @@ public class BombSpawnerController : MonoBehaviour {
             GameObject bomb = Instantiate(BombPrefab, DynamicsParent);
             bomb.transform.position = new Vector2(bombShadow.transform.position.x, bombShadow.transform.position.y + heightOffset);
 
-            bomb.GetComponent<BombBehavior>().shadow = bombShadow;
-            bomb.GetComponent<BombBehavior>().targetPlayerNum = targetPlayerNum;
+            BombBehavior bb = bomb.GetComponent<BombBehavior>();
+            bb.shadow = bombShadow;
+            bb.targetPlayerNum = targetPlayerNum;
+            bb.FallTime = Globals.Instance.GameManager.gameOptions.bombFallTime;
         }
     }
 }

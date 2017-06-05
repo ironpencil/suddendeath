@@ -103,15 +103,15 @@ public class OptionsScreenBehavior : MonoBehaviour {
         // Bomb Handlers
         //   -- Handlers
         bomb.onValueChanged.AddListener(val => { gameOptions.isBombEnabled = val; Debug.Log("Bomb Enabled: " + val); });
-        bombFrequency.onValueChanged.AddListener(val => { gameOptions.bombFrequency = val; bombFrequencyText.text = "Bomb Frequency: " + val; Debug.Log("Bomb Frequency: " + val); });
-        bombFallTime.onValueChanged.AddListener(val =>  { gameOptions.bombFallTime = val;  bombFallTimeText.text = "Bomb Fall Time: " + val;  Debug.Log("Bomb Fall Time: " + val); });
+        bombFrequency.onValueChanged.AddListener(val => { gameOptions.bombFrequency = val; bombFrequencyText.text = "Bomb Freq: " + val; Debug.Log("Bomb Freq: " + val); });
+        bombFallTime.onValueChanged.AddListener(val =>  { gameOptions.bombFallTime = val;  bombFallTimeText.text = "Fall Time: " + val;  Debug.Log("Bomb Fall Time: " + val); });
 
         //   -- Defaults
         bomb.isOn = gameOptions.isBombEnabled;
         bombFrequency.value = gameOptions.bombFrequency;
-        bombFrequencyText.text = "Bomb Frequency: " + gameOptions.bombFrequency;
+        bombFrequencyText.text = "Bomb Freq: " + gameOptions.bombFrequency;
         bombFallTime.value = gameOptions.bombFallTime;
-        bombFallTimeText.text = "Bomb Fall Time: " + gameOptions.bombFallTime;
+        bombFallTimeText.text = "Fall Time: " + gameOptions.bombFallTime;
 
 
 
@@ -147,6 +147,7 @@ public class OptionsScreenBehavior : MonoBehaviour {
         floorCollapseDuration.onValueChanged.AddListener(val => { gameOptions.floorCollapseDuration = val; floorCollapseDurationText.text = "Floor Collapse Dur: " + val; Debug.Log("Floor Collapse Duration: " + val); });
 
         //   -- Defaults
+        floor.isOn = gameOptions.isFloorEnabled;
         floorCollapseDuration.value = gameOptions.floorCollapseDuration;
         floorCollapseDurationText.text = "Floor Collapse Dur: " + gameOptions.floorCollapseDuration;
     }

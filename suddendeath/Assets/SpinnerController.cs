@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpinnerController : MonoBehaviour {
-    public float MoveSpeed = 8.0f;
+    private float MoveSpeed = 8.0f;
     public float SpinSpeed = 8.0f;
     public float PushForce = 10.0f;
     public float SpinDirection = 1;
@@ -28,6 +28,7 @@ public class SpinnerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        MoveSpeed = Globals.Instance.GameManager.gameOptions.spinnerSpeed;
         colliders = new List<PlayerCollision>();
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.velocity = new Vector2(Random.Range(-1.0f, 1.0f) * MoveSpeed, Random.Range(-1.0f, 1.0f) * MoveSpeed);

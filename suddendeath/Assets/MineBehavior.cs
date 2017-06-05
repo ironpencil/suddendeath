@@ -10,13 +10,12 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public float armedTime;
     public AnimationCurve blinkFrequency;
     public float startFrequency;
-    public GameObject ExplosionPrefab;
+    public GameObject explosionPrefab;
     public bool onlyArmByPlayer = true;
     public bool bodyCollisionKillsPlayer = true;
-    public MineSpawnerBehavior MineSpawnerBehavior;
-    public bool IsMineDestroyedOnExplosion = false;
-    public bool StartsArmed = false;
-    public float MaxLifetime = 0.0f;
+    public MineSpawnerBehavior mineSpawnerBehavior;
+    public bool isMineDestroyedOnExplosion = false;
+    public float maxLifetime = 0.0f;
 
     public SoundEffectHandler beepSound;
     public AudioSource slideSource;
@@ -25,8 +24,8 @@ public class MineBehavior : MonoBehaviour, Explosive {
     private float elapsedTime;
     private float elapsedArmedTime;
     private float nextColorSwitch;
-    private bool IsColor1 = true;
-    private bool isArmed = false;
+    private bool isColor1 = true;
+    public bool isArmed = false;
     private List<int> colliders;
     private Rigidbody2D rb2d;
 
@@ -34,16 +33,14 @@ public class MineBehavior : MonoBehaviour, Explosive {
 	void Start () {
         gameObject.GetComponent<SpriteRenderer>().color = unarmedColor;
         colliders = new List<int>();
-        isArmed = StartsArmed;
         rb2d = gameObject.GetComponent<Rigidbody2D>();
     }
 	
 	// Update is called once per frame
 	void Update () {
-
         elapsedTime += Time.deltaTime;
 
-        if (MaxLifetime > 0 && elapsedTime > MaxLifetime) isArmed = true;
+        if (maxLifetime > 0 && elapsedTime > maxLifetime) isArmed = true;
 
         if (isArmed)
         {
@@ -55,11 +52,11 @@ public class MineBehavior : MonoBehaviour, Explosive {
                 //e + (.5 - (easing * .5))
 
                 nextColorSwitch = elapsedArmedTime + (startFrequency - (blinkFrequency.Evaluate(elapsedArmedTime / armedTime) * startFrequency));
-                IsColor1 = !IsColor1;
-                if (!IsColor1) { beepSound.PlayEffect(); }
+                isColor1 = !isColor1;
+                if (!isColor1) { beepSound.PlayEffect(); }
             }
 
-            if (IsColor1)
+            if (isColor1)
             {
                 gameObject.GetComponent<SpriteRenderer>().color = armedColor1;
             } else
@@ -118,8 +115,8 @@ public class MineBehavior : MonoBehaviour, Explosive {
 
     void Explode()
     {
-        Transform DynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
-        GameObject explosion = Instantiate(ExplosionPrefab, DynamicsParent);
+        Transform dynamicsParent = Globals.Instance.GetComponent<GameManager>().dynamicsParent;
+        GameObject explosion = Instantiate(explosionPrefab, dynamicsParent);
         explosion.transform.position = transform.position;
         ExplosionBehavior eb = explosion.GetComponent<ExplosionBehavior>();
         eb.explosives.Add(this);
@@ -129,7 +126,7 @@ public class MineBehavior : MonoBehaviour, Explosive {
 
         // Remove the mine from visibility for now
         // Destroy gameObject when explosion finishes
-        if (IsMineDestroyedOnExplosion)
+        if (isMineDestroyedOnExplosion)
         {
             gameObject.SetActive(false);
         }
@@ -166,9 +163,9 @@ public class MineBehavior : MonoBehaviour, Explosive {
     public void EndExploding()
     {
         colliders.Clear();
-        if (IsMineDestroyedOnExplosion)
+        if (isMineDestroyedOnExplosion)
         {
-            MineSpawnerBehavior.RemoveMine(gameObject);
+            mineSpawnerBehavior.RemoveMine(gameObject);
             Destroy(gameObject);
         }
     }

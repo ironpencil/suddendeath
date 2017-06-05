@@ -92,6 +92,8 @@ public class WallLaserBehavior : MonoBehaviour {
         //laser.transform.position = firingPosition.position;
         laser.transform.position = new Vector2(firingPosition.position.x, firingPosition.position.y) + rb2d.velocity * Time.fixedDeltaTime * 3;
         laser.transform.rotation = transform.rotation;
-        laser.GetComponent<ProjectileController>().FireDirection = facing;
+        ProjectileController pc = laser.GetComponent<ProjectileController>();
+        pc.FireDirection = facing;
+        pc.MaxWallBounceCount = Globals.Instance.GameManager.gameOptions.wallLaserBounceCount;
     }
 }

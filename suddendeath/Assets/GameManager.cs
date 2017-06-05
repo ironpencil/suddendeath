@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
     float deltaTime = 0.0f;
-    public bool displayFrameRate = false;
-
+    public GameOptions gameOptions;
+    
     public Dictionary<int, PlayerController> livingPlayers;
     public List<GameObject> spinners;
     public List<GameObject> lasers;
@@ -25,7 +25,6 @@ public class GameManager : MonoBehaviour {
     private int numPlayers = 0;
 
     public int currentRound = 0;
-    public int RoundsToWin = 10;
     public Dictionary<int, PlayerStats> playerStats;
     public int lastRoundWinner = 0;
     public float roundStartTime = 0.0f;
@@ -47,18 +46,12 @@ public class GameManager : MonoBehaviour {
     
     public TileManager tileManager;
 
-    public GameOptions gameOptions;
     public SoundEffectHandler startRoundSound;
     public SoundEffectHandler endRoundSound;
-
-    public float collapsingFloorDifficulty = 1.0f;
+    
     public Vector2 minWallLaserSpawn;
     public Vector2 maxWallLaserSpawn;
     
-    public float bombDifficulty = 1.0f;
-    public float wallBladeDifficulty = 1.0f;
-    public float mineDifficulty = 1.0f;
-
     public bool isRoundActive = false;
     public bool isRoundReady = false;
 
@@ -93,7 +86,7 @@ public class GameManager : MonoBehaviour {
     
     void UpdateHud()
     {
-        if (displayFrameRate)
+        if (gameOptions.displayFrameRate)
         {
             float msec = deltaTime * 1000.0f;
             float fps = 1.0f / deltaTime;
@@ -249,7 +242,10 @@ public class GameManager : MonoBehaviour {
 
         if (gameOptions.isWallLaserEnabled)
         {
-            CreateWallLaser();
+            for (int i = 0; i < gameOptions.wallLaserCount; i++)
+            {
+                CreateWallLaser();
+            }
         }
 
         if (gameOptions.isFloorEnabled)
@@ -258,7 +254,8 @@ public class GameManager : MonoBehaviour {
             tileManager.StartCollapsing();
         }
 
-        if (wallBladeDifficulty > 0)
+        // Wall Blade not implemented
+        if (false)
         {
             GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
             wallBlade.transform.position = Vector2.zero;
@@ -321,6 +318,7 @@ public class GameManager : MonoBehaviour {
         wallLaser.transform.position = laserpos;
         wallLaser.transform.eulerAngles = new Vector3(0, 0, laserrotation);
         WallLaserBehavior wlb = wallLaser.GetComponent<WallLaserBehavior>();
+        wlb.shotFrequency = gameOptions.wallLaserShotFrequency;
         wlb.facing = facing;
         wlb.IsVertical = IsVertical;
 
@@ -382,7 +380,7 @@ public class GameManager : MonoBehaviour {
 
         foreach (PlayerStats ps in playerStats.Values)
         {
-            if (ps.wins >= RoundsToWin)
+            if (ps.wins >= gameOptions.roundsToWin)
             {
                 winner = ps;
             }

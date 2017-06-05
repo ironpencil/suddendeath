@@ -4,21 +4,23 @@ using System.Linq;
 using UnityEngine;
 
 public class MineSpawnerBehavior : MonoBehaviour {
-    public GameObject MinePrefab;
-    public Vector2 UpperSpawnBounds;
-    public Vector2 LowerSpawnBounds;
-    public int MaxMines;
-    public float RespawnFrequency;
-    private float NextRespawnTime;
-    public int MineCount;
+    public GameObject minePrefab;
+    public Vector2 upperSpawnBounds;
+    public Vector2 lowerSpawnBounds;
+    public int maxMines;
+    public float respawnFrequency;
+    private float nextRespawnTime;
+    public int mineCount;
 
     private GameManager gm;
 
     // Use this for initialization
     void Start () {
         gm = Globals.Instance.gameObject.GetComponent<GameManager>();
+        maxMines = gm.gameOptions.maxMines;
+        respawnFrequency = gm.gameOptions.mineRespawnFrequency;
 
-        while (MineCount < MaxMines)
+        while (mineCount < maxMines)
         {
             AddMine();
         }
@@ -26,9 +28,9 @@ public class MineSpawnerBehavior : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (MineCount < MaxMines)
+        if (mineCount < maxMines)
         {
-            if (NextRespawnTime < Time.time)
+            if (nextRespawnTime < Time.time)
             {
                 AddMine();
             }
@@ -38,15 +40,15 @@ public class MineSpawnerBehavior : MonoBehaviour {
     public void AddMine()
     {
         List<PlayerController> players = Globals.Instance.GameManager.livingPlayers.Values.ToList();
-
-        GameObject mine = GameObject.Instantiate(MinePrefab, gm.dynamicsParent);
+        
+        GameObject mine = GameObject.Instantiate(minePrefab, gm.dynamicsParent);
 
         bool mineOnPlayer = true;
 
         while (mineOnPlayer)
         {
-            float x = UnityEngine.Random.Range(LowerSpawnBounds.x, UpperSpawnBounds.x + 1);
-            float y = UnityEngine.Random.Range(LowerSpawnBounds.y, UpperSpawnBounds.y + 1);
+            float x = UnityEngine.Random.Range(lowerSpawnBounds.x, upperSpawnBounds.x + 1);
+            float y = UnityEngine.Random.Range(lowerSpawnBounds.y, upperSpawnBounds.y + 1);
 
             Vector2 minePos = new Vector2(x, y);
 
@@ -58,18 +60,23 @@ public class MineSpawnerBehavior : MonoBehaviour {
             mine.transform.position = new Vector2(x, y);
         }
 
-        mine.GetComponent<MineBehavior>().MineSpawnerBehavior = this;
-        MineCount++;
+        MineBehavior mb = mine.GetComponent<MineBehavior>();
+        mb.mineSpawnerBehavior = this;
+        mb.isArmed = Globals.Instance.GameManager.gameOptions.mineStartsArmed;
+        mb.armedTime = Globals.Instance.GameManager.gameOptions.mineTimeToDetonate;
+        mb.maxLifetime = Globals.Instance.GameManager.gameOptions.mineMaxLifetime;
+
+        mineCount++;
         
-        if (MineCount < MaxMines)
+        if (mineCount < maxMines)
         {
-            NextRespawnTime = Time.time + RespawnFrequency;
+            nextRespawnTime = Time.time + respawnFrequency;
         }
     }
 
     public void RemoveMine(GameObject Mine)
     {
-        MineCount--;
-        NextRespawnTime = Time.time + RespawnFrequency;
+        mineCount--;
+        nextRespawnTime = Time.time + respawnFrequency;
     }
 }

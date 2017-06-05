@@ -51,9 +51,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db238251229cb2342a9a86c1a18fb200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MinePrefab: {fileID: 1319833556920904, guid: 8e00f1a0a6c0cd340a3f6f4865b0c68b, type: 2}
-  UpperSpawnBounds: {x: 8, y: 4}
-  LowerSpawnBounds: {x: -8, y: -4}
-  MaxMines: 2
-  RespawnFrequency: 3
-  MineCount: 0
+  minePrefab: {fileID: 1319833556920904, guid: 8e00f1a0a6c0cd340a3f6f4865b0c68b, type: 2}
+  upperSpawnBounds: {x: -9, y: -6}
+  lowerSpawnBounds: {x: 9, y: 6}
+  maxMines: 0
+  respawnFrequency: 0
+  mineCount: 0

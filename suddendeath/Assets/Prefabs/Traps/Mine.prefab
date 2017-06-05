@@ -324,17 +324,18 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   startFrequency: 0.5
-  ExplosionPrefab: {fileID: 1119816873204034, guid: 9e47260de082cb240a2a2fceba9199cc,
+  explosionPrefab: {fileID: 1119816873204034, guid: 9e47260de082cb240a2a2fceba9199cc,
     type: 2}
   onlyArmByPlayer: 1
   bodyCollisionKillsPlayer: 1
-  MineSpawnerBehavior: {fileID: 0}
-  IsMineDestroyedOnExplosion: 1
-  StartsArmed: 0
-  MaxLifetime: 7
+  mineSpawnerBehavior: {fileID: 114936266135114448, guid: db5f52188a1a48a46bbf599e09d78be2,
+    type: 2}
+  isMineDestroyedOnExplosion: 1
+  maxLifetime: 0
   beepSound: {fileID: 114131355415848260}
   slideSource: {fileID: 82958400110465536}
   slideMaxVolume: 2
+  isArmed: 0
 --- !u!114 &114701847623792324
 MonoBehaviour:
   m_ObjectHideFlags: 1
