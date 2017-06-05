@@ -108,6 +108,8 @@ public class Globals : Singleton<Globals>
         Globals.Instance.acceptPlayerGameInput = true;
         playPauseSound = true;
 
+        AudioManager.Instance.StartMusic(AudioManager.Instance.musicFadeInTime, false);
+
         //TODO: do screen transition in
         GameManager.SetupGame();
     }

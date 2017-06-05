@@ -25,8 +25,6 @@ public class AudioManager : Singleton<AudioManager>
         if (this == null) { return; }
 
         AudioListener.volume = startingVolume;
-
-        StartMusic(musicFadeInTime);
     }
 
     // Update is called once per frame
@@ -53,10 +51,12 @@ public class AudioManager : Singleton<AudioManager>
         musicSource.volume = Mathf.Clamp(volume, minVolume, maxVolume);
     }
 
-    public void StartMusic(float fadeInTime)
+    public void StartMusic(float fadeInTime, bool restartIfPlaying)
     {
         if (musicSource.isPlaying)
         {
+            if (!restartIfPlaying) { return; } //if we're already playing music, we don't need to start it
+
             musicSource.Stop();
         }
 
