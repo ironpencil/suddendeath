@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class  GameOptions : MonoBehaviour {
     // Spinner Options
-    public bool isSpinnerEnabled = false;
+    public bool isSpinnerEnabled = true;
     public int spinnerCount = 1;
     public int spinnerSpeed = 16;
 
     // Laser Turret (Wall Laser) Options
-    public bool isWallLaserEnabled = false;
+    public bool isWallLaserEnabled = true;
     public int wallLaserCount = 1;
-    public int wallLaserBounceCount = 4;
-    public float wallLaserShotFrequency = 0.5f;
+    public int wallLaserBounceCount = 3;
+    public float wallLaserShotFrequency = 1.0f;
     public float wallLaserChargeTime = 0.5f;
 
     // Bomb Options
-    public bool isBombEnabled = false;
+    public bool isBombEnabled = true;
     public float bombFrequency = 1.5f;
     public float bombFallTime = 3.0f;
 
@@ -29,10 +29,10 @@ public class  GameOptions : MonoBehaviour {
     public float mineMaxLifetime = 10.0f;
     
     // Floor Options
-    public bool isFloorEnabled = false;
+    public bool isFloorEnabled = true;
     public float floorCollapseDuration = 1.5f;
 
     // Not Yet Implemented
-    public bool displayFrameRate = false;
+    public bool displayFrameRate = true;
     public int roundsToWin = 10;
 }

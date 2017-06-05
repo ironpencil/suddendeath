@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour {
         }
         hudRound.gameObject.SetActive(false);
         hudTime.gameObject.SetActive(false);
+        if (gameOptions.displayFrameRate) hudFps.gameObject.SetActive(false);
         currentRound = 0;
         lastRoundWinner = 0;
         joinedPlayers = new List<int>();
@@ -110,11 +111,13 @@ public class GameManager : MonoBehaviour {
         if (isRoundActive)
         {
             List<PlayerController> livingPlayersList = livingPlayers.Values.ToList();
-
-            if (livingPlayersList.Count > 1)
+            
+            // If we have a living player in multiplayer, or the single player is still alive
+            if (livingPlayersList.Count > 1 || (numPlayers == 1 && livingPlayersList.Count > 0))
             {
                 UpdateHud();
             }
+            // 
             else if (livingPlayersList.Count == 1)
             {
                 if (numPlayers > 1)
@@ -172,6 +175,7 @@ public class GameManager : MonoBehaviour {
     public void StartRound()
     {
         hudTime.gameObject.SetActive(true);
+        if (gameOptions.displayFrameRate) hudFps.gameObject.SetActive(true);
 
         startRoundSound.PlayEffect();
         currentRound++;
