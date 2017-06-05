@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using XboxCtrlrInput;
 
 public class OptionsScreenBehavior : MonoBehaviour {
     public GameOptions gameOptions;
+    public EventSystem eventSystem;
 
     // Spinner Menu
     public Toggle spinner;
@@ -62,6 +64,19 @@ public class OptionsScreenBehavior : MonoBehaviour {
     public Text floorCollapseDurationText;
     public Slider floorCollapseDuration;
     
+    IEnumerator DisplayCoroutine()
+    {
+        eventSystem.SetSelectedGameObject(null);
+        yield return null;
+        eventSystem.SetSelectedGameObject(spinner.gameObject);
+    }
+
+    public void DisplayOptions()
+    {
+        gameObject.SetActive(true);
+        StartCoroutine("DisplayCoroutine");
+    }
+
 	// Use this for initialization
 	void Start () {
         // Spinner
@@ -138,8 +153,7 @@ public class OptionsScreenBehavior : MonoBehaviour {
         mineMaxLifetimeText.text = "Mine max Lifetime: " + gameOptions.mineMaxLifetime;
         
 
-
-
+        
 
         // Floor Handlers
         floor.onValueChanged.AddListener(val => { gameOptions.isFloorEnabled = val; Debug.Log("Floor Enabled: " + val); });

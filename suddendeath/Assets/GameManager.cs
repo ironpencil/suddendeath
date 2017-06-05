@@ -163,7 +163,7 @@ public class GameManager : MonoBehaviour {
     public void DisplayOptions()
     {
         playerSetupUI.SetActive(false);
-        optionsUI.SetActive(true);
+        optionsUI.gameObject.GetComponent<OptionsScreenBehavior>().DisplayOptions();
     }
 
     public void DisplayPlayerSetup()
