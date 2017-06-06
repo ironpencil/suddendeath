@@ -63,6 +63,14 @@ public class Globals : Singleton<Globals>
         //float angle2 = Mathf.Atan2(v2.y, v2.x) * Mathf.Rad2Deg;
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            DoQuit();
+        }
+    }
+
     public void IntroFinished()
     {
         if (playIntro)
