@@ -691,17 +691,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dac88f065acea740a1d3a559824165d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 5000
   PlayerNum: 1
   UseForces: 1
   PlayerSprite: {fileID: 21300000, guid: f75280a539739984c85066862cb9b592, type: 3}
-  DashRechargeTime: 0.8
-  DashTime: 0.15
-  DashSpeed: 20000
   DashingSprite: {fileID: 21300000, guid: 33ec3c615ac49c24e928afc1416edcad, type: 3}
   IsDashing: 0
-  LockDashDirection: 1
-  DashTrail: {fileID: 1450935732988160}
+  dashTrail: {fileID: 1450935732988160}
   hand: {fileID: 1966428574582082}
   sprite: {fileID: 1566067145964614}
   shield: {fileID: 1865107377731130}

@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        gameOptions = new GameOptions();
         optionsUI.GetComponent<OptionsScreenBehavior>().gameOptions = gameOptions;
     }
 

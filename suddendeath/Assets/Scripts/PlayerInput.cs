@@ -4,21 +4,17 @@ using XboxCtrlrInput;
 using System;
 
 public class PlayerInput : MonoBehaviour {
+    private GameOptions go;
 
-    private float CurrentSpeed;
-    public float MoveSpeed = 8.0f;
+    private float currentSpeed;
     public int PlayerNum = 1;
     public bool UseForces = false;
     public Sprite PlayerSprite;
 
     //Dashing vars
-    public float DashRechargeTime = 5.0f;
-    public float DashTime = 1.0f;
-    public float DashSpeed = 1.0f;
     public Sprite DashingSprite;
     public bool IsDashing = false;
-    public bool LockDashDirection = true;
-    public GameObject DashTrail;
+    public GameObject dashTrail;
     private float DashRechargeTimeLeft = 0.0f;
     private float DashTimeLeft = 0.0f;
     private float LastHorizontal = 0.0f;
@@ -40,9 +36,11 @@ public class PlayerInput : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        go = Globals.Instance.GameManager.gameOptions;
+        
         rb2d = GetComponent<Rigidbody2D>();
-        CurrentSpeed = MoveSpeed;
-        DashTrail.GetComponent<ParticleSystem>().Stop(false);
+        currentSpeed = go.playerMoveSpeed;
+        dashTrail.GetComponent<ParticleSystem>().Stop(false);
         xboxController = (XboxController)PlayerNum;
     }
 	
@@ -136,30 +134,30 @@ public class PlayerInput : MonoBehaviour {
     {
         beginDashPos = gameObject.transform.position;
         IsDashing = true;
-        DashTimeLeft = DashTime;
+        DashTimeLeft = go.playerDashTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = DashingSprite;
-        CurrentSpeed = DashSpeed;
+        currentSpeed = go.playerDashSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
         dashSound.PlayEffect();
-        DashTrail.GetComponent<ParticleSystem>().Play();
+        dashTrail.GetComponent<ParticleSystem>().Play();
         float angle = Mathf.Atan2(rb2d.velocity.y, rb2d.velocity.x) * Mathf.Rad2Deg + 90;
         Vector3 rotation = new Vector3(0, 0, angle);
-        DashTrail.transform.eulerAngles = rotation;
+        dashTrail.transform.eulerAngles = rotation;
     }
 
     void EndDash()
     {
         IsDashing = false;
         DashTimeLeft = 0.0f;
-        DashRechargeTimeLeft = DashRechargeTime;
+        DashRechargeTimeLeft = go.playerDashRechargeTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = PlayerSprite;
-        CurrentSpeed = MoveSpeed;
+        currentSpeed = go.playerMoveSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");
-        DashTrail.GetComponent<ParticleSystem>().Stop(false);
+        dashTrail.GetComponent<ParticleSystem>().Stop(false);
     }
 
     void HandleMovement()
@@ -176,7 +174,7 @@ public class PlayerInput : MonoBehaviour {
         float horizontal = 0.0f;
         float vertical = 0.0f;
 
-        if (LockDashDirection && IsDashing)
+        if (go.playerLockDashDirection && IsDashing)
         {
             horizontal = LastHorizontal;
             vertical = LastVertical;
@@ -196,7 +194,7 @@ public class PlayerInput : MonoBehaviour {
             moveDirection.Normalize(); //always dash with full speed
         }
 
-        Vector2 moveForce = moveDirection * CurrentSpeed;
+        Vector2 moveForce = moveDirection * currentSpeed;
 
         if (UseForces)
         {

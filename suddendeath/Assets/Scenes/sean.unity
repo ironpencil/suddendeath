@@ -1659,7 +1659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37cf7fd959f48064ea08e5f095b40ae4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOptions: {fileID: 0}
+  gameOptions: {fileID: 114119226331934600, guid: aa15f54f11eee8c43bd5a32c56bf7158,
+    type: 2}
   spinners: []
   lasers: []
   wallBlades: []
@@ -11096,7 +11097,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1576294252
 Transform:
   m_ObjectHideFlags: 0
@@ -12180,7 +12181,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 511.99997, y: -510.64484}
+  m_AnchoredPosition: {x: 511.99997, y: -510.64532}
   m_SizeDelta: {x: 900, y: 111.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848949591

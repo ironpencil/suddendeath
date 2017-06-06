@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ProjectileController : MonoBehaviour {
-    public float MoveSpeed = 10;
-    public Vector2 FireDirection;
-    public int MaxWallBounceCount = 4;
+    public float moveSpeed = 10;
+    public Vector2 fireDirection;
+    public int maxWallBounceCount = 4;
     public GameObject collisionParticle;
-    private int CurrentWallBounceCount = 0;
+    private int currentWallBounceCount = 0;
     private List<int> colliders;
     
     Rigidbody2D rb2d;
@@ -16,7 +16,7 @@ public class ProjectileController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         rb2d = GetComponent<Rigidbody2D>();
-        rb2d.velocity = FireDirection * MoveSpeed;
+        rb2d.velocity = fireDirection * moveSpeed;
         colliders = new List<int>();
     }
 
@@ -28,7 +28,7 @@ public class ProjectileController : MonoBehaviour {
     void HandleMovement()
     {
         Vector2 direction = rb2d.velocity.normalized;
-        rb2d.velocity = direction * MoveSpeed;
+        rb2d.velocity = direction * moveSpeed;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -51,8 +51,8 @@ public class ProjectileController : MonoBehaviour {
             Destroy(gameObject);
         } else if (collision.gameObject.GetComponent<WallBehavior>() != null)
         {
-            CurrentWallBounceCount++;
-            if (CurrentWallBounceCount > MaxWallBounceCount)
+            currentWallBounceCount++;
+            if (currentWallBounceCount > maxWallBounceCount)
             {
                 Destroy(gameObject);
             }
