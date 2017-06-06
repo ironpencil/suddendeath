@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour {
     public List<GameObject> lasers;
     public List<GameObject> wallBlades;
     public List<GameObject> mines;
+    public List<GameObject> laserLines;
     public List<Kill> kills;
     public List<Text> hudScores;
     public Text hudRound;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour {
     public GameObject playerPrefab;
     public GameObject spinnerPrefab;
     public GameObject laserPrefab;
+    public GameObject laserLinePrefab;
     public GameObject bombSpawnerPrefab;
     public GameObject wallBladePrefab;
     public GameObject mineSpawnerPrefab;
@@ -250,6 +252,20 @@ public class GameManager : MonoBehaviour {
             for (int i = 0; i < gameOptions.wallLaserCount; i++)
             {
                 CreateWallLaser();
+            }
+        }
+
+        if (gameOptions.isLaserLineEnabled)
+        {
+            for (int i = 0; i < gameOptions.laserLineCount; i++)
+            {
+                GameObject laserLine = GameObject.Instantiate(laserLinePrefab, dynamicsParent);
+                int x = -10;
+                while (x == -11 || x == -10 || x == -9 || x == 9 || x == 10 || x == 11)
+                {
+                    x = UnityEngine.Random.Range(-15, 16);
+                }
+                laserLine.transform.position = new Vector2(x, 0);
             }
         }
 

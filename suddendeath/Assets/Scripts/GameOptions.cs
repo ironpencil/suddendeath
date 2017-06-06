@@ -30,6 +30,12 @@ public class  GameOptions : MonoBehaviour {
     public int wallLaserBounceCount = 3;
     public float wallLaserSpeed = 15;
 
+    [Header("Laser Line")]
+    public bool isLaserLineEnabled = true;
+    public int laserLineCount = 3;
+    public float laserLineMaxSpeed = 4;
+    public float laserLineMinSpeed = 2;
+
     // Bomb Options
     [Header("Bomb")]
     public bool isBombEnabled = true;

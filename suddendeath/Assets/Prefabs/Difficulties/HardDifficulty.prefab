@@ -67,6 +67,9 @@ MonoBehaviour:
   wallLaserChargeTime: 0.5
   wallLaserBounceCount: 3
   wallLaserSpeed: 15
+  isLaserLineEnabled: 1
+  laserLineCount: 3
+  laserLineSpeed: 4
   isBombEnabled: 1
   bombFrequency: 1.5
   bombFallTime: 3
