@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 114610512648276522}
   - component: {fileID: 114207993185683600}
   - component: {fileID: 114237785905352416}
+  - component: {fileID: 114713555541470818}
   m_Layer: 5
   m_Name: Title
   m_TagString: Untagged
@@ -568,9 +569,9 @@ MonoBehaviour:
     m_RotationOrder: 0
   titleBeginTime: 5.5
   titleDuration: 0.25
+  titleSound: {fileID: 114713555541470818}
   directionsFadeInTime: 1
   directionsFadeDuration: 1
-  gameMusic: {fileID: 0}
 --- !u!114 &114291227233356550
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -698,6 +699,37 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114713555541470818
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733290531324832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Title Sound
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: e05250a2bda9bd04783854c5468641ba, type: 3}
+  playRandom: 0
+  volume: 1
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114800956453502000
 MonoBehaviour:
   m_ObjectHideFlags: 1

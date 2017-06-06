@@ -8,8 +8,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour {
     float deltaTime = 0.0f;
     public GameOptions gameOptions;
-    
-    public Dictionary<int, PlayerController> livingPlayers;
+
+    public Dictionary<int, PlayerController> livingPlayers = new Dictionary<int, PlayerController>();
     public List<GameObject> spinners;
     public List<GameObject> lasers;
     public List<GameObject> wallBlades;
@@ -67,6 +67,8 @@ public class GameManager : MonoBehaviour {
 
     public void SetupGame()
     {
+        CleanupRound();
+
         int i = 1;
         foreach (Text text in hudScores)
         {
@@ -356,6 +358,15 @@ public class GameManager : MonoBehaviour {
 
         yield return new WaitForSecondsRealtime(2.0f);
 
+        CleanupRound();
+
+        Time.timeScale = 1.0f;
+        endRoundSound.PlayEffect();
+        scoreScreenUI.Display();
+    }
+
+    private void CleanupRound()
+    {
         foreach (PlayerController player in livingPlayers.Values)
         {
             if (player != null)
@@ -371,10 +382,6 @@ public class GameManager : MonoBehaviour {
         }
 
         tileManager.Reset();
-        Time.timeScale = 1.0f;
-
-        endRoundSound.PlayEffect();
-        scoreScreenUI.Display();
     }
 
     public PlayerStats GetWinner()
