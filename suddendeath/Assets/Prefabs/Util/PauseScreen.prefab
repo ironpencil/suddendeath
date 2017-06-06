@@ -60,7 +60,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: PAUSED
+  m_Text: "PAUSED\n\nPRESS BACK TO RETURN \nTO PLAYER SELECT"
 --- !u!222 &222022613065317572
 CanvasRenderer:
   m_ObjectHideFlags: 1

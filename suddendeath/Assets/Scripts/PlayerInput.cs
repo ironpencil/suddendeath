@@ -38,6 +38,8 @@ public class PlayerInput : MonoBehaviour {
 
     Rigidbody2D rb2d;
 
+    bool playerPaused = false;
+
 	// Use this for initialization
 	void Start () {
         rb2d = GetComponent<Rigidbody2D>();
@@ -96,7 +98,27 @@ public class PlayerInput : MonoBehaviour {
         if (XCI.GetButtonDown(XboxButton.Start, xboxController))
         {
             Debug.Log("Start pressed");
-            Globals.Instance.TogglePause();
+
+            //track which player paused the game - so only that player can unpause/return to menu
+            if (Globals.Instance.paused)
+            {
+                if (playerPaused)
+                {
+                    Globals.Instance.Pause(false);
+                    playerPaused = false;
+                }
+            } else
+            {
+                Globals.Instance.Pause(true);
+                playerPaused = true;
+            }
+        }
+
+        if (XCI.GetButtonDown(XboxButton.Back, xboxController) && playerPaused)
+        {
+            //return to player select screen
+            Globals.Instance.Pause(false);
+            Globals.Instance.GameManager.SetupGame();
         }
     }
 

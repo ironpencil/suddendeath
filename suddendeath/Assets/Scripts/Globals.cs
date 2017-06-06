@@ -20,7 +20,6 @@ public class Globals : Singleton<Globals>
     public SoundEffectHandler gameStartSound;
     public SoundEffectHandler pauseSound;
     public SoundEffectHandler unpauseSound;
-    private bool playPauseSound = false;
 
     public float screenShakeFactor = 1.0f;
 
@@ -84,9 +83,8 @@ public class Globals : Singleton<Globals>
 
     private IEnumerator DoStartGame()
     {
-        playPauseSound = false;
         //disable player object
-        Globals.Instance.Pause(true);
+        Time.timeScale = 0.0f;
         Globals.Instance.acceptPlayerGameInput = false;
 
         //TODO: do a screen transition
@@ -104,9 +102,8 @@ public class Globals : Singleton<Globals>
 
         //AudioManager.Instance.StartMusic();
 
-        Globals.Instance.Pause(false);
+        Time.timeScale = 1.0f;
         Globals.Instance.acceptPlayerGameInput = true;
-        playPauseSound = true;
 
         AudioManager.Instance.StartMusic(AudioManager.Instance.musicFadeInTime, false);
 
@@ -122,14 +119,14 @@ public class Globals : Singleton<Globals>
 
         if (paused)
         {
-            if (playPauseSound) { pauseSound.PlayEffect(); }
+            pauseSound.PlayEffect();
             Time.timeScale = 0.0f;
             acceptPlayerGameInput = false;
             pauseScreenUI.SetActive(true);
         }
         else
         {
-            if (playPauseSound) { unpauseSound.PlayEffect(); }
+            unpauseSound.PlayEffect();
             Time.timeScale = 1.0f;
             acceptPlayerGameInput = true;
             pauseScreenUI.SetActive(false);
