@@ -32,17 +32,13 @@ public class TitleController : MonoBehaviour {
     public float titleBeginTime;
     public float titleDuration;
 
+    public SoundEffectHandler titleSound;
+
     public float directionsFadeInTime;
     public float directionsFadeDuration;
 
-    public AudioSource gameMusic;
-
     int finishedComponents = 0;
     List<int> controllers = new List<int>() { 1, 2, 3, 4 };
-
-    IEnumerator bgCoroutine;
-    IEnumerator fgCoroutine;
-    IEnumerator titleCoroutine;
 
     bool directionsDisplayed = false;
     
@@ -70,6 +66,8 @@ public class TitleController : MonoBehaviour {
                 bg.anchoredPosition = bgEndPos;
                 fg.anchoredPosition = fgEndPos;
                 title.anchoredPosition = titleEndPos;
+                titleSound.PlayEffect();
+
                 directionsDisplayed = false;
                 finishedComponents = 3;
 
@@ -84,13 +82,10 @@ public class TitleController : MonoBehaviour {
 
     public void DisplayTitle()
     {
-        bgCoroutine = DoMoveTransform(bg, bgStartPos, bgEndPos, bgBeginTime, bgDuration, bgEasing);
-        fgCoroutine = DoMoveTransform(fg, fgStartPos, fgEndPos, fgBeginTime, fgDuration, fgEasing);
-        titleCoroutine = DoMoveTransform(title, titleStartPos, titleEndPos, titleBeginTime, titleDuration, titleEasing);
-
-        StartCoroutine(bgCoroutine);
-        StartCoroutine(fgCoroutine);
-        StartCoroutine(titleCoroutine);
+        StartCoroutine(DoMoveTransform(bg, bgStartPos, bgEndPos, bgBeginTime, bgDuration, bgEasing));
+        StartCoroutine(DoMoveTransform(fg, fgStartPos, fgEndPos, fgBeginTime, fgDuration, fgEasing));
+        StartCoroutine(DoMoveTransform(title, titleStartPos, titleEndPos, titleBeginTime, titleDuration, titleEasing));
+        StartCoroutine(WaitThenPlay(titleSound, titleBeginTime));
 
         directions.SetAlpha(0.0f);
 
@@ -146,5 +141,12 @@ public class TitleController : MonoBehaviour {
         }
 
         cr.SetAlpha(1.0f);
+    }
+
+    IEnumerator WaitThenPlay(SoundEffectHandler sound, float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+
+        sound.PlayEffect();
     }
 }
