@@ -674,7 +674,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 1000, y: 200}
+  m_CellSize: {x: 1000, y: 150}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -793,7 +793,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: "Denny Petronio a.k.a. MC Dizzelonio \na.k.a. literally a goddamn donut"
+  m_Text: Denny Petronio
 --- !u!114 &114983075171921404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -958,8 +958,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 500, y: -100}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_AnchoredPosition: {x: 500, y: -75}
+  m_SizeDelta: {x: 1000, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224135839028630978
 RectTransform:
@@ -977,8 +977,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -197}
-  m_SizeDelta: {x: 1000, y: 200}
+  m_AnchoredPosition: {x: 512, y: -184.5}
+  m_SizeDelta: {x: 1000, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224242448607173670
 RectTransform:
@@ -1071,7 +1071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -172}
+  m_AnchoredPosition: {x: 512, y: -184.5}
   m_SizeDelta: {x: 800, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224564296507723178
@@ -1108,7 +1108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -81.5}
+  m_AnchoredPosition: {x: 512, y: -94}
   m_SizeDelta: {x: 321, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224644180223835502
@@ -1126,7 +1126,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -81.5}
+  m_AnchoredPosition: {x: 512, y: -94}
   m_SizeDelta: {x: 36, y: 31}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224736278690627996
@@ -1146,8 +1146,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 512, y: -213}
-  m_SizeDelta: {x: 1024, y: 363}
+  m_AnchoredPosition: {x: 512, y: -238}
+  m_SizeDelta: {x: 1024, y: 338}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224832325782885130
 RectTransform:
@@ -1186,7 +1186,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 512, y: 0}
-  m_SizeDelta: {x: 1024, y: 313}
+  m_SizeDelta: {x: 1024, y: 338}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!224 &224857880897734388
 RectTransform:
