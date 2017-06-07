@@ -66,18 +66,19 @@ MonoBehaviour:
   wallLaserShotFrequency: 1
   wallLaserChargeTime: 0.5
   wallLaserBounceCount: 3
-  wallLaserSpeed: 15
+  wallLaserSpeed: 18
   isLaserLineEnabled: 1
-  laserLineCount: 3
-  laserLineSpeed: 4
+  laserLineCount: 1
+  laserLineMaxSpeed: 4
+  laserLineMinSpeed: 2
   isBombEnabled: 1
-  bombFrequency: 1.5
-  bombFallTime: 3
+  bombFrequency: 2
+  bombFallTime: 2
   isMineEnabled: 1
   mineStartsArmed: 0
   mineTimeToDetonate: 3
   maxMines: 2
-  mineRespawnFrequency: 3
+  mineRespawnFrequency: 4
   mineMaxLifetime: 10
   isFloorEnabled: 1
   floorCollapseDuration: 1.5

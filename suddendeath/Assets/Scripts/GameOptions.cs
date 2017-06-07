@@ -55,4 +55,55 @@ public class  GameOptions : MonoBehaviour {
     [Header("Floor")]
     public bool isFloorEnabled = true;
     public float floorCollapseDuration = 1.5f;
+
+
+    public void Clone(GameOptions dest)
+    {
+        // Other Options
+        dest.displayFrameRate = displayFrameRate;
+        dest.roundsToWin = roundsToWin;
+
+        // Player Options
+        dest.playerMoveSpeed = playerMoveSpeed;
+        dest.playerDashRechargeTime = playerDashRechargeTime;
+        dest.playerDashTime = playerDashTime;
+        dest.playerDashSpeed = playerDashSpeed;
+        dest.playerLockDashDirection = playerLockDashDirection;
+
+        // Spinner Options
+        dest.isSpinnerEnabled = isSpinnerEnabled;
+        dest.spinnerCount = spinnerCount;
+        dest.spinnerSpeed = spinnerSpeed;
+
+        // Laser Turret (Wall Laser) Options
+        dest.isWallLaserEnabled = isWallLaserEnabled;
+        dest.wallLaserCount = wallLaserCount;
+        dest.wallLaserShotFrequency = wallLaserShotFrequency;
+        dest.wallLaserChargeTime = wallLaserChargeTime;
+        dest.wallLaserBounceCount = wallLaserBounceCount;
+        dest.wallLaserSpeed = wallLaserSpeed;
+
+        // Laser Line Options
+        dest.isLaserLineEnabled = isLaserLineEnabled;
+        dest.laserLineCount = laserLineCount;
+        dest.laserLineMaxSpeed = laserLineMaxSpeed;
+        dest.laserLineMinSpeed = laserLineMinSpeed;
+
+        // Bomb Options
+        dest.isBombEnabled = isBombEnabled;
+        dest.bombFrequency = bombFrequency;
+        dest.bombFallTime = bombFallTime;
+
+        // Mine Options
+        dest.isMineEnabled = isMineEnabled;
+        dest.mineStartsArmed = mineStartsArmed;
+        dest.mineTimeToDetonate = mineTimeToDetonate;
+        dest.maxMines = maxMines;
+        dest.mineRespawnFrequency = mineRespawnFrequency;
+        dest.mineMaxLifetime = mineMaxLifetime;
+
+        // Floor Options
+        dest.isFloorEnabled = isFloorEnabled;
+        dest.floorCollapseDuration = floorCollapseDuration;
+    }
 }

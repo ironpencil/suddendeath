@@ -64,7 +64,6 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        optionsUI.GetComponent<OptionsScreenBehavior>().gameOptions = gameOptions;
     }
 
     public void SetupGame()
@@ -90,10 +89,10 @@ public class GameManager : MonoBehaviour {
     
     void UpdateHud()
     {
-        if (gameOptions.displayFrameRate)
+        if (gameOptions.displayFrameRate && !Globals.Instance.paused)
         {
-            float msec = deltaTime * 1000.0f;
-            float fps = 1.0f / deltaTime;
+            float msec = (float)Math.Round(deltaTime * 1000.0f, 2);
+            float fps = (float)Math.Round(1.0f / deltaTime, 2);
             hudFps.text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         }
 
