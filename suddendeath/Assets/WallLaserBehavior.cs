@@ -9,7 +9,7 @@ public class WallLaserBehavior : MonoBehaviour {
     public float shotFrequency = 10;
     public float chargeTime = 10;
     public Sprite IdleSprite;
-    public Sprite ChargingSprite;
+    public ParticleSystem chargingParticles;
     Rigidbody2D rb2d;
     public SpriteRenderer sprite;
     public float timeLeft;
@@ -77,7 +77,7 @@ public class WallLaserBehavior : MonoBehaviour {
         else
         {
             IsCharging = true;
-            sprite.sprite = ChargingSprite;
+            chargingParticles.Play();
             if (chargeSound != null)
             {
                 chargeSound.PlayEffect();

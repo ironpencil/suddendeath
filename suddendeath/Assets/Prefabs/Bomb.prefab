@@ -111,6 +111,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 0
   targetPlayerNum: 0
+  fallingSound: {fileID: 114825921709474874}
 --- !u!114 &114825921709474874
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   description: Falling
+  useUISource: 0
   clips:
   - {fileID: 8300000, guid: 674cd925d90e66441abdb17be8914397, type: 3}
   playRandom: 0
@@ -134,7 +136,7 @@ MonoBehaviour:
   variablePitch: 1
   pitchMin: 0.9
   pitchMax: 1.1
-  playDelay: 1.813
+  playDelay: 0
   variableDelay: 0
   playDelayMin: 0
   playDelayMax: 1
