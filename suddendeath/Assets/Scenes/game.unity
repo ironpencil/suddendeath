@@ -445,6 +445,8 @@ MonoBehaviour:
     type: 2}
   hardGameOptions: {fileID: 114119226331934600, guid: aa15f54f11eee8c43bd5a32c56bf7158,
     type: 2}
+  wtfGameOptions: {fileID: 114119226331934600, guid: e8c318645543b454aae8b996e128f00e,
+    type: 2}
   eventSystem: {fileID: 2057455735}
   difficulty: {fileID: 1829344713}
   spinner: {fileID: 1116447112}
@@ -10122,6 +10124,8 @@ MonoBehaviour:
     - m_Text: Medium
       m_Image: {fileID: 0}
     - m_Text: Hard
+      m_Image: {fileID: 0}
+    - m_Text: WTF
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
