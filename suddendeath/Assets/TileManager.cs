@@ -60,7 +60,7 @@ public class TileManager : MonoBehaviour {
     public void Reset()
     {
         isCollapsing = false;
-        actualCollapseTime = collapseTime;
+        actualCollapseTime = Globals.Instance.GameManager.gameOptions.floorCollapseInterval;
         //clear any children we may have from a previous execution
         foreach (Transform child in transform)
         {

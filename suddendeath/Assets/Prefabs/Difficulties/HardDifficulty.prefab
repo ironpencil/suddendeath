@@ -81,4 +81,4 @@ MonoBehaviour:
   mineRespawnFrequency: 3
   mineMaxLifetime: 10
   isFloorEnabled: 1
-  floorCollapseDuration: 0.1
+  floorCollapseInterval: 0.05

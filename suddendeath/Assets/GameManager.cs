@@ -273,6 +273,7 @@ public class GameManager : MonoBehaviour {
         if (gameOptions.isFloorEnabled)
         {
             tileManager.gameObject.SetActive(true);
+            tileManager.Reset();
             tileManager.StartCollapsing();
         }
 

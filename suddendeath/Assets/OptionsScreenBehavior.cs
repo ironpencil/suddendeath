@@ -67,8 +67,8 @@ public class OptionsScreenBehavior : MonoBehaviour {
     // Floor Menu
     public Toggle floor;
 
-    public Text floorCollapseDurationText;
-    public Slider floorCollapseDuration;
+    public Text floorCollapseIntervalText;
+    public Slider floorCollapseInterval;
     
     IEnumerator DisplayCoroutine()
     {
@@ -131,7 +131,7 @@ public class OptionsScreenBehavior : MonoBehaviour {
 
         // Floor Handlers
         floor.onValueChanged.AddListener(val => { selectedGameOptions.isFloorEnabled = val; Debug.Log("Floor Enabled: " + val); });
-        floorCollapseDuration.onValueChanged.AddListener(val => { selectedGameOptions.floorCollapseDuration = val; floorCollapseDurationText.text = "Floor Collapse Dur: " + val; Debug.Log("Floor Collapse Duration: " + val); });
+        floorCollapseInterval.onValueChanged.AddListener(val => { selectedGameOptions.floorCollapseInterval = val; floorCollapseIntervalText.text = "Floor Collapse Dur: " + val; Debug.Log("Floor Collapse Duration: " + val); });
     }
 
     void UpdateDisplays()
@@ -177,8 +177,8 @@ public class OptionsScreenBehavior : MonoBehaviour {
 
         // Floor
         floor.isOn = selectedGameOptions.isFloorEnabled;
-        floorCollapseDuration.value = selectedGameOptions.floorCollapseDuration;
-        floorCollapseDurationText.text = "Floor Collapse Dur: " + selectedGameOptions.floorCollapseDuration;
+        floorCollapseInterval.value = selectedGameOptions.floorCollapseInterval;
+        floorCollapseIntervalText.text = "Collapse Interval: " + selectedGameOptions.floorCollapseInterval;
     }
 
     // Use this for initialization

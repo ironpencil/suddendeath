@@ -54,7 +54,7 @@ public class  GameOptions : MonoBehaviour {
     // Floor Options
     [Header("Floor")]
     public bool isFloorEnabled = true;
-    public float floorCollapseDuration = 1.5f;
+    public float floorCollapseInterval = 1.0f;
 
 
     public void Clone(GameOptions dest)
@@ -104,6 +104,6 @@ public class  GameOptions : MonoBehaviour {
 
         // Floor Options
         dest.isFloorEnabled = isFloorEnabled;
-        dest.floorCollapseDuration = floorCollapseDuration;
+        dest.floorCollapseInterval = floorCollapseInterval;
     }
 }
