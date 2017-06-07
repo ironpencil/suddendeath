@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
         joinedPlayers = new List<int>();
         playerStats = new Dictionary<int, PlayerStats>();
         kills = new List<Kill>();
-        playerSetupUI.GetComponent<PlayerSetupBehavior>().Display();
+        playerSetupUI.GetComponent<PlayerSetupBehavior>().ResetDisplay();
     }
     
     void UpdateHud()
@@ -160,6 +160,8 @@ public class GameManager : MonoBehaviour {
     public void RemovePlayer(int playerNum)
     {
         joinedPlayers.Remove(playerNum);
+        hudScores[playerNum - 1].gameObject.SetActive(false);
+        playerStats.Remove(playerNum);
     }
 
     public void DisplayOptions()

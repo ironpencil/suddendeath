@@ -15,11 +15,11 @@ public class PlayerSetupBehavior : MonoBehaviour {
 		
 	}
 
-    public void Display()
+    public void ResetDisplay()
     {
         foreach (PlayerSelector ps in playerSelectors)
         {
-            ps.playerJoined = false;
+           ps.ResetSelector();
         }
         
         gameObject.SetActive(true);

@@ -15,14 +15,30 @@ public class PlayerSelector : MonoBehaviour {
 
     XboxController controller;
 
-	// Use this for initialization
-	void Start () {
+    public void ResetSelector()
+    {
+        AButton.enabled = true;
+        BButton.enabled = false;
+        playerStatus.text = "Press       to join!";
+        playerJoined = false;
+        Globals.Instance.GameManager.RemovePlayer(playerNum);
+    }
+
+    // Use this for initialization
+    void Start () {
         BButton.enabled = false;
         controller = (XboxController)playerNum;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if (playerJoined && !Globals.Instance.GameManager.joinedPlayers.Contains(playerNum))
+        {
+            AButton.enabled = true;
+            BButton.enabled = false;
+            playerStatus.text = "Press       to join!";
+        }
+
         if (XCI.GetButtonDown(XboxButton.A, controller))
         {
             if (!playerJoined)
@@ -41,14 +57,7 @@ public class PlayerSelector : MonoBehaviour {
         if (XCI.GetButtonDown(XboxButton.B, controller)) {
             if (playerJoined)
             {
-                playerJoined = false;
-                Globals.Instance.GameManager.RemovePlayer(playerNum);
-                if (playerStatus != null)
-                {
-                    AButton.enabled = true;
-                    BButton.enabled = false;
-                    playerStatus.text = "Press       to join!";
-                }
+                ResetSelector();
             }
         }
 
