@@ -8,6 +8,7 @@ public class BombBehavior : MonoBehaviour, Explosive {
     public GameObject shadow;
     public AnimationCurve easing;
     public int targetPlayerNum;
+    public SoundEffectHandler fallingSound;
 
     Vector2 startingPos;
     Vector2 targetPos;
@@ -17,6 +18,10 @@ public class BombBehavior : MonoBehaviour, Explosive {
 	void Start () {
         startingPos = transform.position;
         targetPos = shadow.transform.position;
+
+        float soundDuration = fallingSound.clips[0].length;
+        fallingSound.playDelay = Mathf.Max(FallTime - soundDuration);
+        fallingSound.PlayEffect();
     }
 
     // Update is called once per frame
