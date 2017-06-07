@@ -264,7 +264,7 @@ public class GameManager : MonoBehaviour {
                 int x = -10;
                 while (x == -11 || x == -10 || x == -9 || x == 9 || x == 10 || x == 11)
                 {
-                    x = UnityEngine.Random.Range(-15, 16);
+                    x = UnityEngine.Random.Range(-14, 15);
                 }
                 laserLine.transform.position = new Vector2(x, 0);
             }
