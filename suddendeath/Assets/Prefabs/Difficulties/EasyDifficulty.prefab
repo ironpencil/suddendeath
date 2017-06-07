@@ -63,7 +63,7 @@ MonoBehaviour:
   spinnerSpeed: 10
   isWallLaserEnabled: 1
   wallLaserCount: 1
-  wallLaserShotFrequency: 2
+  wallLaserShotFrequency: 1.5
   wallLaserChargeTime: 0.5
   wallLaserBounceCount: 2
   wallLaserSpeed: 12

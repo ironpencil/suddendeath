@@ -60,13 +60,13 @@ MonoBehaviour:
   playerLockDashDirection: 1
   isSpinnerEnabled: 1
   spinnerCount: 1
-  spinnerSpeed: 13
+  spinnerSpeed: 12
   isWallLaserEnabled: 1
   wallLaserCount: 1
   wallLaserShotFrequency: 1.25
   wallLaserChargeTime: 0.5
-  wallLaserBounceCount: 2
-  wallLaserSpeed: 15
+  wallLaserBounceCount: 3
+  wallLaserSpeed: 14
   isLaserLineEnabled: 0
   laserLineCount: 0
   laserLineMaxSpeed: 4
@@ -78,7 +78,7 @@ MonoBehaviour:
   mineStartsArmed: 0
   mineTimeToDetonate: 3
   maxMines: 2
-  mineRespawnFrequency: 4
-  mineMaxLifetime: 15
+  mineRespawnFrequency: 3
+  mineMaxLifetime: 10
   isFloorEnabled: 1
   floorCollapseDuration: 1.5
