@@ -447,6 +447,8 @@ MonoBehaviour:
     type: 2}
   wtfGameOptions: {fileID: 114119226331934600, guid: e8c318645543b454aae8b996e128f00e,
     type: 2}
+  weirdGameOptions: {fileID: 114119226331934600, guid: 59996dd25db0de7499c83de2ebe6ecb9,
+    type: 2}
   eventSystem: {fileID: 2057455735}
   difficulty: {fileID: 1829344713}
   spinner: {fileID: 1116447112}
@@ -1528,6 +1530,10 @@ MonoBehaviour:
   dynamicsParent: {fileID: 152047075}
   playerPrefab: {fileID: 1051186068919054, guid: c5f1ddba142d8aa4994325e856932b91,
     type: 2}
+  weirdSpinnerPrefabs:
+  - {fileID: 1688033274004050, guid: df317cbf0070638429357f33b9ea2985, type: 2}
+  - {fileID: 1577571857500262, guid: b289c7489b19bb743b69e845b38b91de, type: 2}
+  - {fileID: 1887824192428534, guid: 3c5b3823a8c37eb48906122771365875, type: 2}
   spinnerPrefab: {fileID: 1238128772900036, guid: ea5c6e6d3d316b94fb95232621066d86,
     type: 2}
   laserPrefab: {fileID: 1328865512593642, guid: 00efe13f61036474aa2ac52a854be41c,
@@ -2384,7 +2390,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -85, y: -6}
+  m_AnchoredPosition: {x: -100, y: -6}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &439834071
@@ -10072,8 +10078,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -307, y: 235}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -290, y: 235}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1829344713
 MonoBehaviour:
@@ -10126,6 +10132,8 @@ MonoBehaviour:
     - m_Text: Hard
       m_Image: {fileID: 0}
     - m_Text: WTF
+      m_Image: {fileID: 0}
+    - m_Text: OK Now It's Just Weird
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:

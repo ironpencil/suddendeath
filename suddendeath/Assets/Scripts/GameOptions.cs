@@ -20,6 +20,7 @@ public class  GameOptions : MonoBehaviour {
     public bool isSpinnerEnabled = true;
     public int spinnerCount = 1;
     public int spinnerSpeed = 16;
+    public bool weird = false;
 
     // Laser Turret (Wall Laser) Options
     [Header("Wall Turret")]
@@ -74,6 +75,7 @@ public class  GameOptions : MonoBehaviour {
         dest.isSpinnerEnabled = isSpinnerEnabled;
         dest.spinnerCount = spinnerCount;
         dest.spinnerSpeed = spinnerSpeed;
+        dest.weird = weird;
 
         // Laser Turret (Wall Laser) Options
         dest.isWallLaserEnabled = isWallLaserEnabled;

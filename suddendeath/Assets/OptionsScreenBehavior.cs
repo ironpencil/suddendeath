@@ -12,6 +12,7 @@ public class OptionsScreenBehavior : MonoBehaviour {
     public GameOptions mediumGameOptions;
     public GameOptions hardGameOptions;
     public GameOptions wtfGameOptions;
+    public GameOptions weirdGameOptions;
     public EventSystem eventSystem;
 
     public Dropdown difficulty;
@@ -99,6 +100,9 @@ public class OptionsScreenBehavior : MonoBehaviour {
                 break;
             case 3:
                 wtfGameOptions.Clone(selectedGameOptions);
+                break;
+            case 4:
+                weirdGameOptions.Clone(selectedGameOptions);
                 break;
         }
         UpdateDisplays();

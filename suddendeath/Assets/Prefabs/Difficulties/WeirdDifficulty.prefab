@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4235014538092968}
   - component: {fileID: 114119226331934600}
   m_Layer: 5
-  m_Name: WTFDifficulty
+  m_Name: WeirdDifficulty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,32 +54,32 @@ MonoBehaviour:
   displayFrameRate: 1
   roundsToWin: 10
   playerMoveSpeed: 5000
-  playerDashRechargeTime: 0.2
+  playerDashRechargeTime: 0.8
   playerDashTime: 0.15
   playerDashSpeed: 20000
   playerLockDashDirection: 1
   isSpinnerEnabled: 1
-  spinnerCount: 2
-  spinnerSpeed: 20
-  wtf: 0
+  spinnerCount: 3
+  spinnerSpeed: 14
+  weird: 1
   isWallLaserEnabled: 1
-  wallLaserCount: 2
-  wallLaserShotFrequency: 0.5
+  wallLaserCount: 1
+  wallLaserShotFrequency: 1
   wallLaserChargeTime: 0.5
-  wallLaserBounceCount: 5
-  wallLaserSpeed: 20
-  isLaserLineEnabled: 1
+  wallLaserBounceCount: 3
+  wallLaserSpeed: 15
+  isLaserLineEnabled: 0
   laserLineCount: 1
-  laserLineMaxSpeed: 8
-  laserLineMinSpeed: 8
+  laserLineMaxSpeed: 4
+  laserLineMinSpeed: 4
   isBombEnabled: 1
-  bombFrequency: 0.5
-  bombFallTime: 2
+  bombFrequency: 2
+  bombFallTime: 3
   isMineEnabled: 1
-  mineStartsArmed: 1
-  mineTimeToDetonate: 1
-  maxMines: 5
-  mineRespawnFrequency: 1
+  mineStartsArmed: 0
+  mineTimeToDetonate: 3
+  maxMines: 2
+  mineRespawnFrequency: 3
   mineMaxLifetime: 10
   isFloorEnabled: 1
-  floorCollapseInterval: 0
+  floorCollapseInterval: 0.05

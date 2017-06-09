@@ -52,7 +52,10 @@ public class SpinnerController : MonoBehaviour {
     {
         Vector2 direction = rb2d.velocity.normalized;
         rb2d.velocity = direction * MoveSpeed;
-        rb2d.angularVelocity = SpinSpeed * SpinDirection;
+        if (Mathf.Abs(SpinSpeed) > 0.0f)
+        {
+            rb2d.angularVelocity = SpinSpeed * SpinDirection;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

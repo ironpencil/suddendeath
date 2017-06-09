@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour {
 
     public Transform dynamicsParent;
     public GameObject playerPrefab;
+    public List<GameObject> weirdSpinnerPrefabs;
     public GameObject spinnerPrefab;
     public GameObject laserPrefab;
     public GameObject laserLinePrefab;
@@ -228,11 +229,23 @@ public class GameManager : MonoBehaviour {
 
         if (gameOptions.isSpinnerEnabled)
         {
-            for (int i = 0; i < gameOptions.spinnerCount; i++)
+            if (gameOptions.weird)
             {
-                GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-                spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
-                spinners.Add(spinner);
+                gameOptions.spinnerCount = 3;
+                for (int i = 0; i < gameOptions.spinnerCount; i++)
+                {
+                    GameObject spinner = GameObject.Instantiate(weirdSpinnerPrefabs[i], dynamicsParent);
+                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
+                    spinners.Add(spinner);
+                }
+            }
+            else {
+                for (int i = 0; i < gameOptions.spinnerCount; i++)
+                {
+                    GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
+                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
+                    spinners.Add(spinner);
+                }
             }
         }
 
