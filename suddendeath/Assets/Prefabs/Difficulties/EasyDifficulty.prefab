@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayFrameRate: 1
-  roundsToWin: 10
+  roundsToWin: 5
   playerMoveSpeed: 5000
   playerDashRechargeTime: 0.8
   playerDashTime: 0.15
@@ -61,6 +61,7 @@ MonoBehaviour:
   isSpinnerEnabled: 1
   spinnerCount: 1
   spinnerSpeed: 7
+  weird: 0
   isWallLaserEnabled: 1
   wallLaserCount: 1
   wallLaserShotFrequency: 2

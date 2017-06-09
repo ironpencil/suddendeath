@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayFrameRate: 1
-  roundsToWin: 10
+  roundsToWin: 5
   playerMoveSpeed: 5000
   playerDashRechargeTime: 0.8
   playerDashTime: 0.15
@@ -60,25 +60,26 @@ MonoBehaviour:
   playerLockDashDirection: 1
   isSpinnerEnabled: 1
   spinnerCount: 1
-  spinnerSpeed: 10
+  spinnerSpeed: 12
+  weird: 0
   isWallLaserEnabled: 1
   wallLaserCount: 1
-  wallLaserShotFrequency: 1.5
+  wallLaserShotFrequency: 1
   wallLaserChargeTime: 0.5
-  wallLaserBounceCount: 2
+  wallLaserBounceCount: 3
   wallLaserSpeed: 12
   isLaserLineEnabled: 0
   laserLineCount: 0
   laserLineMaxSpeed: 4
   laserLineMinSpeed: 2
   isBombEnabled: 1
-  bombFrequency: 4
-  bombFallTime: 4
+  bombFrequency: 3
+  bombFallTime: 3
   isMineEnabled: 1
   mineStartsArmed: 0
-  mineTimeToDetonate: 5
-  maxMines: 1
+  mineTimeToDetonate: 3
+  maxMines: 2
   mineRespawnFrequency: 4
   mineMaxLifetime: 15
   isFloorEnabled: 1
-  floorCollapseInterval: 0.5
+  floorCollapseInterval: 0.2

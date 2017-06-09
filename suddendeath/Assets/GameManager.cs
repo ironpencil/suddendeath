@@ -235,7 +235,7 @@ public class GameManager : MonoBehaviour {
                 for (int i = 0; i < gameOptions.spinnerCount; i++)
                 {
                     GameObject spinner = GameObject.Instantiate(weirdSpinnerPrefabs[i], dynamicsParent);
-                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
+                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-3.0f, 3.0f), UnityEngine.Random.Range(-1.5f, 1.5f));
                     spinners.Add(spinner);
                 }
             }
@@ -243,7 +243,7 @@ public class GameManager : MonoBehaviour {
                 for (int i = 0; i < gameOptions.spinnerCount; i++)
                 {
                     GameObject spinner = GameObject.Instantiate(spinnerPrefab, dynamicsParent);
-                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-5.0f, 5.0f), UnityEngine.Random.Range(-2.5f, 2.5f));
+                    spinner.transform.position = new Vector2(UnityEngine.Random.Range(-3.0f, 3.0f), UnityEngine.Random.Range(-1.5f, 1.5f));
                     spinners.Add(spinner);
                 }
             }
@@ -274,11 +274,7 @@ public class GameManager : MonoBehaviour {
             for (int i = 0; i < gameOptions.laserLineCount; i++)
             {
                 GameObject laserLine = GameObject.Instantiate(laserLinePrefab, dynamicsParent);
-                int x = -10;
-                while (x == -11 || x == -10 || x == -9 || x == 9 || x == 10 || x == 11)
-                {
-                    x = UnityEngine.Random.Range(-14, 15);
-                }
+                int x = UnityEngine.Random.Range(-3, 3);
                 laserLine.transform.position = new Vector2(x, 0);
             }
         }
@@ -291,12 +287,12 @@ public class GameManager : MonoBehaviour {
         }
 
         // Wall Blade not implemented
-        if (false)
-        {
-            GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
-            wallBlade.transform.position = Vector2.zero;
-            wallBlades.Add(wallBlade);
-        }
+        //if (false)
+        //{
+        //    GameObject wallBlade = GameObject.Instantiate(wallBladePrefab, dynamicsParent);
+        //    wallBlade.transform.position = Vector2.zero;
+        //    wallBlades.Add(wallBlade);
+        //}
 
         GameObject crateSpawner = GameObject.Instantiate(crateSpawnerPrefab, dynamicsParent);
         crateSpawner.GetComponent<CrateSpawner>().SpawnCrates();
