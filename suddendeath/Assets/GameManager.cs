@@ -210,19 +210,19 @@ public class GameManager : MonoBehaviour {
             {
                 case 1:
                     psr.color = player1Color;
-                    ssr.color = player1Color;
+                    //ssr.color = player1Color;
                     break;
                 case 2:
                     psr.color = player2Color;
-                    ssr.color = player2Color;
+                    //ssr.color = player2Color;
                     break;
                 case 3:
                     psr.color = player3Color;
-                    ssr.color = player3Color;
+                    //ssr.color = player3Color;
                     break;
                 case 4:
                     psr.color = player4Color;
-                    ssr.color = player4Color;
+                    //ssr.color = player4Color;
                     break;
             }
         }

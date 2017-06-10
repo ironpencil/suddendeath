@@ -22,6 +22,7 @@ public class PlayerInput : MonoBehaviour {
     
     public GameObject hand;
     public GameObject sprite;
+    public GameObject baseSprite;
     public GameObject shield;
 
     public SoundEffectHandler dashSound;
@@ -159,6 +160,7 @@ public class PlayerInput : MonoBehaviour {
         DashTimeLeft = go.playerDashTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = DashingSprite;
+        baseSprite.GetComponent<SpriteRenderer>().enabled = false;
         currentSpeed = go.playerDashSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = false;
         gameObject.layer = LayerMask.NameToLayer("Dashing Player");
@@ -176,6 +178,7 @@ public class PlayerInput : MonoBehaviour {
         DashRechargeTimeLeft = go.playerDashRechargeTime;
         SpriteRenderer sr = sprite.GetComponent<SpriteRenderer>();
         sr.sprite = PlayerSprite;
+        baseSprite.GetComponent<SpriteRenderer>().enabled = true;
         currentSpeed = go.playerMoveSpeed;
         gameObject.GetComponent<BoundsChecker>().enabled = true;
         gameObject.layer = LayerMask.NameToLayer("Player");

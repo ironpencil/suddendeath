@@ -1558,10 +1558,10 @@ MonoBehaviour:
   maxWallLaserSpawn: {x: 14, y: 7}
   isRoundActive: 0
   isRoundReady: 0
-  player1Color: {r: 1, g: 0.44852942, b: 0.44852942, a: 1}
-  player2Color: {r: 0.5240425, g: 0.88235295, b: 0.38278547, a: 1}
-  player3Color: {r: 0.6734282, g: 0.4852941, b: 1, a: 1}
-  player4Color: {r: 0.50735295, g: 1, b: 0.9592292, a: 1}
+  player1Color: {r: 1, g: 0.25, b: 0.25, a: 1}
+  player2Color: {r: 0.3278905, g: 0.89705884, b: 0, a: 1}
+  player3Color: {r: 0.640771, g: 0.43382353, b: 1, a: 1}
+  player4Color: {r: 0.255, g: 1, b: 0.93834496, a: 1}
 --- !u!114 &271390538
 MonoBehaviour:
   m_ObjectHideFlags: 0
