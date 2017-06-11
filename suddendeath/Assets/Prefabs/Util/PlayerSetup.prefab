@@ -194,6 +194,8 @@ GameObject:
   - component: {fileID: 222526933003139024}
   - component: {fileID: 114212249375121838}
   - component: {fileID: 114950925632587074}
+  - component: {fileID: 114991740441859622}
+  - component: {fileID: 114511922227615556}
   m_Layer: 5
   m_Name: Player3
   m_TagString: Untagged
@@ -245,6 +247,8 @@ GameObject:
   - component: {fileID: 222179995995104022}
   - component: {fileID: 114215559275342198}
   - component: {fileID: 114861269621186380}
+  - component: {fileID: 114177955694249724}
+  - component: {fileID: 114506659086249188}
   m_Layer: 5
   m_Name: Player4
   m_TagString: Untagged
@@ -365,6 +369,8 @@ GameObject:
   - component: {fileID: 222404450098985592}
   - component: {fileID: 114364476688174982}
   - component: {fileID: 114738139014489786}
+  - component: {fileID: 114883178652281212}
+  - component: {fileID: 114206721474950414}
   m_Layer: 5
   m_Name: Player2
   m_TagString: Untagged
@@ -435,6 +441,8 @@ GameObject:
   - component: {fileID: 222734732917234980}
   - component: {fileID: 114056096355565798}
   - component: {fileID: 114783049391731662}
+  - component: {fileID: 114403412110783392}
+  - component: {fileID: 114773950491537936}
   m_Layer: 5
   m_Name: Player1
   m_TagString: Untagged
@@ -528,6 +536,68 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114177955694249724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477456268277010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Confirm
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 96af65eec2763604e900fd94c2a5be0c, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
+--- !u!114 &114206721474950414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774960700428812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Cancel
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 7b619ea20eddcb74e90c3fad6398e10f, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114209518378868362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -822,6 +892,37 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114403412110783392
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979559856622144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Confirm
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 96af65eec2763604e900fd94c2a5be0c, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114404425392730146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -909,6 +1010,37 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Press       to join!
+--- !u!114 &114506659086249188
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1477456268277010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Cancel
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 7b619ea20eddcb74e90c3fad6398e10f, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114509083015028504
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -924,7 +1056,40 @@ MonoBehaviour:
   playerJoined: 0
   AButton: {fileID: 114656349894066752}
   BButton: {fileID: 114358629729650422}
+  confirmSound: {fileID: 114883178652281212}
+  cancelSound: {fileID: 114206721474950414}
   playerStatus: {fileID: 114897069380586398}
+--- !u!114 &114511922227615556
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362596205347148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Cancel
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 7b619ea20eddcb74e90c3fad6398e10f, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114555870264032118
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1214,7 +1379,40 @@ MonoBehaviour:
   playerJoined: 0
   AButton: {fileID: 114404425392730146}
   BButton: {fileID: 114079181369548080}
+  confirmSound: {fileID: 114403412110783392}
+  cancelSound: {fileID: 114773950491537936}
   playerStatus: {fileID: 114465008630664630}
+--- !u!114 &114773950491537936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1979559856622144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Cancel
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 7b619ea20eddcb74e90c3fad6398e10f, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114783049391731662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1286,6 +1484,37 @@ MonoBehaviour:
   m_ChildForceExpandHeight: 1
   m_ChildControlWidth: 1
   m_ChildControlHeight: 1
+--- !u!114 &114883178652281212
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1774960700428812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Confirm
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 96af65eec2763604e900fd94c2a5be0c, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!114 &114893059478415190
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1301,6 +1530,8 @@ MonoBehaviour:
   playerJoined: 0
   AButton: {fileID: 114593402601423010}
   BButton: {fileID: 114348338383868366}
+  confirmSound: {fileID: 114177955694249724}
+  cancelSound: {fileID: 114506659086249188}
   playerStatus: {fileID: 114209518378868362}
 --- !u!114 &114897069380586398
 MonoBehaviour:
@@ -1372,7 +1603,40 @@ MonoBehaviour:
   playerJoined: 0
   AButton: {fileID: 114636212422908940}
   BButton: {fileID: 114857163644177864}
+  confirmSound: {fileID: 114991740441859622}
+  cancelSound: {fileID: 114511922227615556}
   playerStatus: {fileID: 114290289862509266}
+--- !u!114 &114991740441859622
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1362596205347148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71259274b8da8d94493c581923603002, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  description: Confirm
+  useUISource: 1
+  clips:
+  - {fileID: 8300000, guid: 96af65eec2763604e900fd94c2a5be0c, type: 3}
+  playRandom: 0
+  volume: 0.7
+  variableVolume: 0
+  volumeMin: 0.9
+  volumeMax: 1
+  pitch: 1
+  variablePitch: 0
+  pitchMin: 0.8
+  pitchMax: 1.2
+  playDelay: 0
+  variableDelay: 0
+  playDelayMin: 0
+  playDelayMax: 0.01
+  ignoreTimeScale: 0
+  playOneShot: 1
+  playOnStart: 0
 --- !u!222 &222024739880615002
 CanvasRenderer:
   m_ObjectHideFlags: 1

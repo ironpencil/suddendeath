@@ -10,6 +10,9 @@ public class PlayerSelector : MonoBehaviour {
     public bool playerJoined = false;
     public Image AButton;
     public Image BButton;
+
+    public SoundEffectHandler confirmSound;
+    public SoundEffectHandler cancelSound;
     
     public Text playerStatus;
 
@@ -43,6 +46,7 @@ public class PlayerSelector : MonoBehaviour {
         {
             if (!playerJoined)
             {
+                confirmSound.PlayEffect();
                 playerJoined = true;
                 Globals.Instance.GameManager.AddPlayer(playerNum);
                 if (playerStatus != null)
@@ -57,6 +61,7 @@ public class PlayerSelector : MonoBehaviour {
         if (XCI.GetButtonDown(XboxButton.B, controller)) {
             if (playerJoined)
             {
+                cancelSound.PlayEffect();
                 ResetSelector();
             }
         }
