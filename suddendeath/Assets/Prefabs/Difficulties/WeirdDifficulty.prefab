@@ -52,7 +52,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   displayFrameRate: 1
-  roundsToWin: 5
+  roundsToWin: 3
   playerMoveSpeed: 5000
   playerDashRechargeTime: 0.8
   playerDashTime: 0.15

@@ -16,30 +16,23 @@ public class PlayerSelector : MonoBehaviour {
     
     public Text playerStatus;
 
+    public GameObject colorSelector;
+
     XboxController controller;
 
-    public void ResetSelector()
-    {
-        AButton.enabled = true;
-        BButton.enabled = false;
-        playerStatus.text = "Press       to join!";
-        playerJoined = false;
-        Globals.Instance.GameManager.RemovePlayer(playerNum);
-    }
 
     // Use this for initialization
     void Start () {
         BButton.enabled = false;
         controller = (XboxController)playerNum;
+        colorSelector.SetActive(false);
     }
 	
 	// Update is called once per frame
 	void Update () {
         if (playerJoined && !Globals.Instance.GameManager.joinedPlayers.Contains(playerNum))
         {
-            AButton.enabled = true;
-            BButton.enabled = false;
-            playerStatus.text = "Press       to join!";
+            Leave();
         }
 
         if (XCI.GetButtonDown(XboxButton.A, controller))
@@ -47,14 +40,7 @@ public class PlayerSelector : MonoBehaviour {
             if (!playerJoined)
             {
                 confirmSound.PlayEffect();
-                playerJoined = true;
-                Globals.Instance.GameManager.AddPlayer(playerNum);
-                if (playerStatus != null)
-                {
-                    AButton.enabled = false;
-                    BButton.enabled = true;
-                    playerStatus.text = "Joined! Press       to cancel...";
-                }
+                Join();
             }
         }
 
@@ -62,7 +48,7 @@ public class PlayerSelector : MonoBehaviour {
             if (playerJoined)
             {
                 cancelSound.PlayEffect();
-                ResetSelector();
+                Leave();
             }
         }
 
@@ -80,4 +66,27 @@ public class PlayerSelector : MonoBehaviour {
             Globals.Instance.GameManager.DisplayOptions();
         }
 	}
+
+    public void Join()
+    {
+        playerJoined = true;
+        Globals.Instance.GameManager.AddPlayer(playerNum);
+        if (playerStatus != null)
+        {
+            AButton.enabled = false;
+            BButton.enabled = true;
+            playerStatus.text = "Joined! Press       to cancel...";
+        }
+        colorSelector.SetActive(true);
+    }
+
+    public void Leave()
+    {
+        AButton.enabled = true;
+        BButton.enabled = false;
+        playerStatus.text = "Press       to join!";
+        playerJoined = false;
+        Globals.Instance.GameManager.RemovePlayer(playerNum);
+        colorSelector.SetActive(false);
+    }
 }

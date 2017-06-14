@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     public List<Kill> kills;
     public List<Text> hudScores;
     public Text hudRound;
+
     public Text hudTime;
     public Text hudFps;
 
@@ -160,9 +161,9 @@ public class GameManager : MonoBehaviour {
 
     public void RemovePlayer(int playerNum)
     {
-        joinedPlayers.Remove(playerNum);
+        if (joinedPlayers.Contains(playerNum)) { joinedPlayers.Remove(playerNum); }
         hudScores[playerNum - 1].gameObject.SetActive(false);
-        playerStats.Remove(playerNum);
+        if (playerStats.ContainsKey(playerNum)) { playerStats.Remove(playerNum); }
     }
 
     public void DisplayOptions()
@@ -424,5 +425,41 @@ public class GameManager : MonoBehaviour {
         }
 
         return winner;
+    }
+
+    internal Color GetPlayerColor(int playerNum)
+    {
+        switch (playerNum)
+        {
+            case 1:
+                return player1Color;
+            case 2:
+                return player2Color;
+            case 3:
+                return player3Color;
+            case 4:
+                return player4Color;
+        }
+
+        return Color.white;
+    }
+
+    internal void SetPlayerColor(Color color, int playerNum)
+    {
+        switch (playerNum)
+        {
+            case 1:
+                player1Color = color;
+                break;
+            case 2:
+                player2Color = color;
+                break;
+            case 3:
+                player3Color = color;
+                break;
+            case 4:
+                player4Color = color;
+                break;
+        }
     }
 }

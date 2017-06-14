@@ -19,7 +19,7 @@ public class PlayerSetupBehavior : MonoBehaviour {
     {
         foreach (PlayerSelector ps in playerSelectors)
         {
-           ps.ResetSelector();
+           ps.Leave();
         }
         
         gameObject.SetActive(true);
